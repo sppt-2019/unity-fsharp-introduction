@@ -11,10 +11,10 @@ ___
 Alle datatyper som du kender fra C# kan også bruges i F#. Variabelerklæring i F# er næsten det samme som i C#, den eneste forskel er at vi bruger `let` i stedet:
 
 ```fsharp
-let a = 5             //Integer variabel
-let mutable b = 5.0f  //Overskrivbar float32 variabel
-let c = "John"        //String variabel
-let d:bool = true     //Eksplicit typet boolsk variabel
+let a = 5             // Integer variabel
+let mutable b = 5.0f  // Overskrivbar float32 variabel
+let c = "John"        // String variabel
+let d:bool = true     // Eksplicit typet boolsk variabel
 ```
 
 ### Editor variable
@@ -23,12 +23,12 @@ Hvis du vil erklære en variabel, som kan ændres i Unity's Editor skal den vær
 [<SerializeField>]
 let mutable Variable = 5.0f
 ```
-I nogle tilfælde vil du måske undgå en default værdi. Så skal variablen erklæres på denne måde:
+I nogle tilfælde vil du måske undgå at give en variabel en værdi med det samme. Så skal variablen erklæres på denne måde:
 ```fsharp
 [<DefaultValue>]
 val mutable Variable:float32
 ```
-Dette er fordi F# skal kunne udregne variablens type.
+Dette er fordi F# skal kunne udregne variablens type. Typen skal angives da den ikke kan gætte typen uden.
 
 ___
 ## Type casting
@@ -41,8 +41,10 @@ let f = float32 i
 ___
 ## Erklæring af typer (klasser)
 ```fsharp
+open UnityEngine
+
 type MyType() =
-    inherit UnityEngine.MonoBehaviour()
+    inherit MonoBehaviour()
 
     [<SerializeField>]
     let mutable Message = "Hello from F#"
@@ -62,13 +64,25 @@ Her erklærer vi en funktion, som tager en liste af tal og summerer dem efter de
 let sumInPowerN (nums:float32 list) (n:float32) =
     List.reduce (fun acc i -> acc + Mathf.Pow(i, n)) nums
 ```
-Implicitte typer virker i nogle tilfælde også på funktioner, men compileren kan sommetider blive lidt forvirret og give nogle mystiske fejlbeskeder, så det oftest er bedst at erklære deres typer eksplicit. Ovenstående funktion kunne også erklæres med:
+Implicitte typer virker i nogle tilfælde også på funktioner, men compileren kan sommetider blive lidt forvirret og give nogle mystiske fejlbeskeder, så det kan ofte være en god idé at erklære deres typer eksplicit. Ovenstående funktion kunne også erklæres med:
 ```fsharp
 let sumInPowerN nums n = [...]
 ```
 
 ### Currying
 F# bruger currying ved funktionskald. Antag at vi har den følgende F# funktion, som tager en liste samt en funktion som bliver kørt på alle elementerne:
+
+```fsharp
+let simpleMath operator a b = operator a b
+
+let add = simpleMath (+)
+let subtract = simpleMath (-)
+let divide = simpleMath (/)
+...
+
+let c = add 1 2 // 3
+```
+
 ```fsharp
 let rec executeOnElements list func =
     match list with
