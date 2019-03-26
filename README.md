@@ -1,7 +1,7 @@
 # Samplesheet
 
 ## Generel information om F#
-F# er et funktionelt sprog som kører i .NET Platformen sammen med C#. Eftersom F# er funktionelt betyder det at næsten alt betragtes som funktioner og funktionskald. F# er desuden _pure_ som standard, hvilket betyder at variable ikke må ændres efter de er blevet erklæret. Syntaksen i F# er inspireret af Haskell og er indentations-baseret.
+F# er et funktionelt programmeringssprog som kører i .NET Platformen sammen med C#. Eftersom F# er funktionelt betyder det at næsten alt betragtes som funktioner og funktionskald. F# er desuden _pure_ som standard, hvilket betyder at variable ikke må ændres efter de er blevet erklæret. Syntaksen i F# er inspireret af Haskell og er indentations-baseret.
 
 En ting der er vigtig at være opmærksom på i F# i forhold til C# er at der er eksplicit membership. I C# vil det være typisk i et `GameObject` at kalde `Destroy` hvis vi ønsker at fjerne et objekt. I dette kald er det implicit at `Destroy`-metoden er en statisk metode på klassen `GameObject`. I F# må vi være eksplicitte og derfor kalde `GameObject.Destroy`. Det samme gælder med metoder på klasser, som vi altid skal kalde med `this.Metode`.
 
@@ -12,14 +12,14 @@ ___
 Alle datatyper som du kender fra C# kan også bruges i F#. Variabelerklæring i F# er næsten det samme som i C#, den eneste forskel er at vi bruger `let` i stedet:
 
 ```fsharp
-let a = 5 //Integer variabel
-let mutable b = 5.0f //Overskrivbar float32 variabel
-let c = "John" //String variabel
-let d:bool = true //Eksplicit typet boolsk variabel
+let a = 5             //Integer variabel
+let mutable b = 5.0f  //Overskrivbar float32 variabel
+let c = "John"        //String variabel
+let d:bool = true     //Eksplicit typet boolsk variabel
 ```
 
 ### Editor variable
-Hvis du vil erklære en variabel, som kan ændres i Unity's Editor skal den være mutable og serializable:
+Hvis du vil erklære en variabel, som kan ændres i Unity's Editor skal den være __mutable__ og __serializable__:
 ```fsharp
 [<SerializeField>]
 let mutable Variable = 5.0f
@@ -29,7 +29,7 @@ I nogle tilfælde vil du måske undgå en default værdi. Så skal variablen erk
 [<DefaultValue>]
 val mutable Variable:float32
 ```
-
+Dette er fordi F# skal kunne udregne variablens type.
 ___
 ## Type casting
 F# er et stærkt typet sprog og det vil ofte være nødvendigt at caste variable. Et type cast fra `int` til `float32`:
@@ -53,7 +53,7 @@ type TypeName() =
 Denne stump kode erklærer en `MonoBehaviour`, som har én instansvariabel `Message`, der bliver printet når Unity's Editor startes. `SerializeField` betyder at instansvariablen `Message` bliver tilgængelig i Unity's Editor.
 ___
 ## Funktioner & metoder
-I F# findes der både funktioner og metoder. Funktioner er ikke knyttet til nogen klasseinstans, hvilket betyder at du ikke kan tilgå `this` i funktioner (lidt ligesom `static` metoder i C#). Metoder er bundet på klasseinstanser og fungerer som du kender det fra C#.
+I F# findes der både funktioner og metoder. Funktioner er ikke knyttet til nogen klasseinstans, hvilket betyder at du ikke kan tilgå `this` i funktioner (næsten ligesom `static` metoder i C#). Metoder er bundet på klasseinstanser og fungerer som du kender det fra C#.
 
 ### Funktioner
 Her erklærer vi en funktion, som tager en liste af tal og summerer dem efter de er blevet opløftet i `n`:
@@ -105,7 +105,7 @@ ___
 ## Kontrolstrukturer
 
 ### If-else
-If-else kontrolstrukturer findes i F#: 
+If-else kontrolstrukturer findes i F#:
 ```fsharp
 type Foods =
     | Strawberry
@@ -124,7 +124,7 @@ let GetFoodMessage food =
 I de fleste tilfælde vil vi dog bruge pattern maching, da det er smartere:
 
 ### Pattern Matching
-Pattern matching kan beskrives som if-else statements på steorider. Du kan bruge dem til både at matche på variable, tuples, klasser osv. 
+Pattern matching kan beskrives som if-else statements på steroider. Du kan bruge dem til både at matche på variable, tuples, klasser osv.
 
 #### Simpel pattern matching
 ```fsharp
@@ -134,7 +134,9 @@ let PrintFoodMessage food =
     | IceCream -> Debug.Log("So you have a sweet tooth? Watch you weight!")
     | _ -> Debug.Log("There are so many options when it comes to food.")
 ```
-Dette er et simpelt eksempel. Forestil dig nu at vi har tuples af mad og antallet af den type mad en person har spist hver dag:
+Dette er et simpelt eksempel, som er ækvivalent med ìf-else eksempelet ovenover.
+
+Forestil dig nu at vi har tuples af mad og antallet af den type mad en person har spist hver dag:
 
 #### Pattern matching på lister
 ```fsharp
@@ -148,7 +150,7 @@ match diet with
 
 Alternativt kan listen også behandles som `head` og `tail` gennem recursion:
 ```fsharp
-let rec GetFoodMessage diet = 
+let rec GetFoodMessage diet =
     match list with
     | [] -> ""
     | (IceCream,x)::t when x > 0  -> "Less IceCream" + (GetFoodMessage t)
@@ -182,7 +184,7 @@ let mutable sum = 0
 for i in 1 .. 3 do
     sum <- sum + i
 ```
-I dette eksempel er `1 .. 3` en range, som vil generere en liste bestående af tallene 1, 2 og 3. Selve syntaksen og den måde loopet fungerer på minder meget om `foreach`-loops fra C#. Ranges kan også bruges til at deklarere lister:
+I dette eksempel er `1 .. 3` en range, som vil summere listen bestående af tallene 1, 2 og 3. Selve syntaksen og den måde loopet fungerer på minder meget om `foreach`-loops fra C#, eller loops og ranges fra Python. Ranges kan også bruges til at deklarere lister:
 ```fsharp
 let oneToHundred = [1..100]
 ```
@@ -196,7 +198,7 @@ ___
 De fleste operatorer som du kender fra C# findes også i F#. Der er dog nogle få undtagelser som vi gennemgår her:
 
 ### Assignment vs. boolean expressions
-I C# er du nok vandt til at bruge `=` som assignment og `==` som boolsk sammenligning. I F# er tingene lidt anderledes. Vi bruger `=` som assignment i `let` declarations og `<-` som assignment når vi ønsker at overskrive en variabel (virker kun på `mutable` variable). I boolske udtryk bruger vi `=` som boolsk ligmed:
+I C# er du nok vandt til at bruge `=` som assignment og `==` som boolsk sammenligning. I F# er tingene lidt anderledes, her bruges `=` til deklarationer med `let` operatoren og `<-` som assignment når vi ønsker at overskrive en variabel (virker kun på `mutable` variable). I boolske udtryk bruger vi `=` som boolsk lighed:
 ```fsharp
 let mutable i = 10
 if i = 8 then
@@ -214,7 +216,7 @@ Compound operatorer (+=, *= osv.) findes ikke i F#, da vi som udgangspunkt ikke 
 </div>
 
 ### Pipe operatoren
-I et tidligere eksempel så vi pipe operatoren (`|>`) i brug. 
+I et tidligere eksempel så vi pipe operatoren (`|>`) i brug.
 
 Denne operator er især smart når vi arbejder med samlinger af objekter eller værdier. Kort fortalt tager den værdien på venstre hånd og bruger som sidste argument i funktionen på højre hånd. I dette eksempel finder vi alle `GameObject`s med tagget `Movable` og beregner deres midtpunkt:
 ```fsharp
@@ -225,7 +227,7 @@ Denne operator er især smart når vi arbejder med samlinger af objekter eller v
 ```
 Følgende er en forklaring af hver skridt:
 
-1) `[1..5]` erklærer en liste af integers fra og med 1 til og med 5.
+1) `[1..5]` er en range som erklærer en liste af integers fra og med 1 til og med 5.
 2) `List.map (fun i -> float32(i))` transformerer listen af integers til en liste af floats.
 3) `List.map (fun f -> f ** 2.0f)` opløfter alle elementerne i listen i anden potens.
 4) `List.reduce (fun acc elm -> acc + elm)` summerer alle tallene i listen.
@@ -250,7 +252,7 @@ let sum = [1..10] |> List.sum
 
 ___
 ## FRP Event Handling
-I Functional Reactive Programming (FRP) implementerer vi logikken for vores spil som en række event handlers. I pure funktionel programming findes der ikke loops (det gør der i F# fordi det ikke er pure). Alt der skal gentages implementeres med rekursion. Af denne årsag findes `Update`-metoden som du kender fra C# Unity ikke i FRP-biblioteket. Du bliver nødt til at tænke `Update`-logikken ind i andre event handlers.
+I Functional Reactive Programming (FRP) implementerer vi logikken for vores spil som en række event handlers. I pure funktionel programmering findes der ikke loops (det gør der i F# fordi det ikke er pure). Alt der skal gentages implementeres med rekursion. Af denne årsag findes `Update`-metoden som du kender fra C# Unity ikke i FRP-biblioteket. Du bliver nødt til at tænke `Update`-logikken ind i andre event handlers.
 
 ### Registrer en event handler til Space-tasten
 ```fsharp
@@ -259,9 +261,9 @@ type Jumper() =
 
     member this.Start() =
         this.ReactTo (
-            FRPEvent.Keyboard, //Event type
-            (fun () -> Input.GetKeyDown(KeyCode.Space)), //Filtrering
-            (fun () -> HandleSpaceEvent())) //Handler
+            FRPEvent.Keyboard,                            //Event type
+            (fun () -> Input.GetKeyDown(KeyCode.Space)),  //Filtrering
+            (fun () -> HandleSpaceEvent()))               //Handler
 ```
 En FRP-registrering består af tre ting:
 
@@ -298,7 +300,7 @@ type Mouse() =
     member this.Start() =
         this.ReactTo<float32*float32> (
             FRPEvent.MouseMove,
-            (fun m -> 
+            (fun m ->
                 let (h, v) = m.Deconstruct()
                 let mSpeed = Mathf.Sqrt(h ** 2.0f + v ** 2.0f)
                 let dir = new Vector3(h, 0.0f, v) |> Vector3.Normalize
