@@ -59,9 +59,9 @@
     const goto = anchor =>  location.hash = "#" + anchor;
     const menuElement = document.createElement('div');
     const menuHtml = `
-    <ul>
+    <ul class="menu">
         ${menuItems.map(menuItem => (
-          `<button onClick="goto('${menuItem.anchor}')" >${menuItem.title}</button>`
+          `<button class="${(menuItem.main ? 'big' : 'small')}" onClick="goto('${menuItem.anchor}')" >${menuItem.title}</button>`
         ))}
     </ul>
     `;
