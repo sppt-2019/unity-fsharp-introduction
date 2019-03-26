@@ -61,7 +61,7 @@
     const menuHtml = `
     <ul>
         ${menuItems.map(menuItem => (
-          `<button onClick=("goto("${menuItem.anchor}")")>${menuItem.title}</button>`
+          `<button onClick="goto("${menuItem.anchor}")" >${menuItem.title}</button>`
         ))}
     </ul>
     `;
@@ -69,7 +69,6 @@
     menuElement.innerHTML = menuHtml;
     header.appendChild(menuElement);
 
-		console.log(menuItems);
 	</script>	
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
     {% if site.google_analytics %}
