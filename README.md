@@ -1,24 +1,3 @@
-<head>
-<style>
-.note-box {
-    background-color: lightblue;
-    color: black;
-    border-radius: 4px;
-    padding: 4px 8px;
-    margin-bottom: 8px;
-}
-.note-box::before {
-    content: "Bemærk venligst:";
-    display: block;
-    font-weight: bold;
-    font-size: 1.2em;
-    text-align: center;
-    margin-bottom: 4px;
-    border-bottom: 1px dashed black;
-}
-</style>
-</head>
-
 # Samplesheet
 
 ## Generel information om F#
