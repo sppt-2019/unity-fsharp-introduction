@@ -55,6 +55,19 @@
 		let menuItems = elements.map(element => {
 			return { anchor: element.id, title: element.innerText, main: element.nodeName.toLowerCase() == 'h2' };
 		});
+
+    const goto = anchor =>  location.hash = "#" + anchor;
+    const menuElement = document.createElement('div');
+    const menuHtml = `
+    <ul>
+        ${menuItems.map(menuItem => (
+          `<button onClick=("goto("${menuItem.anchor}")")>${menuItem.title}</button>`
+        ))}
+    </ul>
+    `;
+    const header = document.querySelector('header');
+    header.appendChild(menuPoints);
+
 		console.log(menuItems);
 	</script>	
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
