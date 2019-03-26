@@ -31,6 +31,7 @@ I nogle tilfælde vil du måske undgå en default værdi. Så skal variablen erk
 val mutable Variable:float32
 ```
 Dette er fordi F# skal kunne udregne variablens type.
+
 ___
 ## Type casting
 F# er et stærkt typet sprog og det vil ofte være nødvendigt at caste variable. Et type cast fra `int` til `float32`:
@@ -52,6 +53,7 @@ type TypeName() =
         Debug.Log("MonoBehaviour says: " + Message)
 ```
 Denne stump kode erklærer en `MonoBehaviour`, som har én instansvariabel `Message`, der bliver printet når Unity's Editor startes. `SerializeField` betyder at instansvariablen `Message` bliver tilgængelig i Unity's Editor.
+
 ___
 ## Funktioner & metoder
 I F# findes der både funktioner og metoder. Funktioner er ikke knyttet til nogen klasseinstans, hvilket betyder at du ikke kan tilgå `this` i funktioner (næsten ligesom `static` metoder i C#). Metoder er bundet på klasseinstanser og fungerer som du kender det fra C#.
@@ -234,6 +236,7 @@ Følgende er en forklaring af hver skridt:
 4) `List.reduce (fun acc elm -> acc + elm)` summerer alle tallene i listen.
 
 Der findes også en operator til at pipe baglæns (`<|`), men den burde ikke blive nødvendig i denne opgave.
+
 ___
 ## Map-reduce
 To vigtige koncepter i funktionel programmering, som vi har berørt en smule her, er map og reduce. Begge koncepterne behandler samlinger. **Map** transformerer alle elementerne i en liste og returnerer en ny samling og **reduce** reducerer alle elementerne i en samling til ét element.
