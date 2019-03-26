@@ -161,11 +161,15 @@ let mutable sum = 0
 for i in 1 .. 3 do
     sum <- sum + i
 ```
-I dette eksempel er `1 .. 3` en range, som vil generere en liste bestående af tallene 1, 2 og 3. Selve syntaksen og den måde loopet fungerer på minder meget om `foreach`-loops fra C#.
+I dette eksempel er `1 .. 3` en range, som vil generere en liste bestående af tallene 1, 2 og 3. Selve syntaksen og den måde loopet fungerer på minder meget om `foreach`-loops fra C#. Ranges kan også bruges til at deklarere lister:
+```fsharp
+let oneToHundred = [1..100]
+```
 
 <div class="note-box">
 Bloggen <i>F# for Fun and Profit</i> anbefaler at undgå loops og i stedet bruge nogle af de andre List metoder, f.eks. List.iter.
 </div>
+
 
 ___
 ## F# Operatorer
