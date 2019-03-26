@@ -7,6 +7,7 @@ En ting der er vigtig at være opmærksom på i F# i forhold til C# er at der er
 
 Dette dokument giver en hurtig introduktion til F# og hvordan det kan bruges i Unity.
 
+
 ___
 ## Datatyper og variable
 Alle datatyper som du kender fra C# kan også bruges i F#. Variabelerklæring i F# er næsten det samme som i C#, den eneste forskel er at vi bruger `let` i stedet:
@@ -328,3 +329,10 @@ Dette er en liste over events samt deres Unity C# modsvar og deres generiske typ
 | TriggerExit | OnTriggerExit | `Collider` |
 
 Hvis man forsøger at bruge en generisk type, som ikke passer til event typen vil der blive kastet en exception på runtime.
+
+___
+## Brug af F# i Unity
+Unity understøtter ikke brug af F# på samme måde som det understøtter C#. Men fordi begge sprog kører i .NET/Mono, kan F# projekter bruges - dog med lidt ekstra arbejde.
+For at automatisere så meget af dette arbejde som muligt, har vi udviklet en Unity-pakke som tilføjer en menu med funktioner til dette.
+
+[Download Unity-pakken til F# integration](https://github.com/sppt-2k19/unity-fsharp-integration/raw/master/unity-fsharp-integration.unitypackage "Download pakken") ([læs mere om pakken](https://github.com/sppt-2k19/unity-fsharp-integration "Læs mere her"))
