@@ -71,18 +71,6 @@ let sumInPowerN nums n = [...]
 
 ### Currying
 F# bruger currying ved funktionskald. Antag at vi har den følgende F# funktion, som tager en liste samt en funktion som bliver kørt på alle elementerne:
-
-```fsharp
-let simpleMath operator a b = operator a b
-
-let add = simpleMath (+)
-let subtract = simpleMath (-)
-let divide = simpleMath (/)
-...
-
-let c = add 1 2 // 3
-```
-
 ```fsharp
 let rec executeOnElements list func =
     match list with
@@ -91,7 +79,7 @@ let rec executeOnElements list func =
         func h
         executeOnElements t func
 ```
-Vi kan curry'e denne funktion og dermed lave en ny funktion, som udfører en handling på alle tal mellem 1 og 100:
+Vi kan curry denne funktion og dermed lave en ny funktion, som udfører en handling på alle tal fra 1 til og med 100:
 ```fsharp
 let doFrom1To100 = executeOnElements [1..100]
 ```
