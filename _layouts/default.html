@@ -51,8 +51,11 @@
       </footer>
     </div>
 	<script>
-		const content = "{{ content }}";
-		console.log(content);
+		let elements = Array.from(document.querySelectorAll('h2[id], h3[id]'));
+		let menuItems = elements.map({id, innerText, nodeName} => {
+			return { anchor: id, title: innerText, main: nodeName.toLowerCase() == 'h2' };
+		});
+		console.log(menuItems);
 	</script>	
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
     {% if site.google_analytics %}
