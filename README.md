@@ -254,7 +254,7 @@ ___
 ## FRP Event Handling
 I Functional Reactive Programming (FRP) implementerer vi logikken for vores spil som en række event handlers. I pure funktionel programmering findes der ikke loops (det gør der i F# fordi det ikke er pure). Alt der skal gentages implementeres med rekursion. Af denne årsag findes `Update`-metoden som du kender fra C# Unity ikke i FRP-biblioteket. Du bliver nødt til at tænke `Update`-logikken ind i andre event handlers.
 
-### Registrer en event handler til Space-tasten
+#### Registrer en event handler til Space-tasten
 ```fsharp
 type Jumper() =
     inherit FRPBehaviour()
@@ -271,7 +271,7 @@ En FRP-registrering består af tre ting:
 2) En filtreringsfunktion, som sorterer i hvilke events vi ønsker at reagere på. I ovenstående tilfælde er det funktionen `Input.GetKeyDown(KeyCode.Space)`.
 3) En handler, som implementerer hvad der skal ske når dette event forekommer.
 
-### Registrer en event handler til kollisioner
+#### Registrer en event handler til kollisioner
 ```fsharp
 type Player() =
     inherit FRPBehaviour()
