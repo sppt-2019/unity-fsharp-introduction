@@ -62,7 +62,7 @@
     <ul class="menu">
         ${menuItems.map(menuItem => (
           `<button class="${(menuItem.main ? 'big' : 'small')}" onClick="goto('${menuItem.anchor}')" >${menuItem.title}</button>`
-        ))}
+        )).join("")}
     </ul>
     `;
     const header = document.querySelector('header');
