@@ -1,10 +1,10 @@
 # Unity FRP Opgaver
 
-[Introduction](Introduction.md)
+[Introduktion](introduktion.md)
 
-[First Person Controller](Controller_FPS.md)
+[First Person Controller](controller-fps.md)
 
-[Third Person Controller](Controller_3rd.md)
+[Third Person Controller](controller-3rd.md)
 
 [Armour Graph](armour.md)
 
