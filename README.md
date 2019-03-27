@@ -1,5 +1,5 @@
 ## Generel information om F#
-F# er et funktionelt programmeringssprog som kører i .NET Platformen sammen med C#. Eftersom F# er funktionelt betyder det at næsten alt betragtes som funktioner og funktionskald. F# er desuden _pure_ som standard, hvilket betyder at variable ikke må ændres efter de er blevet erklæret. Syntaksen i F# er inspireret af OCaml og Haskell og er indentations-baseret istedet for med curly braces ( `{` og `}` ), som vi kender det fra C#.
+F# er et funktionelt programmeringssprog som kører i .NET Platformen sammen med C#. Eftersom F# er funktionelt betyder det at næsten alt betragtes som funktioner og funktionskald. F# er desuden _pure_ som standard, hvilket betyder at variable ikke må ændres efter de er blevet erklæret. Syntaksen i F# er inspireret af OCaml og Haskell og er indentations-baseret i stedet for med curly braces ( `{` og `}` ), som vi kender det fra C#.
 
 En ting der er vigtig at være opmærksom på i F# i forhold til C# er at der er eksplicit membership. I C# vil det være typisk i et `GameObject` at kalde `Destroy` hvis vi ønsker at fjerne et objekt. I dette kald er det implicit at `Destroy`-metoden er en statisk metode på klassen `GameObject`. I F# må vi være eksplicitte og derfor kalde `GameObject.Destroy`. Det samme gælder med metoder på klasser, som vi altid skal kalde med `this.Metode`.
 
@@ -75,7 +75,7 @@ F# bruger currying ved funktionskald. Antag at vi har den følgende F# funktion,
 let rec executeOnElements list func =
     match list with
     | [] -> ()
-    | h::t -> 
+    | h::t ->
         func h
         executeOnElements t func
 ```
@@ -83,7 +83,7 @@ Vi kan curry denne funktion og dermed lave en ny funktion, som udfører en handl
 ```fsharp
 let doFrom1To100 = executeOnElements [1..100]
 ```
-Dette betyder altså at hvis du kalder en funktion med for få argumenter vil den ikke give en fejl, som du måske kender det fra C#, men istedet returnere en ny funktion som tager imod de resternde argumenter, og så giver det endelige resultat
+Dette betyder altså at hvis du kalder en funktion med for få argumenter vil den ikke give en fejl, som du måske kender det fra C#, men i stedet returnere en ny funktion som tager imod de resterende argumenter, og så giver det endelige resultat
 
 Vores nye funktion kan nu anvendes således:
 ```fsharp
@@ -92,7 +92,7 @@ doFrom1To100 (fun i -> printfn "%d" i)
 doFrom1To100 (fun i -> printfn "%d" (i * 5))
 ```
 Hvilket udprinter alle tal fra 1 til 100 og derefter de første 100 tal i 5-tabellen.
-_Læs mere om currying [her](https://fsharpforfunandprofit.com/posts/currying/)_ 
+_Læs mere om currying [her](https://fsharpforfunandprofit.com/posts/currying/)_
 
 ### Metoder
 Metoder skal erklæres på en type og så kan man tilgå dens felter og properties:
@@ -246,6 +246,13 @@ Følgende er en forklaring af hver skridt:
 
 Der findes også en operator til at pipe baglæns (`<|`), men den burde ikke blive nødvendig i denne opgave.
 
+### Tuple Operatoren
+Man skal være opmærksom på at når `*` operatoren bruges i deklarationer, betyder den ikke gange. I stedet bruges den som pardannelsesoperator, hvilket vil sige at højre og venstre siden af operatoren bliver sammen sat som en ny tuple.
+
+```
+int * float
+```
+Ovenstående deklarere af en tuple med første element som integer og andet element som en float.
 ___
 ## Map-reduce
 To vigtige koncepter i funktionel programmering, som vi har berørt en smule her, er map og reduce. Begge koncepterne behandler samlinger. **Map** transformerer alle elementerne i en liste og returnerer en ny samling og **reduce** reducerer alle elementerne i en samling til ét element.
