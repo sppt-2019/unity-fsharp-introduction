@@ -14,17 +14,17 @@ Når samtalen er færdig får spilleren en konsekvens alt efter hvor pænt eller
 ## Eksempel på samtale:
 
 Velkommen til vores lille by, hvad kan jeg hjælpe med?
-    
+
 1) Jeg leder efter arbejde...
-    
+
     Min hund er blevet væk og jeg skulle alligevel ud og lede efter den. Har du brug for hjælp?
     1) Ja.
 
-        Fantastisk, mit sværd er dit! 
+        Fantastisk, mit sværd er dit!
         --> *Karakteren bliver ens følgesvend*
     2) Nej.
 
-        Ærgerligt, sig til hvis du ombestemmer dig. 
+        Ærgerligt, sig til hvis du ombestemmer dig.
         --> *Ingen reaktion*
 2) Jeg fandt denne hund ude i skoven, kender du ejeren
 
@@ -33,15 +33,15 @@ Velkommen til vores lille by, hvad kan jeg hjælpe med?
 
     Her i byen taler vi pænt til hinanden!
     1) Så skal byen DØØØØØØØ!
-        
+
         VI BLIVER ANGREBET! --> *Karakteren bliver fjendtlig*
     2) Undskyld. Det har været en dårlig dag.
-    
+
         Det er i orden. Det kan ske for alle. --> *Ingen reaktion*
 
 ## Opgaverne
-1) Lav en datastruktur som kan indeholde denne slags dialoger.
-2) Vi har lavet en klasse `Node`, med en static metode `GetTree`, som returnerer hele dialogen i en liste. En `Node` har fire properties: `Name`, `Line`, `ChildNames` og `Outcome`. Det er din opgave at omdanne denne liste til et træ, som passer i den datastruktur du definerede i opgave 1). Eksempel: 
+1) Lav en datastruktur som kan indeholde et tree som dækker over alle mulighederne i sådan en dialog.
+2) Vi har lavet en klasse `Node`, med en static metode `GetTree`, som returnerer hele dialogen i en liste. En `Node` har fire properties: `Name`, `Line`, `ChildNames` og `Outcome`. Det er din opgave at omdanne denne liste til et træ, som passer i den datastruktur du definerede i opgave 1). Eksempel:
 
 Node 1:
 - Name: "greet"
