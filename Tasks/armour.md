@@ -25,14 +25,8 @@ Spillerens rustning er delt op i fire grupper, som kan repræsenteres som sæt:
 
 Vi har lavet en `Item`-klasse samt nogle Assets, som repræsenterer items i opgaven:
 ```csharp
-[System.Serializable]
-public enum ItemGroup
-{
-    Head, Torso, Legs, Hands
-}
-
 public class Item : ScriptableObject
-{   
+{
     public string Name;
     public int Intellect;
     public int Strength;
@@ -46,6 +40,12 @@ public class Item : ScriptableObject
 ```
 Samt en `Group`-klasse, som repræsenterer de førnævnte grupper:
 ```csharp
+[System.Serializable]
+public enum ItemGroup
+{
+    Head, Torso, Legs, Hands
+}
+
 public class Group
 {
     public ItemGroup ItmGroup { get; set; }
