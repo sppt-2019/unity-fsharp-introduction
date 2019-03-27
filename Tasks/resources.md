@@ -14,4 +14,5 @@ Resourcerne kan samles efter følgende omregnings priser:
 
 ## Opgaverne
 1) Saml alle spillerens resourcer til så mange Vildild, som muligt.
-2) Udregn om spilleren med sine resourcer kan købe en varer hos en sælger, der koster et givet antal Dild Sild, Mild Abild og Vildild.
+2) Udregn om spilleren med sine resourcer kan købe en vare hos en sælger, der koster et givet antal Dild Sild, Mild Abild og Vildild.
+3) Lav funktionalitet til at købe en vare.

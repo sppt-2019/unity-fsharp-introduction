@@ -25,7 +25,7 @@ Velkommen til vores lille by, hvad kan jeg hjælpe med?
     2) Nej.
 
         Ærgerligt, sig til hvis du ombestemmer dig. 
-        --> *Samtalen går til "Jeg leder efter arbejde..."*
+        --> *Ingen reaktion*
 2) Jeg fandt denne hund ude i skoven, kender du ejeren
 
     MIN LILLE HUND! Den har været væk i flere dage. Tusind tak --> *Karakteren giver spilleren en gave*
@@ -37,12 +37,24 @@ Velkommen til vores lille by, hvad kan jeg hjælpe med?
         VI BLIVER ANGREBET! --> *Karakteren bliver fjendtlig*
     2) Undskyld. Det har været en dårlig dag.
     
-        Det er i orden. Det kan ske for alle. --> *Samtalen går til "Jeg leder efter arbejde..."*
-
-4) Farvel
-
-    Held og lykke på dine rejser. --> *Ingen reaktion*
+        Det er i orden. Det kan ske for alle. --> *Ingen reaktion*
 
 ## Opgaverne
 1) Lav en datastruktur som kan indeholde denne slags dialoger.
-2) Lav noget kode som kan finde alle unikke muligheder fra dialogens start til slut. Alle spillerens muligheder i dialogen må kun vælges én gang.
+2) Vi har lavet en klasse `Node`, med en static metode `GetTree`, som returnerer hele dialogen i en liste. En `Node` har fire properties: `Name`, `Line`, `ChildNames` og `Outcome`. Det er din opgave at omdanne denne liste til et træ, som passer i den datastruktur du definerede i opgave 1). Eksempel: 
+
+Node 1:
+- Name: "greet"
+- Line: "Goddag min ven. Vil du handle med mig?"
+- ChildNames: [(nodeToGoTo: "shop", reply: "Ja tak. Jeg mangler mælk og ost."),(nodeToGoTo: "exit", reply: "Nej tak")]
+- Outcome: DialogOutcome.None
+
+Node 2:
+- Name: "shop"
+- Line: "Det var heldigt. Jeg malkede køerne i morges. Du kan få mælken gratis"
+- ChildNames: []
+- Outcome: DialogOutcome.Gift
+
+Disse to `Node`s skal sættes sammen, så Node 2 bliver et barn af Node 1.
+
+3) Lav noget kode som kan finde alle unikke stier, som fører til at spilleren får en gave.

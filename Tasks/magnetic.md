@@ -9,4 +9,4 @@ Alle de magnetiske bolde har tag'et `Magnetic`.
 
 ## Opgaverne
 1) Implementer en løsning til ovenstående problemstilling.
-2) Paralleliser løsningen.
+2) På samplesheet'et finder du eksempler på hvordan man kan parallelisere opgaver i det sprog du arbejder i. Implementer en løsning til problemet, som udregner alle boldenes nye positioner parallelt og tilsidst opdaterer alle boldene sekventielt på Main-tråden.
