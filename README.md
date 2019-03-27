@@ -1,34 +1,34 @@
-# Samplesheet
-
 ## Generel information om F#
-F# er et funktionelt sprog som kører i .NET Platformen sammen med C#. Eftersom F# er funktionelt betyder det at næsten alt betragtes som funktioner og funktionskald. F# er desuden _pure_ som standard, hvilket betyder at variable ikke må ændres efter de er blevet erklæret. Syntaksen i F# er inspireret af Haskell og er indentations-baseret.
+F# er et funktionelt programmeringssprog som kører i .NET Platformen sammen med C#. Eftersom F# er funktionelt betyder det at næsten alt betragtes som funktioner og funktionskald. F# er desuden _pure_ som standard, hvilket betyder at variable ikke må ændres efter de er blevet erklæret. Syntaksen i F# er inspireret af OCaml og Haskell og er indentations-baseret i stedet for med curly braces ( `{` og `}` ), som vi kender det fra C#.
 
 En ting der er vigtig at være opmærksom på i F# i forhold til C# er at der er eksplicit membership. I C# vil det være typisk i et `GameObject` at kalde `Destroy` hvis vi ønsker at fjerne et objekt. I dette kald er det implicit at `Destroy`-metoden er en statisk metode på klassen `GameObject`. I F# må vi være eksplicitte og derfor kalde `GameObject.Destroy`. Det samme gælder med metoder på klasser, som vi altid skal kalde med `this.Metode`.
 
 Dette dokument giver en hurtig introduktion til F# og hvordan det kan bruges i Unity.
+
 
 ___
 ## Datatyper og variable
 Alle datatyper som du kender fra C# kan også bruges i F#. Variabelerklæring i F# er næsten det samme som i C#, den eneste forskel er at vi bruger `let` i stedet:
 
 ```fsharp
-let a = 5 //Integer variabel
-let mutable b = 5.0f //Overskrivbar float32 variabel
-let c = "John" //String variabel
-let d:bool = true //Eksplicit typet boolsk variabel
+let a = 5             // Integer variabel
+let mutable b = 5.0f  // Overskrivbar float32 variabel
+let c = "John"        // String variabel
+let d:bool = true     // Eksplicit typet boolsk variabel
 ```
 
 ### Editor variable
-Hvis du vil erklære en variabel, som kan ændres i Unity's Editor skal den være mutable og serializable:
+Hvis du vil erklære en variabel, som kan ændres i Unity's Editor skal den være __mutable__ og __serializable__:
 ```fsharp
 [<SerializeField>]
 let mutable Variable = 5.0f
 ```
-I nogle tilfælde vil du måske undgå en default værdi. Så skal variablen erklæres på denne måde:
+I nogle tilfælde vil du måske undgå at give en variabel en værdi med det samme. Så skal variablen erklæres på denne måde:
 ```fsharp
 [<DefaultValue>]
 val mutable Variable:float32
 ```
+Dette er fordi F# skal kunne udregne variablens type. Typen skal angives da den ikke kan gætte typen uden.
 
 ___
 ## Type casting
@@ -41,8 +41,10 @@ let f = float32 i
 ___
 ## Erklæring af typer (klasser)
 ```fsharp
-type TypeName() =
-    inherit UnityEngine.MonoBehaviour()
+open UnityEngine
+
+type MyType() =
+    inherit MonoBehaviour()
 
     [<SerializeField>]
     let mutable Message = "Hello from F#"
@@ -51,9 +53,10 @@ type TypeName() =
         Debug.Log("MonoBehaviour says: " + Message)
 ```
 Denne stump kode erklærer en `MonoBehaviour`, som har én instansvariabel `Message`, der bliver printet når Unity's Editor startes. `SerializeField` betyder at instansvariablen `Message` bliver tilgængelig i Unity's Editor.
+
 ___
 ## Funktioner & metoder
-I F# findes der både funktioner og metoder. Funktioner er ikke knyttet til nogen klasseinstans, hvilket betyder at du ikke kan tilgå `this` i funktioner (lidt ligesom `static` metoder i C#). Metoder er bundet på klasseinstanser og fungerer som du kender det fra C#.
+I F# findes der både funktioner og metoder. Funktioner er ikke knyttet til nogen klasseinstans, hvilket betyder at du ikke kan tilgå `this` i funktioner (næsten ligesom `static` metoder i C#). Metoder er bundet på klasseinstanser og fungerer som vi kender det fra C#.
 
 ### Funktioner
 Her erklærer vi en funktion, som tager en liste af tal og summerer dem efter de er blevet opløftet i `n`:
@@ -61,7 +64,7 @@ Her erklærer vi en funktion, som tager en liste af tal og summerer dem efter de
 let sumInPowerN (nums:float32 list) (n:float32) =
     List.reduce (fun acc i -> acc + Mathf.Pow(i, n)) nums
 ```
-Implicitte typer virker i nogle tilfælde også på funktioner, men compileren kan sommetider blive lidt forvirret og give nogle mystiske fejlbeskeder, så det oftest er bedst at erklære deres typer eksplicit. Ovenstående funktion kunne også erklæres med:
+Implicitte typer virker i nogle tilfælde også på funktioner, men compileren kan sommetider blive lidt forvirret og give nogle mystiske fejlbeskeder, så det kan ofte være en god idé at erklære deres typer eksplicit. Ovenstående funktion kunne også erklæres med:
 ```fsharp
 let sumInPowerN nums n = [...]
 ```
@@ -72,23 +75,27 @@ F# bruger currying ved funktionskald. Antag at vi har den følgende F# funktion,
 let rec executeOnElements list func =
     match list with
     | [] -> ()
-    | h::t -> 
+    | h::t ->
         func h
         executeOnElements t func
 ```
-Vi kan curry'e denne funktion og dermed lave en ny funktion, som udfører en handling på alle tal mellem 1 og 100:
+Vi kan curry denne funktion og dermed lave en ny funktion, som udfører en handling på alle tal fra 1 til og med 100:
 ```fsharp
 let doFrom1To100 = executeOnElements [1..100]
 ```
-Dette betyder altså at hvis du kalder en funktion med for få argumenter vil den ikke give en fejl, som du måske kender det fra C#.
+Dette betyder altså at hvis du kalder en funktion med for få argumenter vil den ikke give en fejl, som du måske kender det fra C#, men i stedet returnere en ny funktion som tager imod de resterende argumenter, og så giver det endelige resultat
+
 Vores nye funktion kan nu anvendes således:
 ```fsharp
 doFrom1To100 (fun i -> printfn "%d" i)
+
+doFrom1To100 (fun i -> printfn "%d" (i * 5))
 ```
-Hvilket udprinter alle tal fra 1 til 100.
+Hvilket udprinter alle tal fra 1 til 100 og derefter de første 100 tal i 5-tabellen.
+_Læs mere om currying [her](https://fsharpforfunandprofit.com/posts/currying/)_
 
 ### Metoder
-Metoder skal erklæres på en type og kan tilgå dens felter og properties:
+Metoder skal erklæres på en type og så kan man tilgå dens felter og properties:
 
 ```fsharp
 type MoveForward() =
@@ -104,8 +111,8 @@ type MoveForward() =
 ___
 ## Kontrolstrukturer
 
-### If-else
-If-else kontrolstrukturer findes i F#: 
+### If-then-else
+If-else kontrolstrukturer findes i F#:
 ```fsharp
 type Foods =
     | Strawberry
@@ -121,10 +128,13 @@ let GetFoodMessage food =
     else
         "There are so many options when it comes to food."
 ```
-I de fleste tilfælde vil vi dog bruge pattern maching, da det er smartere:
+I mange af disse eksempler ville man også kunne bruge pattern matching, hvilket kan give en mere elegant løsning.
+
+_Læs mere om if-then-else i F# [her](https://fsharpforfunandprofit.com/posts/control-flow-expressions/#if-then-else)_
+
 
 ### Pattern Matching
-Pattern matching kan beskrives som if-else statements på steorider. Du kan bruge dem til både at matche på variable, tuples, klasser osv. 
+Pattern matching kan beskrives som if-else statements på steroider. Du kan bruge dem til både at matche på variable, tuples, klasser osv.
 
 #### Simpel pattern matching
 ```fsharp
@@ -134,7 +144,9 @@ let PrintFoodMessage food =
     | IceCream -> Debug.Log("So you have a sweet tooth? Watch you weight!")
     | _ -> Debug.Log("There are so many options when it comes to food.")
 ```
-Dette er et simpelt eksempel. Forestil dig nu at vi har tuples af mad og antallet af den type mad en person har spist hver dag:
+Dette er et simpelt eksempel, som er ækvivalent med ìf-else eksempelet ovenover.
+
+Forestil dig nu at vi har tuples af mad og antallet af den type mad en person har spist hver dag:
 
 #### Pattern matching på lister
 ```fsharp
@@ -148,7 +160,7 @@ match diet with
 
 Alternativt kan listen også behandles som `head` og `tail` gennem recursion:
 ```fsharp
-let rec GetFoodMessage diet = 
+let rec GetFoodMessage diet =
     match list with
     | [] -> ""
     | (IceCream,x)::t when x > 0  -> "Less IceCream" + (GetFoodMessage t)
@@ -168,11 +180,11 @@ type Weather =
 let weaterAnnouncement w =
     match w with
     | Snowing (s,t) -> sprintf "%d cm of snow has fallen and it's %f degrees outside" s t
-    | Sunny (t) -> "Sun's high in the sky and it's " + t.ToString() + " degrees outside"
+    | Sunny (t) -> sprintf "Sun's high in the sky and it's %f degrees outside" t
     | Storm (w,t) -> sprintf "Stay inside, as winds are reaching %d m/s with a temperature of %f" w f
 ```
 
-Pattern matching er et meget kraftfuldt værktøj, men også lidt for omfattende til at gennemgå på dette ark. Mere hjælp kan findes på https://fsharpforfunandprofit.com/posts/match-expression/.
+Pattern matching er et meget kraftfuldt værktøj, men også lidt for omfattende til at gennemgå på dette ark. _Læs mere om det [her](https://fsharpforfunandprofit.com/posts/match-expression/)_
 
 
 ### Loops og ranges
@@ -182,21 +194,23 @@ let mutable sum = 0
 for i in 1 .. 3 do
     sum <- sum + i
 ```
-I dette eksempel er `1 .. 3` en range, som vil generere en liste bestående af tallene 1, 2 og 3. Selve syntaksen og den måde loopet fungerer på minder meget om `foreach`-loops fra C#. Ranges kan også bruges til at deklarere lister:
+I dette eksempel er `1 .. 3` en range, som vil summere listen bestående af tallene 1, 2 og 3. Selve syntaksen og den måde loopet fungerer på minder meget om `foreach`-loops fra C#, eller loops og ranges fra Python. Ranges kan også bruges til at deklarere lister:
 ```fsharp
 let oneToHundred = [1..100]
 ```
 
 <div class="note-box">
 Bloggen <i>F# for Fun and Profit</i> anbefaler at undgå loops og i stedet bruge nogle af de andre List metoder, f.eks. List.iter.
+
+_Læs mere om hvordan du bruger, og undgår at bruge, loops i F# [her](https://fsharpforfunandprofit.com/posts/control-flow-expressions/#loops)_
 </div>
 
 ___
 ## F# Operatorer
 De fleste operatorer som du kender fra C# findes også i F#. Der er dog nogle få undtagelser som vi gennemgår her:
 
-### Assignment vs. boolean expressions
-I C# er du nok vandt til at bruge `=` som assignment og `==` som boolsk sammenligning. I F# er tingene lidt anderledes. Vi bruger `=` som assignment i `let` declarations og `<-` som assignment når vi ønsker at overskrive en variabel (virker kun på `mutable` variable). I boolske udtryk bruger vi `=` som boolsk ligmed:
+### Assignment vs. Boolean Expressions
+I C# er du nok vandt til at bruge `=` som assignment og `==` som boolsk sammenligning. I F# er tingene lidt anderledes, her bruges `=` til deklarationer med `let` operatoren og `<-` som assignment når vi ønsker at overskrive en variabel (virker kun på `mutable` variable). I boolske udtryk bruger vi `=` som boolsk lighed:
 ```fsharp
 let mutable i = 10
 if i = 8 then
@@ -214,7 +228,7 @@ Compound operatorer (+=, *= osv.) findes ikke i F#, da vi som udgangspunkt ikke 
 </div>
 
 ### Pipe operatoren
-I et tidligere eksempel så vi pipe operatoren (`|>`) i brug. 
+I et tidligere eksempel så vi pipe operatoren (`|>`) i brug.
 
 Denne operator er især smart når vi arbejder med samlinger af objekter eller værdier. Kort fortalt tager den værdien på venstre hånd og bruger som sidste argument i funktionen på højre hånd. I dette eksempel finder vi alle `GameObject`s med tagget `Movable` og beregner deres midtpunkt:
 ```fsharp
@@ -225,12 +239,20 @@ Denne operator er især smart når vi arbejder med samlinger af objekter eller v
 ```
 Følgende er en forklaring af hver skridt:
 
-1) `[1..5]` erklærer en liste af integers fra og med 1 til og med 5.
+1) `[1..5]` er en range som erklærer en liste af integers fra og med 1 til og med 5.
 2) `List.map (fun i -> float32(i))` transformerer listen af integers til en liste af floats.
 3) `List.map (fun f -> f ** 2.0f)` opløfter alle elementerne i listen i anden potens.
 4) `List.reduce (fun acc elm -> acc + elm)` summerer alle tallene i listen.
 
 Der findes også en operator til at pipe baglæns (`<|`), men den burde ikke blive nødvendig i denne opgave.
+
+### Tuple Operatoren
+Man skal være opmærksom på at når `*` operatoren bruges i deklarationer, betyder den ikke gange. I stedet bruges den som pardannelsesoperator, hvilket vil sige at højre og venstre siden af operatoren bliver sammen sat som en ny tuple.
+
+```
+let t1:int*float = (2, 3.14)
+```
+Ovenstående deklarerer en tuple med første element som integer og andet element som en float.
 ___
 ## Map-reduce
 To vigtige koncepter i funktionel programmering, som vi har berørt en smule her, er map og reduce. Begge koncepterne behandler samlinger. **Map** transformerer alle elementerne i en liste og returnerer en ny samling og **reduce** reducerer alle elementerne i en samling til ét element.
@@ -250,18 +272,18 @@ let sum = [1..10] |> List.sum
 
 ___
 ## FRP Event Handling
-I Functional Reactive Programming (FRP) implementerer vi logikken for vores spil som en række event handlers. I pure funktionel programming findes der ikke loops (det gør der i F# fordi det ikke er pure). Alt der skal gentages implementeres med rekursion. Af denne årsag findes `Update`-metoden som du kender fra C# Unity ikke i FRP-biblioteket. Du bliver nødt til at tænke `Update`-logikken ind i andre event handlers.
+I Functional Reactive Programming (FRP) implementerer vi logikken for vores spil som en række event handlers. I pure funktionel programmering findes der ikke loops (det gør der i F# fordi det ikke er pure). Alt der skal gentages implementeres med rekursion. Af denne årsag findes `Update`-metoden som du kender fra C# Unity ikke i FRP-biblioteket. Du bliver nødt til at tænke `Update`-logikken ind i andre event handlers.
 
-### Registrer en event handler til Space-tasten
+#### Registrer en event handler til Space-tasten
 ```fsharp
 type Jumper() =
     inherit FRPBehaviour()
 
     member this.Start() =
         this.ReactTo (
-            FRPEvent.Keyboard, //Event type
-            (fun () -> Input.GetKeyDown(KeyCode.Space)), //Filtrering
-            (fun () -> HandleSpaceEvent())) //Handler
+            FRPEvent.Keyboard,                            //Event type
+            (fun () -> Input.GetKeyDown(KeyCode.Space)),  //Filtrering
+            (fun () -> HandleSpaceEvent()))               //Handler
 ```
 En FRP-registrering består af tre ting:
 
@@ -269,7 +291,7 @@ En FRP-registrering består af tre ting:
 2) En filtreringsfunktion, som sorterer i hvilke events vi ønsker at reagere på. I ovenstående tilfælde er det funktionen `Input.GetKeyDown(KeyCode.Space)`.
 3) En handler, som implementerer hvad der skal ske når dette event forekommer.
 
-### Registrer en event handler til kollisioner
+#### Registrer en event handler til kollisioner
 ```fsharp
 type Player() =
     inherit FRPBehaviour()
@@ -298,7 +320,7 @@ type Mouse() =
     member this.Start() =
         this.ReactTo<float32*float32> (
             FRPEvent.MouseMove,
-            (fun m -> 
+            (fun m ->
                 let (h, v) = m.Deconstruct()
                 let mSpeed = Mathf.Sqrt(h ** 2.0f + v ** 2.0f)
                 let dir = new Vector3(h, 0.0f, v) |> Vector3.Normalize
@@ -326,3 +348,10 @@ Dette er en liste over events samt deres Unity C# modsvar og deres generiske typ
 | TriggerExit | OnTriggerExit | `Collider` |
 
 Hvis man forsøger at bruge en generisk type, som ikke passer til event typen vil der blive kastet en exception på runtime.
+
+___
+## Brug af F# i Unity
+Unity understøtter ikke brug af F# på samme måde som det understøtter C#. Men fordi begge sprog kører i .NET/Mono, kan F# projekter bruges - dog med lidt ekstra arbejde.
+For at automatisere så meget af dette arbejde som muligt, har vi udviklet en Unity-pakke som tilføjer en menu med funktioner til dette.
+
+[Download Unity-pakken til F# integration](https://github.com/sppt-2k19/unity-fsharp-integration/raw/master/unity-fsharp-integration.unitypackage "Download pakken") ([læs mere om pakken](https://github.com/sppt-2k19/unity-fsharp-integration "Læs mere her"))
