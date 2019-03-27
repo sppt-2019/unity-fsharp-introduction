@@ -11,37 +11,35 @@ Når samtalen er færdig får spilleren en konsekvens alt efter hvor pænt eller
 
 ## Eksempel på samtale:
 
-    Velkommen til vores lille by, hvad kan jeg hjælpe med?
-        
-    1) Jeg leder efter arbejde...
-        
-        Min hund er blevet væk og jeg skulle alligevel ud og lede efter den. Har du brug for hjælp?
-        1) Ja.
+  Velkommen til vores lille by, hvad kan jeg hjælpe med?
 
-            Fantastisk, mit sværd er dit! 
-            --> *Karakteren bliver ens følgesvend*
-        2) Nej.
+  1) Jeg leder efter arbejde...
 
-            Ærgerligt, sig til hvis du ombestemmer dig. 
-            --> *Ingen reaktion*
-    2) Jeg fandt denne hund ude i skoven, kender du ejeren
+      Min hund er blevet væk og jeg skulle alligevel ud og lede efter den. Har du brug for hjælp?
+      1) Ja.
 
-        MIN LILLE HUND! Den har været væk i flere dage. Tusind tak --> *Karakteren giver spilleren en gave*
-    3) Flyt dig!
+          Fantastisk, mit sværd er dit!
+          --> *Karakteren bliver ens følgesvend*
+      2) Nej.
 
-        Her i byen taler vi pænt til hinanden!
-        1) Så skal byen DØØØØØØØ!
-            
-            VI BLIVER ANGREBET! --> *Karakteren bliver fjendtlig*
-        2) Undskyld. Det har været en dårlig dag.
-        
-            Det er i orden. Det kan ske for alle. --> *Ingen reaktion*
+          Ærgerligt, sig til hvis du ombestemmer dig.
+          --> *Ingen reaktion*
+  2) Jeg fandt denne hund ude i skoven, kender du ejeren
+      MIN LILLE HUND! Den har været væk i flere dage. Tusind tak --> *Karakteren giver spilleren en gave*
+  3) Flyt dig!
+
+      Her i byen taler vi pænt til hinanden!
+      1) Så skal byen DØØØØØØØ!
+
+          VI BLIVER ANGREBET! --> *Karakteren bliver fjendtlig*
+      2) Undskyld. Det har været en dårlig dag.
+
+          Det er i orden. Det kan ske for alle. --> *Ingen reaktion*
+
 
 ## Opgaverne
-
-1. Lav en datastruktur som kan indeholde denne slags dialoger.
-
-Vi har lavet en klasse `Node`:
+1) Lav en datastruktur som kan indeholde et tree som dækker over alle mulighederne i sådan en dialog.
+2) Vi har lavet en klasse `Node`:
 ```csharp
 public enum DialogOutcome
 {
@@ -59,24 +57,24 @@ public class Node
         return new List<Node>
         {
             new Node("welcome", "Velkommen til vores lille by, hvad kan jeg hjælpe med?",
-                new List<(string, string)>{("work", "Jeg leder efter arbejde..."), 
+                new List<(string, string)>{("work", "Jeg leder efter arbejde..."),
                     ("found", "Jeg fandt denne hund ude i skoven, kender du ejeren?"), ("move", "Flyt dig!")}),
             new Node("work",
                 "Min hund er blevet væk og jeg skulle alligevel ud og lede efter den. Har du brug for hjælp?",
                 new List<(string,string)> {("yes", "Ja"), ("no", "Nej")}),
             new Node("yes", "Fantastisk, mit sværd er dit!", DialogOutcome.Companion),
             new Node("no", "Ærgeligt, sig til hvis du ombestemmer dig.", ("welcome", "Ok")),
-            new Node("found", "MIN LILLE HUND! Den har været væk i flere dage. Tusind tak!", 
+            new Node("found", "MIN LILLE HUND! Den har været væk i flere dage. Tusind tak!",
                 DialogOutcome.Gift),
             new Node("move", "Her i byen taler vi pænt til hinanden!",
-                new List<(string,string)> {("die", "Så skal byen DØØØØØØØ!"), 
+                new List<(string,string)> {("die", "Så skal byen DØØØØØØØ!"),
                     ("sorry", "Undskyld. Det har været en dårlig dag")}),
             new Node("die", "VI BLIVER ANGREBET!", DialogOutcome.Hostile),
             new Node("sorry", "Det er i orden. Det kan ske for alle", ("welcome", "Tak")),
             new Node("goodbye", "Held og lykke på dine rejser", DialogOutcome.None)
         };
     }
-    
+
     public string Name { get; }
     public string Line { get; }
     public List<(string nodeToGoTo, string reply)> ChildNames { get; set; }
@@ -84,7 +82,10 @@ public class Node
 }
 ```
 
-Den statiske `GetExampleDialog`-metode returnerer ovenstående dialog som en liste. Dialogen skal omdannes til et træ, så ledes at `Node`n med navnet "work" bliver barn af noden med navnet "welcome", da "work" er en af elementerne i "welcome"'s `ChildNames`. 
+Den statiske `GetExampleDialog`-metode returnerer ovenstående dialog som en liste. Dialogen skal omdannes til et træ, så ledes at `Node`n med navnet "work" bliver barn af noden med navnet "welcome", da "work" er en af elementerne i "welcome"'s `ChildNames`.
 
-2. Omform listen til et dialogtræ som gemmes i din egen datastruktur efter ovenstående beskrivelse.
-3. Lav noget kode som kan finde alle unikke stier, som fører til at spilleren får en gave.
+
+3) Skriv en funktion som kan finde alle unikke stier, som fører til at spilleren får en gave.
+
+4) Omform listen til et dialogtræ som gemmes i din egen datastruktur efter ovenstående beskrivelse.
+5) Lav noget kode som kan finde alle unikke stier, som fører til at spilleren får en gave.
