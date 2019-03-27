@@ -54,7 +54,7 @@ type MyType() =
 Denne stump kode erklærer en `MonoBehaviour`, som har én instansvariabel `Message`, der bliver printet når Unity's Editor startes. `SerializeField` betyder at instansvariablen `Message` bliver tilgængelig i Unity's Editor.
 
 <div class="note-box">
-    For at kunne nedarve fra `MonoBehaviour` skal man <i>åbne</i> UnityEngine (<code>open UnityEngine</code>), ligesom man i C# skal <i>bruge</i> UnityEngine (<code>using UnityEngine;</code>)
+    For at kunne nedarve fra <code>MonoBehaviour</code> skal man <i>åbne</i> UnityEngine ( <code>open UnityEngine</code> ), ligesom man i C# skal <i>bruge</i> UnityEngine ( <code>using UnityEngine;</code> )
 </div>
 
 ___
