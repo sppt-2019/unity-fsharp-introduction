@@ -52,6 +52,9 @@ type MyType() =
         Debug.Log("MonoBehaviour says: " + Message)
 ```
 Denne stump kode erklærer en `MonoBehaviour`, som har én instansvariabel `Message`, der bliver printet når Unity's Editor startes. `SerializeField` betyder at instansvariablen `Message` bliver tilgængelig i Unity's Editor.
+<div class="note-box">
+For at kunne nedarve fra MonoBehaviour skal man "åbne" UnityEngine (`open UnityEngine`), ligesom man i C# skal "bruge" UnityEngine (`using UnityEngine;`)
+</div>
 
 ___
 ## Funktioner & metoder
@@ -201,7 +204,7 @@ let oneToHundred = [1..100]
 <div class="note-box">
 Bloggen <i>F# for Fun and Profit</i> anbefaler at undgå loops og i stedet bruge nogle af de andre List metoder, f.eks. List.iter.
 
-_Læs mere om hvordan du bruger, og undgår at bruge, loops i F# [her](https://fsharpforfunandprofit.com/posts/control-flow-expressions/#loops)_
+Læs mere om hvordan du bruger, og undgår at bruge, loops i F# [her](https://fsharpforfunandprofit.com/posts/control-flow-expressions/#loops)
 </div>
 
 ___
