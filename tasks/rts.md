@@ -14,6 +14,6 @@ Når spillet starter bliver 10 bueskytter spawnet på tilfældige positioner i s
 
 ## Opgaverne
 
-1) Opsaml referencer til alle bueskytterne når de kalder `JoinState` i en samling.
-2) Implementer den omvendte state machine ved både at implementere logik til at kalde den metode som passer på alle bueskytternes nuværende state, samt håndtere at de skifter state i `TransferState`.
-3) På samplesheet'et finder du eksempler på hvordan jobs kan paralleliseres i det sprog du arbejder i. Unity tillader lige nu ikke opdateringer uden for Main-tråden, men forsøg alligevel at tilføje en `UpdateParallel`-metode, hvor du implementerer en parallel løsning, som opdaterer alle bueskytter parallelt.
+1. Opsaml referencer til alle bueskytterne når de kalder `JoinState` i en samling.
+2. Implementer den omvendte state machine ved både at implementere logik til at kalde den metode som passer på alle bueskytternes nuværende state, samt håndtere at de skifter state i `TransferState`.
+3. På samplesheet'et finder du eksempler på hvordan jobs kan paralleliseres i det sprog du arbejder i. Unity tillader lige nu ikke opdateringer uden for Main-tråden, men forsøg alligevel at tilføje en `UpdateParallel`-metode, hvor du implementerer en parallel løsning, som opdaterer alle bueskytter parallelt.

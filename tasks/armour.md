@@ -55,8 +55,9 @@ public class Group
 Listen af alle items kan hentes ved brug af den statiske metode `Item.AllItems()` og alle grupperne kan hentes ved brug af `Item.GroupedItems()`.
 
 ## Opgaverne
-1) Sammenregn den totalte bonus i de tre attributer som kan opnås med alle items i `Item.AllItems()`.
-2) Forestil dig at rod-noden i hvert af de fire ovennævnte træer kan give en bonus til attributterne på de resterende stykker rustning.
+
+1. Sammenregn den totalte bonus i de tre attributer som kan opnås med alle items i `Item.AllItems()`.
+2. Forestil dig at rod-noden i hvert af de fire ovennævnte træer kan give en bonus til attributterne på de resterende stykker rustning.
 
     Eksempel: Hjelmen har give en attribut, som giver 15% ekstra strength (`Item.StrengthMod`) på alt rustning i dens gruppe (den selv inkluderet). Hjelmen giver 100 strength og amuletten giver 50. Total strength skal udregnes som:
 

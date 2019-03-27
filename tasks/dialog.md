@@ -38,7 +38,8 @@ Når samtalen er færdig får spilleren en konsekvens alt efter hvor pænt eller
             Det er i orden. Det kan ske for alle. --> *Ingen reaktion*
 
 ## Opgaverne
-1) Lav en datastruktur som kan indeholde denne slags dialoger.
+
+1. Lav en datastruktur som kan indeholde denne slags dialoger.
 
 Vi har lavet en klasse `Node`:
 ```csharp
@@ -85,5 +86,5 @@ public class Node
 
 Den statiske `GetExampleDialog`-metode returnerer ovenstående dialog som en liste. Dialogen skal omdannes til et træ, så ledes at `Node`n med navnet "work" bliver barn af noden med navnet "welcome", da "work" er en af elementerne i "welcome"'s `ChildNames`. 
 
-2) Omform listen til et dialogtræ som gemmes i din egen datastruktur efter ovenstående beskrivelse.
-3) Lav noget kode som kan finde alle unikke stier, som fører til at spilleren får en gave.
+2. Omform listen til et dialogtræ som gemmes i din egen datastruktur efter ovenstående beskrivelse.
+3. Lav noget kode som kan finde alle unikke stier, som fører til at spilleren får en gave.
