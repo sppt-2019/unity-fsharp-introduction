@@ -250,9 +250,9 @@ Der findes også en operator til at pipe baglæns (`<|`), men den burde ikke bli
 Man skal være opmærksom på at når `*` operatoren bruges i deklarationer, betyder den ikke gange. I stedet bruges den som pardannelsesoperator, hvilket vil sige at højre og venstre siden af operatoren bliver sammen sat som en ny tuple.
 
 ```
-int * float
+let t1:int*float = (2, 3.14)
 ```
-Ovenstående deklarere af en tuple med første element som integer og andet element som en float.
+Ovenstående deklarerer en tuple med første element som integer og andet element som en float.
 ___
 ## Map-reduce
 To vigtige koncepter i funktionel programmering, som vi har berørt en smule her, er map og reduce. Begge koncepterne behandler samlinger. **Map** transformerer alle elementerne i en liste og returnerer en ny samling og **reduce** reducerer alle elementerne i en samling til ét element.
