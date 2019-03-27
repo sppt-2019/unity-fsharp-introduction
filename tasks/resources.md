@@ -1,10 +1,10 @@
-# Køb og Sælg - Styr dine resourcer
+# Køb og Sælg - Styr dine penge
 
 I denne opgave skal du lave et resourcesystem, som spillerne kan bruge til at købe og sælge ting i spillet. Resourcerne kan samles og splittes efter behov og består af:
 
-1) Dild Sild
-2) Mild Abild
-3) Vildild
+1. Dild Sild
+2. Mild Abild
+3. Vildild
 
 Resourcerne kan samles efter følgende omregnings priser:
 - 17 x Dild Sild = 1 Mild Abild

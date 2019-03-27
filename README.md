@@ -5,7 +5,6 @@ En ting der er vigtig at være opmærksom på i F# i forhold til C# er at der er
 
 Dette dokument giver en hurtig introduktion til F# og hvordan det kan bruges i Unity.
 
-
 ___
 ## Datatyper og variable
 Alle datatyper som du kender fra C# kan også bruges i F#. Variabelerklæring i F# er næsten det samme som i C#, den eneste forskel er at vi bruger `let` i stedet:
@@ -177,7 +176,7 @@ type Weather =
 | Sunny of temp:float32
 | Storm of windSpeed:int * temp:float32
 
-let weaterAnnouncement w =
+let weatherAnnouncement w =
     match w with
     | Snowing (s,t) -> sprintf "%d cm of snow has fallen and it's %f degrees outside" s t
     | Sunny (t) -> sprintf "Sun's high in the sky and it's %f degrees outside" t
@@ -355,3 +354,12 @@ Unity understøtter ikke brug af F# på samme måde som det understøtter C#. Me
 For at automatisere så meget af dette arbejde som muligt, har vi udviklet en Unity-pakke som tilføjer en menu med funktioner til dette.
 
 [Download Unity-pakken til F# integration](https://github.com/sppt-2k19/unity-fsharp-integration/raw/master/unity-fsharp-integration.unitypackage "Download pakken") ([læs mere om pakken](https://github.com/sppt-2k19/unity-fsharp-integration "Læs mere her"))
+
+___
+## Concurrency
+
+Concurrency er et rimeligt omfattende emne og vi har derfor lavet separate filer.
+
+[Læs om concurrency i C#](csharp-concurrency.md)
+
+[Læs om concurrency i F#](fsharp-concurrency.md)
