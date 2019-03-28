@@ -10,6 +10,9 @@ Før du går igang med F# opgaverne, skal du installere en [Unity-pakke](https:/
 <img src="../tasks/images/fsharp-menu.png" style="display:block;margin: 0 auto; width: 40%;">
 
 
+<br />
+<br />
+<br />
 
 
 ## Opgave 1
