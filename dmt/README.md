@@ -1,3 +1,16 @@
+# Introduktion
+Først og fremmest tak for din deltagelse i dette eksperiment. Vi vil starte med at understrege at eksperimentet ikke tester dine evner som programmør, men derimod hvor egnet F# og C# er til spiludvikling.
+
+Der er i alt 8 opgaver i sættet, men det er ikke sikkert at du når at løse alle opgaverne. Halvdelen af tiden bliver brugt på at løse opgaver i F# og resten bliver brugt på C#. Det vigtigste er at du når at prøve kræfter med F#.
+
+Du kan finde et [ark med eksempler fra F#](https://sppt-2019.github.io/unity-fsharp-introduction/), som du kan bruge som inspiration til opgaverne. Spørg endelig hvis du er i tvivl om hvad opgaverne går ud på eller hvis du føler at du er gået i stå.
+
+Før du går igang med F# opgaverne, skal du installere en [Unity-pakke](https://sppt-2019.github.io/unity-fsharp-introduction/#brug-af-f-i-unity), som tilføjer menuen:
+
+<img src="../tasks/images/fsharp-menu.png" style="display:block;margin: 0 auto; width: 40%;">
+
+
+
 
 ### Opgave 1
 #### Basal bevægelse - `Player` - _Input management_
