@@ -26,4 +26,6 @@ Man kan give argumenter til en `Task` på følgende måde.
 await Task.Run((str) => Console.WriteLine(str););
 ```
 
-[Læs mere om Tasks](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task?view=netstandard-2.0)
+<div class="note">
+  <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task?view=netstandard-2.0">Læs mere om Tasks</a>
+</div>
