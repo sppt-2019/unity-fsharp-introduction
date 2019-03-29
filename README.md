@@ -359,6 +359,8 @@ For at automatisere så meget af dette arbejde som muligt, har vi udviklet en Un
 
 [Download Unity-pakken til F# integration](https://github.com/sppt-2k19/unity-fsharp-integration/raw/master/unity-fsharp-integration.unitypackage "Download pakken") ([læs mere om pakken](https://github.com/sppt-2k19/unity-fsharp-integration "Læs mere her"))
 
+<img src="assets/img/unity-fsharp.png" style="width:307px;margin:auto;display:block;" />
+
 ___
 ## Concurrency
 
