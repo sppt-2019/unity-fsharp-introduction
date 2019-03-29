@@ -15,6 +15,8 @@ Task print = new Task(() => Console.WriteLine("Hello World!");)
 print.Start();
 print.Wait();
 ```
+
+## Best Practice
 Alternativt kan man gøre brug af `.Run` metoden til at lave og køre en `Task` med det samme. Nedenunder kan ovenstående eksempel skrevet om til at bruge `.Run`. Her bliver `await` brugt til at vente op `Task`en i stedet for at bruge `Task.Wait()`. Det er et keyword som afventer returværdien af en asynkron funktion. En yderligere forskel på de to tilgange er at `Task.Wait()` er et blokerende kald, hvor at `await` ikke er blokerende. Dette betyder at programmet stopper og venter på en blokerende handling, men med `await` fortsætter programmet med at eksekvere.
 ```csharp
 await Task.Run(() => Console.WriteLine("Hello World!"););
