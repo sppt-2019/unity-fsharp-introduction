@@ -314,6 +314,9 @@ Events fungere cirka på samme måde som i C#. Dog skal et event altid have et a
     let event = new Event<unit>()
     let eventMedParameter = new Event<GameObject>()
 ```
+
+Handlers skal tilføjes som lambda udtryk, altså `fun () -> funktionSomJegVilKalde`
+
 ```fsharp
 let myEventHandler =
         Debug.Log("Raised empty event!")
@@ -328,6 +331,13 @@ let myEventHandler =
             Debug.Log("gObject er et gameobject, så vi kan kalde en funktion som tager et gameobject med.")
             myParameterEventHandler gObject
             )
+```
+For at raise eller trigger et event kaldes `.Trigger(...)` på eventet.
+```fsharp
+    member this.Update() =
+        if(Input.GetButtonDown("Jump")) then
+            event.Trigger()                         //Ingen parameter (altså et event<unit>
+            eventMedParameter.Trigger(somePrefab)   //Parameter med typen GameObject
 ```
 
 ___
