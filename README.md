@@ -305,6 +305,31 @@ Eller som vi så tidligere:
 let sum = [1..10] |> List.sum
 ```
 
+
+___
+## Events
+Events fungere cirka på samme måde som i C#. Dog skal et event altid have et argument med. Så når man ikke er interesseret at give et argument med, benytter man `unit`. 
+
+```fsharp
+    let event = new Event<unit>()
+    let eventMedParameter = new Event<GameObject>()
+```
+```fsharp
+let myEventHandler =
+        Debug.Log("Raised empty event!")
+    
+    let myParameterEventHandler (g:GameObject) =
+        Debug.Log(g.name)
+        ()
+
+    member this.Start() =
+        event.Publish.Add( fun () -> myEventHandler)
+        eventMedParameter.Publish.Add( fun gObject ->
+            Debug.Log("gObject er et gameobject, så vi kan kalde en funktion som tager et gameobject med.")
+            myParameterEventHandler gObject
+            )
+```
+
 ___
 ## Brug af F# i Unity
 Unity understøtter ikke brug af F# på samme måde som det understøtter C#. Men fordi begge sprog kører i .NET/Mono, kan F# projekter bruges - dog med lidt ekstra arbejde.
