@@ -11,7 +11,7 @@ Asynchronous workflows er designet til at gøre det nemmere at skrive asynkron k
 ```fsharp
 open System
 
-let userTimerWithAsync = 
+let userTimerWithAsync =
     // Start en timer, som tæller ned fra 2 sekunder og affyrer et event når den når 0
     let timer = new System.Timers.Timer(2000.0)
     //Her laver vi et async workflow, som venter på eventet fra timeren og med handleren Async.Ignore
@@ -27,6 +27,6 @@ let userTimerWithAsync =
     Async.RunSynchronously timerEvent
 ```
 
-Den ovenstående kode-snippet viser hvordan man skriver kode, som venter på et timer-event og udskriver til konsollen på samme tid. Dette er naturligvis et meget simpelt eksempel, men princippet ville være det samme hvis vi foreksempel ønskede at kontakte en server via en HTTP request uden at skulle fryse hele programmet.
+Den ovenstående kode-snippet viser hvordan man skriver kode, som venter på et timer-event og udskriver til konsollen på samme tid. Dette er naturligvis et meget simpelt eksempel, men princippet ville være det samme hvis vi for eksempel ønskede at kontakte en server via en HTTP request uden at skulle fryse hele programmet.
 
 Værd at bemærke er den lidt mystiske navngivning på `Async.RunSynchronously`, som blokerer den tråd der kalder metoden indtil et eller flere async workflows er færdige.
