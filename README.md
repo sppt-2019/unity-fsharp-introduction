@@ -53,6 +53,10 @@ type MyType() =
 ```
 Denne stump kode erklærer en `MonoBehaviour`, som har én instansvariabel `Message`, der bliver printet når Unity's Editor startes. `SerializeField` betyder at instansvariablen `Message` bliver tilgængelig i Unity's Editor.
 
+<div class="note-box">
+    For at kunne nedarve fra <code>MonoBehaviour</code> skal man <i>åbne</i> UnityEngine ( <code>open UnityEngine</code> ), ligesom man i C# skal <i>bruge</i> UnityEngine ( <code>using UnityEngine;</code> )
+</div>
+
 ___
 ## Funktioner & metoder
 I F# findes der både funktioner og metoder. Funktioner er ikke knyttet til nogen klasseinstans, hvilket betyder at du ikke kan tilgå `this` i funktioner (næsten ligesom `static` metoder i C#). Metoder er bundet på klasseinstanser og fungerer som vi kender det fra C#.
@@ -201,7 +205,7 @@ let oneToHundred = [1..100]
 <div class="note-box">
 Bloggen <i>F# for Fun and Profit</i> anbefaler at undgå loops og i stedet bruge nogle af de andre List metoder, f.eks. List.iter.
 
-_Læs mere om hvordan du bruger, og undgår at bruge, loops i F# [her](https://fsharpforfunandprofit.com/posts/control-flow-expressions/#loops)_
+<i>Læs mere om hvordan du bruger, og undgår at bruge, loops i F# <a href="https://fsharpforfunandprofit.com/posts/control-flow-expressions/#loops">her</a></i>
 </div>
 
 ___
