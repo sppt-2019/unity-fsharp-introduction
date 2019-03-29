@@ -14,9 +14,9 @@ type Jumper() =
 ```
 En FRP-registrering består af tre ting:
 
-1) Event typen, som i dette tilfælde er en af værdierne af enum'en `FRPEvent`.
-2) En filtreringsfunktion, som sorterer i hvilke events vi ønsker at reagere på. I ovenstående tilfælde er det funktionen `Input.GetKeyDown(KeyCode.Space)`.
-3) En handler, som implementerer hvad der skal ske når dette event forekommer.
+1. Event typen, som i dette tilfælde er en af værdierne af enum'en `FRPEvent`.
+2. En filtreringsfunktion, som sorterer i hvilke events vi ønsker at reagere på. I ovenstående tilfælde er det funktionen `Input.GetKeyDown(KeyCode.Space)`.
+3. En handler, som implementerer hvad der skal ske når dette event forekommer.
 
 #### Registrer en event handler til kollisioner
 ```fsharp
