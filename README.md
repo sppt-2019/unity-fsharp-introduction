@@ -284,7 +284,7 @@ For at automatisere så meget af dette arbejde som muligt, har vi udviklet en Un
 
 ___
 
-## Functional Reactive Programming in Unity
+## FRP i Unity
 Functional Reactive Programming(FRP) er en måde at programmere funktionelt, som kan være lettere at bruge til spilprogrammering end almindelig funktionel programmering.
 
 [Læs om FRP](frp.md)
