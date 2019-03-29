@@ -57,7 +57,7 @@ Denne stump kode erklærer en `MonoBehaviour`, som har én instansvariabel `Mess
     For at kunne nedarve fra <code>MonoBehaviour</code> skal man <i>åbne</i> UnityEngine ( <code>open UnityEngine</code> ), ligesom man i C# skal <i>bruge</i> UnityEngine ( <code>using UnityEngine;</code> )
 </div>
 <div class="note-box">
-    Ovenstående type eksempel er en _record_ type, som opfører sig som en klasse fra C#. F# har en anden form for type som hedder _union_ typer. [Læs mere om typer i F#](https://fsharpforfunandprofit.com/posts/conciseness-type-definitions/)
+    Ovenstående type eksempel er en _record_ type, som opfører sig som en klasse fra C#. F# har en anden form for type som hedder _union_ typer. <a href="https://fsharpforfunandprofit.com/posts/conciseness-type-definitions/">Læs mere om typer i F#</a>
 </div>
 ___
 ## Funktioner & metoder
