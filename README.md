@@ -3,7 +3,7 @@ F# er et funktionelt programmeringssprog som kører i .NET Platformen sammen med
 
 En ting der er vigtig at være opmærksom på i F# i forhold til C# er at der er eksplicit membership. I C# vil det være typisk i et `GameObject` at kalde `Destroy` hvis vi ønsker at fjerne et objekt. I dette kald er det implicit at `Destroy`-metoden er en statisk metode på klassen `GameObject`. I F# må vi være eksplicitte og derfor kalde `GameObject.Destroy`. Det samme gælder med metoder på klasser, som vi altid skal kalde med `this.Metode`.
 
-Dette dokument giver en hurtig introduktion til F# og hvordan det kan bruges i Unity.
+Dette dokument giver en hurtig introduktion til F# og hvordan det kan bruges i Unity. Vi har også skrevet et dokument, hvor vi beskriver [hvordan Functional Reactive Programming kan bruges i Unity](frp.md).
 
 ___
 ## Datatyper og variable
@@ -137,11 +137,11 @@ Pattern matching kan beskrives som if-else statements på steroider. Du kan brug
 
 #### Simpel pattern matching
 ```fsharp
-let PrintFoodMessage food =
+let GetFoodMessagePM food =
     match food with
-    | Strawberry -> Debug.Log("I see you like fruit")
-    | IceCream -> Debug.Log("So you have a sweet tooth? Watch you weight!")
-    | _ -> Debug.Log("There are so many options when it comes to food.")
+    | Strawberry -> "I see you like fruit"
+    | IceCream -> "So you have a sweet tooth? Watch you weight!"
+    | _ -> "There are so many options when it comes to food."
 ```
 Dette er et simpelt eksempel, som er ækvivalent med ìf-else eksempelet ovenover.
 
@@ -159,7 +159,7 @@ match diet with
 
 Alternativt kan listen også behandles som `head` og `tail` gennem recursion:
 ```fsharp
-let rec GetFoodMessage diet =
+let rec GetFoodMessageRec diet =
     match list with
     | [] -> ""
     | (IceCream,x)::t when x > 0  -> "Less IceCream" + (GetFoodMessage t)
@@ -193,7 +193,7 @@ let mutable sum = 0
 for i in 1 .. 3 do
     sum <- sum + i
 ```
-I dette eksempel er `1 .. 3` en range, som vil summere listen bestående af tallene 1, 2 og 3. Selve syntaksen og den måde loopet fungerer på minder meget om `foreach`-loops fra C#, eller loops og ranges fra Python. Ranges kan også bruges til at deklarere lister:
+I dette eksempel er `1 .. 3` en range, som vil returnere listen bestående af tallene 1, 2 og 3. Selve syntaksen og den måde loopet fungerer på minder meget om `foreach`-loops fra C#, eller loops og ranges fra Python. Ranges kan også bruges til at deklarere lister:
 ```fsharp
 let oneToHundred = [1..100]
 ```
@@ -238,10 +238,10 @@ Denne operator er især smart når vi arbejder med samlinger af objekter eller v
 ```
 Følgende er en forklaring af hver skridt:
 
-1) `[1..5]` er en range som erklærer en liste af integers fra og med 1 til og med 5.
-2) `List.map (fun i -> float32(i))` transformerer listen af integers til en liste af floats.
-3) `List.map (fun f -> f ** 2.0f)` opløfter alle elementerne i listen i anden potens.
-4) `List.reduce (fun acc elm -> acc + elm)` summerer alle tallene i listen.
+1. `[1..5]` er en range som erklærer en liste af integers fra og med 1 til og med 5.
+2. `List.map (fun i -> float32(i))` transformerer listen af integers til en liste af floats.
+3. `List.map (fun f -> f ** 2.0f)` opløfter alle elementerne i listen i anden potens.
+4. `List.reduce (fun acc elm -> acc + elm)` summerer alle tallene i listen.
 
 Der findes også en operator til at pipe baglæns (`<|`), men den burde ikke blive nødvendig i denne opgave.
 
@@ -268,85 +268,6 @@ Eller som vi så tidligere:
 ```fsharp
 let sum = [1..10] |> List.sum
 ```
-
-___
-## FRP Event Handling
-I Functional Reactive Programming (FRP) implementerer vi logikken for vores spil som en række event handlers. I pure funktionel programmering findes der ikke loops (det gør der i F# fordi det ikke er pure). Alt der skal gentages implementeres med rekursion. Af denne årsag findes `Update`-metoden som du kender fra C# Unity ikke i FRP-biblioteket. Du bliver nødt til at tænke `Update`-logikken ind i andre event handlers.
-
-#### Registrer en event handler til Space-tasten
-```fsharp
-type Jumper() =
-    inherit FRPBehaviour()
-
-    member this.Start() =
-        this.ReactTo (
-            FRPEvent.Keyboard,                            //Event type
-            (fun () -> Input.GetKeyDown(KeyCode.Space)),  //Filtrering
-            (fun () -> HandleSpaceEvent()))               //Handler
-```
-En FRP-registrering består af tre ting:
-
-1) Event typen, som i dette tilfælde er en af værdierne af enum'en `FRPEvent`.
-2) En filtreringsfunktion, som sorterer i hvilke events vi ønsker at reagere på. I ovenstående tilfælde er det funktionen `Input.GetKeyDown(KeyCode.Space)`.
-3) En handler, som implementerer hvad der skal ske når dette event forekommer.
-
-#### Registrer en event handler til kollisioner
-```fsharp
-type Player() =
-    inherit FRPBehaviour()
-
-    [<SerializeField>]
-    let mutable Health = 10
-
-    member this.TakeDamage() =
-        Health <- Health - 1
-
-    member this.Start() =
-        this.ReactTo<Collider> (
-            FRPEvent.TriggerEnter,
-            (fun c -> not (c.GetComponent<Shot>() = null)),
-            (fun c ->
-                this.TakeDamage()
-                GameObject.Destroy(c.gameObject)))
-```
-Når man registrerer event handlers til kollisioner skal man bruge den generiske version af `this.ReactTo`. Dette er for at fortælle hvad for en type klasse vi forventer at reagere på i condition'en og handleren. I dette eksempel vil `c` være den `Collider`, som `Player` kolliderede med.
-
-### Registrer en event handler til musen
-```fsharp
-type Mouse() =
-    inherit FRPBehaviour()
-
-    member this.Start() =
-        this.ReactTo<float32*float32> (
-            FRPEvent.MouseMove,
-            (fun m ->
-                let (h, v) = m.Deconstruct()
-                let mSpeed = Mathf.Sqrt(h ** 2.0f + v ** 2.0f)
-                let dir = new Vector3(h, 0.0f, v) |> Vector3.Normalize
-                this.GetComponent<Rigidbody>().AddForce(dir * mSpeed)
-            )
-        )
-```
-`MouseMove` eventet har den generiske type `float32*float32`, hvilket betyder en tuple bestående af to floats. Disse to floats er respektivt bevægelsen på X-aksen og Y-aksen. Det samme er tilfældet med `MoveAxis`-eventet.
-
-En anden ting der er værd at bemærke her er at vi ikke har nogen filtreringsfunktion. Det betyder at handleren vil blive kaldt hver gang musen bevæger sig.
-
-### Forskellige typer events
-Dette er en liste over events samt deres Unity C# modsvar og deres generiske type:
-
-| Event Type | Unity Modsvar | Generisk type |
-| ---------- | ------------- | ------------- |
-| Update | Update | `_` |
-| MoveAxis | `Input.GetAxis("Horizontal/Vertical")` | `float32*float32` |
-| Keyboard | `Input.GetKeyDown()` | `_` |
-| MouseMove| `Input.GetAxis("Mouse X/Y")` | `float32*float32` |
-| MouseClick | `Input.GetMouseButton` | `_` |
-| CollisionEnter | OnCollisionEnter | `Collision` |
-| CollisionExit | OnCollisionExit | `Collision` |
-| TriggerEnter | OnTriggerEnter | `Collider` |
-| TriggerExit | OnTriggerExit | `Collider` |
-
-Hvis man forsøger at bruge en generisk type, som ikke passer til event typen vil der blive kastet en exception på runtime.
 
 ___
 ## Brug af F# i Unity
