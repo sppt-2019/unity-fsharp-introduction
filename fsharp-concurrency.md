@@ -66,7 +66,7 @@ Async.RunSynchronously nestedWorkflow
 I ovenstående eksempel laver vi et nested workflow. I eksemplet starter vi et workflow, som starter et nyt workflow. Disse to kører på sammetid indtil de synkroniseres med `let!`.
 
 ## Concurrent Liste Operationer
-I F# er det muligt at lave concurrent liste operationer, alstå kode som arbejder med alle elementerne af en liste samtidigt. Dette er især værdifuldt når der skal laves en større beregning på hvert element af listen.
+I F# er det muligt at lave concurrent liste operationer, altså kode som arbejder med alle elementerne af en liste samtidigt. Dette er især værdifuldt når der skal laves en større beregning på hvert element af listen.
 
 I nedenstående eksempel forestiller vi os at vi vil hente en række spilleres resultater i et spil fra en server. Vi antager at `DownloadPlayerHighscore` er et async workflow, som tager en spillers brugernavn og returnerer dennes highscore:
 
