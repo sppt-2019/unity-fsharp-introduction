@@ -126,20 +126,20 @@ Når man instantierer i F# Unity gøres det på samme måde som i C#.
 ```
 
 #### Component referencer
-Ligesom i C# er der to måder at få referencer til Components på: I editoren og via `GetComponent<T>`.
+Ligesom i C# er der to måder at få referencer til Components på: I editoren med `[<SerializeField>]` eller i koden med `GetComponent<T>`.
 
 ```fsharp
-    //Sættes i editoren
-    [<DefaultValue>]
-    val mutable editorRigidbody:Rigidbody2D
+    //Skal sættes i editoren
+    [<SerializeField>]
+    let mutable myRigidbody:Rigidbody2D = null
 ```
 
 ```fsharp
-    //Skal assignes
-    let mutable codeRigidbody = null
+    //Skal sættes i koden
+    let mutable myRigidbody:Rigidbody2D = null
 
     member this.Start() =
-        codeRigidbody <- this.GetComponent<Rigidbody2D>()
+        myRigidbody <- this.GetComponent<Rigidbody2D>()
 ```
 
 
