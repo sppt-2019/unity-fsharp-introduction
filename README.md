@@ -1,5 +1,5 @@
 ## Generel information om F#
-F# er et funktionelt programmeringssprog som kører i .NET Platformen sammen med C#. Eftersom F# er funktionelt betyder det at næsten alt betragtes som udtryk og funktioner. F# er desuden _pure_ som standard, hvilket betyder at variable ikke må ændres efter de er blevet erklæret. Syntaksen i F# er inspireret af OCaml og Haskell og er indentations-baseret i stedet for med curly braces ( `{` og `}` ), som vi kender det fra C#.
+F# er et funktionelt programmeringssprog som kører i .NET Platformen sammen med C#. Eftersom F# er funktionelt betyder det at næsten alt betragtes som funktioner og funktionskald. F# er desuden _pure_ som standard, hvilket betyder at variable ikke må ændres efter de er blevet erklæret. Syntaksen i F# er inspireret af OCaml og Haskell og er indentations-baseret i stedet for med curly braces ( `{` og `}` ), som vi kender det fra C#.
 
 En ting der er vigtig at være opmærksom på i F# i forhold til C# er at der er eksplicit membership. I C# vil det være typisk i et `GameObject` at kalde `Destroy` hvis vi ønsker at fjerne et objekt. I dette kald er det implicit at `Destroy`-metoden er en statisk metode på klassen `GameObject`. I F# må vi være eksplicitte og derfor kalde `GameObject.Destroy`. Det samme gælder med metoder på klasser, som vi altid skal kalde med `this.Metode`.
 
@@ -56,9 +56,7 @@ Denne stump kode erklærer en `MonoBehaviour`, som har én instansvariabel `Mess
 <div class="note-box">
     For at kunne nedarve fra <code>MonoBehaviour</code> skal man <i>åbne</i> UnityEngine ( <code>open UnityEngine</code> ), ligesom man i C# skal <i>bruge</i> UnityEngine ( <code>using UnityEngine;</code> )
 </div>
-<div class="note-box">
-    Ovenstående type eksempel er en _record_ type, som opfører sig som en klasse fra C#. F# har en anden form for type som hedder _union_ typer. <a href="https://fsharpforfunandprofit.com/posts/conciseness-type-definitions/">Læs mere om typer i F#</a>
-</div>
+
 ___
 ## Funktioner & metoder
 I F# findes der både funktioner og metoder. Funktioner er ikke knyttet til nogen klasseinstans, hvilket betyder at du ikke kan tilgå `this` i funktioner (næsten ligesom `static` metoder i C#). Metoder er bundet på klasseinstanser og fungerer som vi kender det fra C#.
@@ -112,6 +110,38 @@ type MoveForward() =
     member this.Update() =
         this.transform.position <- this.transform.position + (this.transform.forward * Speed * Time.deltaTime)
 ```
+
+### Unity-specifikke metoder
+Her giver vi nogle eksempler på Unity-specifikke metoder du måske kan få brug for.
+
+#### Instantiate
+Når man instantierer i F# Unity gøres det på samme måde som i C#.
+```fsharp
+    //Type 'GameObject' via casting
+    let gObj = GameObject.Instantiate(prefab, this.transform.position, Quaternion.identity) :?> GameObject
+```
+```fsharp
+    //Type 'GameObject' via generics
+    let gameObject = GameObject.Instantiate<GameObject>(prefab, this.transform.position, Quaternion.identity)
+```
+
+#### Component referencer
+Ligesom i C# er der to måder at få referencer til Components på: I editoren og via `GetComponent<T>`.
+
+```fsharp
+    //Sættes i editoren
+    [<DefaultValue>]
+    val mutable editorRigidbody:Rigidbody2D
+```
+
+```fsharp
+    //Skal assignes
+    let mutable codeRigidbody = null
+
+    member this.Start() =
+        codeRigidbody <- this.GetComponent<Rigidbody2D>()
+```
+
 
 ___
 ## Kontrolstrukturer
