@@ -32,7 +32,7 @@ Den ovenstående kode-snippet viser hvordan man skriver kode, som venter på et 
 Værd at bemærke er den lidt mystiske navngivning på `Async.RunSynchronously`, som blokerer den tråd der kalder metoden indtil et eller flere async workflows er færdige.
 
 ## Implementer et Async Workflow
-Du kan også implementere dine egne `async` funcktioner. Dette gøres ved at deklarere en funktion, hvor funktionsbody'en er pakket ind i `async {}`:
+Du kan også implementere dine egne `async` funcktioner. Dette gøres ved at deklarere en funktion, hvor funktionskroppen er pakket ind i `async {}`:
 ```fsharp
 let emulateAsyncWork workTimeMs  = async{
     printfn "Starting async work emulation at %O" DateTime.Now.TimeOfDay
@@ -57,7 +57,7 @@ let nestedWorkflow  = async{
     let! result = childWorkflow
 
     //Her kan vi tilgå resultatet fra 'childWorkflow' som 'result'
-    printfn "Finished parent" 
+    printfn "Finished parent"
     }
 
 // run the whole workflow
@@ -73,7 +73,7 @@ I nedenstående eksempel forestiller vi os at vi vil hente en række spilleres r
 ```fsharp
 //DownloadPlayerHighscore:(string -> int)
 
-let GetHighscoreList (players:list string) = 
+let GetHighscoreList (players:list string) =
     players
     |> List.map DownloadPlayerHighscore
     |> Async.Parallel
