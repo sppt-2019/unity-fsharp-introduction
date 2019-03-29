@@ -19,3 +19,9 @@ Alternativt kan man gøre brug af `.Run` metoden til at lave og køre en `Task` 
 ```csharp
 await Task.Run(() => Console.WriteLine("Hello World!"););
 ```
+Man kan give argumenter til en `Task` på følgende måde.
+```csharp
+await Task.Run((str) => Console.WriteLine(str););
+```
+
+[Læs mere om Tasks](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task?view=netframework-4.7.2)
