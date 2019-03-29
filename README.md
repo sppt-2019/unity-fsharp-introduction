@@ -283,6 +283,11 @@ For at automatisere så meget af dette arbejde som muligt, har vi udviklet en Un
 <img src="assets/img/unity-fsharp.png" style="width:307px;margin:auto;display:block;" />
 
 ___
+## Functional Reactive Programming in Unity
+Functional Reactive Programming(FRP) er en måde at programmere funktionelt, som kan være lettere at bruge til spilprogrammering end almindelig funktionel programmering.
+
+[Læs om FRP](frp.md)
+___
 ## Concurrency
 
 Concurrency er et rimeligt omfattende emne og vi har derfor lavet separate filer.
