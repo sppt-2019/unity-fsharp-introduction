@@ -15,8 +15,6 @@ Task print = new Task(() => Console.WriteLine("Hello World!");)
 print.Start();
 print.Wait();
 ```
-
-
 Alternativt kan man gøre brug af `.Run` metoden til at lave og køre en `Task` med det samme. Nedenunder kan ovenstående eksempel skrevet om til at bruge `.Run`.
 ```csharp
 await Task.Run(() => Console.WriteLine("Hello World!"););
@@ -25,7 +23,13 @@ Man kan give argumenter til en `Task` på følgende måde.
 ```csharp
 await Task.Run((str) => Console.WriteLine(str););
 ```
+Hvis man har en samling af data kan man behandle hvert element med en `Task`. I det følgende kode har vi en liste med spiller navne, hvor for hvert element vil hente deres highscore. Givet en prædefineret funktion, `GetHighscoreAsync` som tager en streng og returnere den tilhørende highscore, kan vi starte en `Task` for hver opgave i listen af spillere.
+```csharp
+var players = new List<string>() { "xXxkiller26xXx", "MurderHobo28", "fighter98" }
+var highscores = Task.WhenAll(players.Select(p => GetHighscoreAsync(p)));
+```
+Listen highscores kommer til at indeholde alle spillernes highscores.
 
-<div class="note">
+<div class="note-box">
   <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task?view=netstandard-2.0">Læs mere om Tasks</a>
 </div>
