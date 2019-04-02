@@ -141,8 +141,22 @@ Ligesom i C# er der to måder at få referencer til Components på: I editoren m
     member this.Start() =
         myRigidbody <- this.GetComponent<Rigidbody2D>()
 ```
+#### MonoBehaviour Messages
+Metoder som `Awake`, `Start` og `Update` og (Trigger-)Kollision metoder er alle kaldt for Messages i Unity. Det samme gælder for f.eks collision metoder, derfor skal de alle defineres på samme måde. Du kan finde en liste af disse metoder på [Unitys dokumentation for MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html). Her giver vi eksempler på `OnCollisionEnter2D` og `OnMouseDown`
 
+```fsharp
+member this.OnCollisionEnter2D(collision:Collision2D) =
+    if collision.gameObject.CompareTag("Player") then
+        Debug.Log "Ramte spiller, du tabte!"
+    else
+        let msg = sprintf "Ramte en %s" collision.gameObject.tag
+        Debug.Log msg
+```
 
+```fsharp
+member this.OnMouseDown() =
+        SceneManager.LoadScene("Min scene")
+```
 ___
 ## Kontrolstrukturer
 
