@@ -322,17 +322,18 @@ let sum = [1..10] |> List.sum
 
 ___
 ## Events
-Events fungere cirka på samme måde som i C#. Dog skal et event altid have et argument med. Så når man ikke er interesseret at give et argument med, benytter man `unit`. 
+Events fungere cirka på samme måde som i C#. Dog skal et event altid have et argument med. Så når man ikke er interesseret at give et argument med, benytter man enten `unit` eller wildcard `_` (så kan man ignorer typen) . 
 
 ```fsharp
     let event = new Event<unit>()
     let eventMedParameter = new Event<GameObject>()
 ```
 
-Handlers skal tilføjes som lambda udtryk, altså `fun () -> funktionSomJegVilKalde`
+Handlers skal tilføjes som en funktion. Hvis ikke din funktion bruger parametre (som `myEventHandler` herunder) skal den have unit `()` med uanset. 
+Hvis du derimod er interesseret i at give en parameter med kan man benytte et lambda udtryk, se hvor `myParameterEventHandler` bliver tilføjet, efter Debug.Log i Start. 
 
 ```fsharp
-let myEventHandler =
+let myEventHandler () =
         Debug.Log("Raised empty event!")
     
     let myParameterEventHandler (g:GameObject) =
@@ -340,7 +341,7 @@ let myEventHandler =
         ()
 
     member this.Start() =
-        event.Publish.Add( fun () -> myEventHandler)
+        event.Publish.Add(myEventHandler)
         eventMedParameter.Publish.Add( fun gObject ->
             Debug.Log("gObject er et gameobject, så vi kan kalde en funktion som tager et gameobject med.")
             myParameterEventHandler gObject
