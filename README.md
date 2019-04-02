@@ -141,8 +141,9 @@ Ligesom i C# er der to måder at få referencer til Components på: I editoren m
     member this.Start() =
         myRigidbody <- this.GetComponent<Rigidbody2D>()
 ```
+<!--
 #### MonoBehaviour Messages
-Metoder som `Awake`, `Start` og `Update` og (Trigger-)Kollision metoder er alle kaldt for Messages i Unity. Det samme gælder for f.eks collision metoder, derfor skal de alle defineres på samme måde. Du kan finde en liste af disse metoder på [Unitys dokumentation for MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html). Her giver vi eksempler på `OnCollisionEnter2D` og `OnMouseDown`
+Metoder som `Awake`, `Start` og `Update` og Kollision-metoder er alle kaldt Messages i Unity. Det samme gælder for f.eks collision metoder, derfor skal de alle defineres på samme måde. Du kan finde en liste af disse metoder på [Unitys dokumentation for MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html). Her giver vi eksempler på `OnCollisionEnter2D` og `OnMouseDown`
 
 ```fsharp
 member this.OnCollisionEnter2D(collision:Collision2D) =
@@ -157,6 +158,7 @@ member this.OnCollisionEnter2D(collision:Collision2D) =
 member this.OnMouseDown() =
         SceneManager.LoadScene("Min scene")
 ```
+-->
 ___
 ## Kontrolstrukturer
 
@@ -298,7 +300,7 @@ Der findes også en operator til at pipe baglæns (`<|`), men den burde ikke bli
 ### Tuple Operatoren
 Man skal være opmærksom på at når `*` operatoren bruges i deklarationer, betyder den ikke gange. I stedet bruges den som pardannelsesoperator, hvilket vil sige at højre og venstre siden af operatoren bliver sammen sat som en ny tuple.
 
-```
+```fsharp
 let t1:int*float = (2, 3.14)
 ```
 Ovenstående deklarerer en tuple med første element som integer og andet element som en float.
@@ -322,16 +324,14 @@ let sum = [1..10] |> List.sum
 
 ___
 ## Events
-Events fungere cirka på samme måde som i C#. Dog skal et event altid have et argument med. Så når man ikke er interesseret at give et argument med, benytter man enten `unit` eller wildcard `_` (så kan man ignorer typen) . 
-
+Events fungere cirka på samme måde som i C#. Dog skal et event altid have et argument med. Så når man ikke er interesseret at give et argument med, benytter man enten `unit` eller wildcard `_` (så kan man ignorer typen).
 ```fsharp
-    let event = new Event<unit>()
+    let event = new Event<_>()
     let eventMedParameter = new Event<GameObject>()
 ```
 
 Handlers skal tilføjes som en funktion. Hvis ikke din funktion bruger parametre (som `myEventHandler` herunder) skal den have unit `()` med uanset. 
-Hvis du derimod er interesseret i at give en parameter med kan man benytte et lambda udtryk, se hvor `myParameterEventHandler` bliver tilføjet, efter Debug.Log i Start. 
-
+Hvis du derimod er interesseret i at give en parameter med kan man benytte et lambda udtryk, se hvor `myParameterEventHandler` bliver tilføjet, efter `Debug.Log` i `Start`.
 ```fsharp
 let myEventHandler () =
         Debug.Log("Raised empty event!")
@@ -342,10 +342,7 @@ let myEventHandler () =
 
     member this.Start() =
         event.Publish.Add(myEventHandler)
-        eventMedParameter.Publish.Add( fun gObject ->
-            Debug.Log("gObject er et gameobject, så vi kan kalde en funktion som tager et gameobject med.")
-            myParameterEventHandler gObject
-            )
+        eventMedParameter.Publish.Add(myParameterEventHandler)
 ```
 For at raise eller trigger et event kaldes `.Trigger(...)` på eventet.
 ```fsharp
@@ -353,6 +350,11 @@ For at raise eller trigger et event kaldes `.Trigger(...)` på eventet.
         if(Input.GetButtonDown("Jump")) then
             event.Trigger()                         //Ingen parameter (altså et event<unit>
             eventMedParameter.Trigger(somePrefab)   //Parameter med typen GameObject
+```
+Alternativt kan du bruge lambda-funktioner til at tilføje event-handlers:
+```fsharp
+    member this.Start() =
+        event.Publish.Add(fun () -> Debug.Log("Lambda event handler"))
 ```
 
 ___
