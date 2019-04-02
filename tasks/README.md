@@ -17,6 +17,8 @@ Du vil bemærke at der er blevet tilføjet et punkt i Unity Editor'en der hedder
 
 [Armour Graph](armour.md)
 
+[Talenttræ](talents.md)
+
 [Magnetiske Bolde](magnetic.md)
 
 [Realtidsstrategi State Machine](rts.md)

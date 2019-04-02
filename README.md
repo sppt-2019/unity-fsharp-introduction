@@ -126,20 +126,20 @@ Når man instantierer i F# Unity gøres det på samme måde som i C#.
 ```
 
 #### Component referencer
-Ligesom i C# er der to måder at få referencer til Components på: I editoren og via `GetComponent<T>`.
+Ligesom i C# er der to måder at få referencer til Components på: I editoren med `[<SerializeField>]` eller i koden med `GetComponent<T>`.
 
 ```fsharp
-    //Sættes i editoren
-    [<DefaultValue>]
-    val mutable editorRigidbody:Rigidbody2D
+    //Skal sættes i editoren
+    [<SerializeField>]
+    let mutable myRigidbody:Rigidbody2D = null
 ```
 
 ```fsharp
-    //Skal assignes
-    let mutable codeRigidbody = null
+    //Skal sættes i koden
+    let mutable myRigidbody:Rigidbody2D = null
 
     member this.Start() =
-        codeRigidbody <- this.GetComponent<Rigidbody2D>()
+        myRigidbody <- this.GetComponent<Rigidbody2D>()
 ```
 
 
@@ -303,6 +303,41 @@ let sum = [1..10] |> List.reduce (fun acc elm -> acc + elm)
 Eller som vi så tidligere:
 ```fsharp
 let sum = [1..10] |> List.sum
+```
+
+
+___
+## Events
+Events fungere cirka på samme måde som i C#. Dog skal et event altid have et argument med. Så når man ikke er interesseret at give et argument med, benytter man `unit`. 
+
+```fsharp
+    let event = new Event<unit>()
+    let eventMedParameter = new Event<GameObject>()
+```
+
+Handlers skal tilføjes som lambda udtryk, altså `fun () -> funktionSomJegVilKalde`
+
+```fsharp
+let myEventHandler =
+        Debug.Log("Raised empty event!")
+    
+    let myParameterEventHandler (g:GameObject) =
+        Debug.Log(g.name)
+        ()
+
+    member this.Start() =
+        event.Publish.Add( fun () -> myEventHandler)
+        eventMedParameter.Publish.Add( fun gObject ->
+            Debug.Log("gObject er et gameobject, så vi kan kalde en funktion som tager et gameobject med.")
+            myParameterEventHandler gObject
+            )
+```
+For at raise eller trigger et event kaldes `.Trigger(...)` på eventet.
+```fsharp
+    member this.Update() =
+        if(Input.GetButtonDown("Jump")) then
+            event.Trigger()                         //Ingen parameter (altså et event<unit>
+            eventMedParameter.Trigger(somePrefab)   //Parameter med typen GameObject
 ```
 
 ___
