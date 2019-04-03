@@ -29,6 +29,8 @@ Unity projekterne som skal bruges til opgaverne kan findes på GitHub, hvor du k
 #### Basal bevægelse - `Player` - _Input_
 - Lav et script som bevæger dit **rumskib** venstre og højre, når der trykkes på <kbd>A</kbd>/<kbd>D</kbd> og <kbd>←</kbd>/<kbd>→</kbd>
   - Spilleren skal ikke kunne gå udenfor skærm-området
+  
+<img src="space-invader-1.gif" style="display:block;margin: 0 auto; width: 40%;">
 
 ___
 <br />
@@ -40,6 +42,8 @@ ___
 - Tilføj et event på `Player`-klassen som bliver _triggered_ når der trykkes knappen `Fire1`
 - Tilføj en _handler_ til eventet som printer "Fired weapon!" med `Debug.Log`
   - Vi tilføjer flere handlers i de senere opgaver
+
+<img src="space-invader-2.gif" style="display:block;margin: 0 auto; width: 40%;">
 
 ___
 <br />
@@ -64,6 +68,8 @@ ___
   - Hastigheden skal kunne sættes fra Unity Editoren
 - I `Start()`-metoden på `Bullet`-klassen, kald `GameObject.Destroy(this.gameObject, 8.0f)` så den bliver fjernet igen efter et antal sekunder, når den er ude af banen
 HINT: _foran spilleren_ kan udtrykkes som `this.transform.position + Vector2.up`fsharp
+
+<img src="space-invader-3.gif" style="display:block;margin: 0 auto; width: 40%;">
 
 ___
 <br />
@@ -96,3 +102,6 @@ ___
   - Du kan f.eks. bruge et statisk event eller et _enemies_-object
 - Når de er nået ud til en af siderne skal de, udover at skifte retning, rykke én unit ned (Vector3.down)
 - Når de er nået helt ned til bunden af skærmen, skal man tabe spillet, og der skal skiftes til scenen `Dead`
+
+<img src="space-invader-4.gif" style="display:block;margin: 0 auto; width: 40%;">
+
