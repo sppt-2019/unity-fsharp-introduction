@@ -15,6 +15,7 @@ let mutable b = 5.0f  // Overskrivbar float32 variabel
 let c = "John"        // String variabel
 let d:bool = true     // Eksplicit typet boolsk variabel
 ```
+_En `mutable` variabel kan overskrives, hvorimod en almindelig ikke kan overskrives_
 
 ### Editor variable
 Hvis du vil erklære en variabel, som kan ændres i Unity's Editor skal den være __mutable__ og __serializable__:
@@ -30,12 +31,13 @@ val mutable Variable:float32
 Dette er fordi F# skal kunne udregne variablens type. Typen skal angives da den ikke kan gætte typen uden.
 
 ___
-## Type casting
-F# er et stærkt typet sprog og det vil ofte være nødvendigt at caste variable. Et type cast fra `int` til `float32`:
+## Type konvertering
+F# er et stærkt typet sprog og det vil ofte være nødvendigt at konvertere variable til den ønskede type. En type konvertering fra `int` til `float32`:
 ```fsharp
 let i = 14
 let f = float32 i
 ```
+_I F# er alle konverteringer eksplicitte, hvorimod i C# er der implicitte konverteringer fra nogle typer. F.eks `int` til `float`
 
 ___
 ## Erklæring af typer (klasser)
