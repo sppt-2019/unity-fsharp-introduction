@@ -31,6 +31,9 @@ Unity projekterne som skal bruges til opgaverne kan findes på GitHub, hvor du k
 - Lav et script som bevæger dit **rumskib** venstre og højre, når der trykkes på <kbd>A</kbd>/<kbd>D</kbd> og <kbd>←</kbd>/<kbd>→</kbd>
   - Spilleren skal ikke kunne gå udenfor skærm-området
   
+<div class="invader-crop">
+  <video src="space-invader-1.webm" style="display:block;margin:auto;max-width:60%" muted autoplay loop></video>
+</div>
 
 <br />
 <br />
@@ -46,10 +49,6 @@ ___
 - Tilføj et event på `Player`-klassen som bliver _triggered_ når der trykkes knappen `Fire1`
 - Tilføj en _handler_ til eventet som printer "Fired weapon!" med `Debug.Log`
   - Vi tilføjer flere handlers i de senere opgaver
-  
-<div class="invader-crop">
-  <video src="space-invader-2.webm" style="display:block;margin:auto;max-width:60%" muted autoplay loop></video>
-</div>
 
 <br />
 <br />
