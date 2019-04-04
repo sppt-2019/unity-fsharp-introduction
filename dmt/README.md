@@ -1,15 +1,3 @@
-<style>
-  .invader-crop {
-    max-width: 270px;
-    max-height: 150px;
-    overflow: hidden;
-    text-indent: -140px;
-  }
-  .invader-crop video {
-    max-width: initial;
-  }
-</style>
-
 
 ## Introduktion
 Først og fremmest tak for din deltagelse i dette eksperiment. Vi vil starte med at understrege at eksperimentet ikke tester dine evner som programmør, men derimod hvor egnet F# og C# er til spiludvikling.
@@ -57,7 +45,7 @@ ___
   - Vi tilføjer flere handlers i de senere opgaver
   
 <div class="invader-crop">
-  <video src="space-invader-2.webm" muted autoplay loop></video>
+  <video src="space-invader-2.webm" style="display:block;margin:auto;max-width:60%" muted autoplay loop></video>
 </div>
 
 ___
@@ -85,7 +73,7 @@ ___
 HINT: _foran spilleren_ kan udtrykkes som `this.transform.position + Vector2.up`
 
 <div class="invader-crop">
-  <video src="space-invader-2.webm" muted autoplay loop></video>
+  <video src="space-invader-2.webm" style="display:block;margin:auto;max-width:60%" muted autoplay loop></video>
 </div>
 
 ___
@@ -99,7 +87,7 @@ ___
   - Det fjendtlige skib der bliver ramt skal også forsvinde (`Enemy`-klassen)
 
 <div class="invader-crop">
-  <video src="space-invader-3.webm" muted autoplay loop></video>
+  <video src="space-invader-3.webm" style="display:block;margin:auto;max-width:60%" muted autoplay loop></video>
 </div>
 
 ___
@@ -125,6 +113,6 @@ ___
 - Når de er nået helt ned til bunden af skærmen, skal man tabe spillet, og der skal skiftes til scenen `Dead`
 
 <div class="invader-crop">
-  <video src="space-invader-4.webm" muted autoplay loop></video>
+  <video src="space-invader-4.webm" style="display:block;margin:auto;max-width:60%" muted autoplay loop></video>
 </div>
 
