@@ -1,3 +1,8 @@
+<style>
+  
+</style>
+
+
 ## Introduktion
 Først og fremmest tak for din deltagelse i dette eksperiment. Vi vil starte med at understrege at eksperimentet ikke tester dine evner som programmør, men derimod hvor egnet F# og C# er til spiludvikling.
 
@@ -30,7 +35,8 @@ Unity projekterne som skal bruges til opgaverne kan findes på GitHub, hvor du k
 - Lav et script som bevæger dit **rumskib** venstre og højre, når der trykkes på <kbd>A</kbd>/<kbd>D</kbd> og <kbd>←</kbd>/<kbd>→</kbd>
   - Spilleren skal ikke kunne gå udenfor skærm-området
   
-<video src="space-invader-1.webm" style="display:block;margin: 0 auto; width: 50%;" muted autoplay loop></video>
+
+
 ___
 <br />
 <br />
@@ -42,7 +48,9 @@ ___
 - Tilføj en _handler_ til eventet som printer "Fired weapon!" med `Debug.Log`
   - Vi tilføjer flere handlers i de senere opgaver
   
-<video src="space-invader-2.webm" style="display:block;margin: 0 auto; width: 50%;" muted autoplay loop></video>
+<div class="invader-crop">
+  <video src="space-invader-2.webm" style="display:block;margin: 0 auto; width: 60%;" muted autoplay loop></video>
+</div>
 
 ___
 <br />
@@ -68,7 +76,9 @@ ___
 - I `Start()`-metoden på `Bullet`-klassen, kald `GameObject.Destroy(this.gameObject, 8.0f)` så den bliver fjernet igen efter et antal sekunder, når den er ude af banen
 HINT: _foran spilleren_ kan udtrykkes som `this.transform.position + Vector2.up`fsharp
 
-<video src="space-invader-3.webm" style="display:block;margin: 0 auto; width: 50%;" muted autoplay loop></video>
+<div class="invader-crop">
+  <video src="space-invader-2.webm" style="display:block;margin: 0 auto; width: 60%;" muted autoplay loop></video>
+</div>
 
 ___
 <br />
@@ -79,6 +89,10 @@ ___
 #### Ødelæggelse - `Bullet` & `Enemy` - _Collisions, Audio_
 - Tilføj kode på `Bullet`-klassen der gør at skuddet forsvinder efter at have ramt et fjendligt skib
   - Det fjendtlige skib der bliver ramt skal også forsvinde (`Enemy`-klassen)
+
+<div class="invader-crop">
+  <video src="space-invader-3.webm" style="display:block;margin: 0 auto; width: 60%;" muted autoplay loop></video>
+</div>
 
 ___
 <br />
@@ -102,5 +116,7 @@ ___
 - Når de er nået ud til en af siderne skal de, udover at skifte retning, rykke én unit ned (Vector3.down)
 - Når de er nået helt ned til bunden af skærmen, skal man tabe spillet, og der skal skiftes til scenen `Dead`
 
-<video src="space-invader-4.webm" style="display:block;margin: 0 auto; width: 50%;" muted autoplay loop></video>
+<div class="invader-crop">
+  <video src="space-invader-4.webm" style="display:block;margin: 0 auto; width: 60%;" muted autoplay loop></video>
+</div>
 
