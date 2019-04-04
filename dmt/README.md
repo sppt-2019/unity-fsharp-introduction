@@ -17,7 +17,7 @@ Der er i alt 8 opgaver i sættet, men det er ikke sikkert at du når at løse al
 
 Du kan finde et [ark med eksempler fra F#](https://sppt-2019.github.io/unity-fsharp-introduction/), som du kan bruge som inspiration til opgaverne. Spørg endelig hvis du er i tvivl om hvad opgaverne går ud på eller hvis du føler at du er gået i stå.
 
-For at kunne bruge F# i unity skal man bruge en [Unity-pakke](https://sppt-2019.github.io/unity-fsharp-introduction/#brug-af-f-i-unity), som tilføjer menuen vist på billedet herunder. **Dog er pakken allerede installeret i de projekter du skal arbejde i**.
+For at kunne bruge F# i unity skal man bruge en [Unity-pakke](https://sppt-2019.github.io/unity-fsharp-introduction/#brug-af-f-i-unity), som tilføjer menuen vist på billedet herunder. **Dog er pakken allerede installeret i de projekter du skal arbejde i idag**.
 
 <img src="../tasks/images/fsharp-menu.png" style="display:block;margin: 0 auto; width: 40%;">
 
