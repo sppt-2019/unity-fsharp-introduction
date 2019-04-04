@@ -32,7 +32,9 @@ Unity projekterne som skal bruges til opgaverne kan findes på GitHub, hvor du k
   - Spilleren skal ikke kunne gå udenfor skærm-området
   
 
-
+<br />
+<br />
+<br />
 ___
 <br />
 <br />
@@ -48,6 +50,9 @@ ___
   <video src="space-invader-2.webm" style="display:block;margin:auto;max-width:60%" muted autoplay loop></video>
 </div>
 
+<br />
+<br />
+<br />
 ___
 <br />
 <br />
@@ -58,6 +63,9 @@ ___
 - Tilføj et felt af type `GameObject` på `Player`-klassen som kan bruges fra Unity Editoren, og sæt den til at indeholde `Bullet`-prefabben
 - Tilføj en _handler_ der afspiller lyden `Shoot` når der skydes
 
+<br />
+<br />
+<br />
 ___
 <br />
 <br />
@@ -76,6 +84,9 @@ HINT: _foran spilleren_ kan udtrykkes som `this.transform.position + Vector2.up`
   <video src="space-invader-2.webm" style="display:block;margin:auto;max-width:60%" muted autoplay loop></video>
 </div>
 
+<br />
+<br />
+<br />
 ___
 <br />
 <br />
@@ -90,6 +101,9 @@ ___
   <video src="space-invader-3.webm" style="display:block;margin:auto;max-width:60%" muted autoplay loop></video>
 </div>
 
+<br />
+<br />
+<br />
 ___
 <br />
 <br />
@@ -100,6 +114,9 @@ ___
 - Tilføj kode så `Planet`-klassen kan holde styr på hvor mange fjender der er tilbage vha. tagget **Enemy**
   - Når alle fjender er døde skal der skiftes til scenen `Done` 
 
+<br />
+<br />
+<br />
 ___
 <br />
 <br />
