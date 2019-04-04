@@ -1,5 +1,12 @@
 <style>
-  
+  .invader-crop {
+    max-width: 270px;
+    overflow: hidden;
+    text-indent: -140px;
+  }
+  .invader-crop video {
+    max-width: initial;
+  }
 </style>
 
 
@@ -74,7 +81,7 @@ ___
 - Tilføj kode til scriptet på `Bullet`-prefabben, som gør at den bevæger sig fremad/op mod fjenderne
   - Hastigheden skal kunne sættes fra Unity Editoren
 - I `Start()`-metoden på `Bullet`-klassen, kald `GameObject.Destroy(this.gameObject, 8.0f)` så den bliver fjernet igen efter et antal sekunder, når den er ude af banen
-HINT: _foran spilleren_ kan udtrykkes som `this.transform.position + Vector2.up`fsharp
+HINT: _foran spilleren_ kan udtrykkes som `this.transform.position + Vector2.up`
 
 <div class="invader-crop">
   <video src="space-invader-2.webm" style="display:block;margin: 0 auto; width: 60%;" muted autoplay loop></video>
