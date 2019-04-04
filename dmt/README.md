@@ -35,6 +35,7 @@ Unity projekterne som skal bruges til opgaverne kan findes på GitHub, hvor du k
 <br />
 <br />
 <br />
+
 ___
 <br />
 <br />
@@ -53,6 +54,7 @@ ___
 <br />
 <br />
 <br />
+
 ___
 <br />
 <br />
@@ -66,6 +68,7 @@ ___
 <br />
 <br />
 <br />
+
 ___
 <br />
 <br />
@@ -87,6 +90,7 @@ HINT: _foran spilleren_ kan udtrykkes som `this.transform.position + Vector2.up`
 <br />
 <br />
 <br />
+
 ___
 <br />
 <br />
@@ -104,6 +108,7 @@ ___
 <br />
 <br />
 <br />
+
 ___
 <br />
 <br />
@@ -117,6 +122,7 @@ ___
 <br />
 <br />
 <br />
+
 ___
 <br />
 <br />
