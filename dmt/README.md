@@ -10,7 +10,7 @@ For at kunne bruge F# i unity skal man bruge en [Unity-pakke](https://sppt-2019.
 
 <img src="../tasks/images/fsharp-menu.png" style="display:block;margin: 0 auto; width: 40%;">
 
-_Når du har lavet ændringer i F# filerne skal du **huske at kompilere** det ved at klikke på `Compile F#` eller ved at trykke på `F6` i Unity_
+_Når du har lavet ændringer i F# filerne skal du **huske at kompilere** det ved at klikke på `Compile F#` eller ved at trykke på <kbd>F6</kbd> i Unity_
 
 Unity projekterne som skal bruges til opgaverne kan findes på GitHub, hvor du kan downloade/klone dem:
 - [F# Unity projekt](https://github.com/sppt-2k19/unity-testing/tree/fsharp)
