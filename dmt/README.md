@@ -1,15 +1,15 @@
 ## Introduktion
 Først og fremmest tak for din deltagelse i dette eksperiment. Vi vil starte med at understrege at eksperimentet ikke tester dine evner som programmør, men derimod hvor egnet F# og C# er til spiludvikling.
 
-Der er i alt 8 opgaver i sættet, men det er ikke sikkert at du når at løse alle opgaverne. Halvdelen af tiden bliver brugt på at løse opgaver i F# og resten bliver brugt på C#. Det vigtigste er at du når at prøve kræfter med F#.
+Der er i alt 8 opgaver i sættet, men det er ikke sikkert at du når at løse alle opgaverne. Halvdelen af tiden bliver brugt på at løse opgaver i F# og resten bliver brugt på C#. Det vigtigste er at du når at prøve kræfter med både F# og C#.
 
 Du kan finde et [ark med eksempler fra F#](https://sppt-2019.github.io/unity-fsharp-introduction/), som du kan bruge som inspiration til opgaverne. Spørg endelig hvis du er i tvivl om hvad opgaverne går ud på eller hvis du føler at du er gået i stå.
 
-Før du går igang med F# opgaverne, skal du installere en [Unity-pakke](https://sppt-2019.github.io/unity-fsharp-introduction/#brug-af-f-i-unity), som tilføjer menuen:
+For at kunne bruge F# i unity skal man bruge en [Unity-pakke](https://sppt-2019.github.io/unity-fsharp-introduction/#brug-af-f-i-unity), som tilføjer menuen vist på billedet herunder. **Dog er pakken allerede installeret i de projekter du skal arbejde i**.
 
 <img src="../tasks/images/fsharp-menu.png" style="display:block;margin: 0 auto; width: 40%;">
 
-_Når du har lavet ændringer i F# filerne skal du **huske at kompilere** det ved at trykke på `Compile F#`_
+_Når du har lavet ændringer i F# filerne skal du **huske at kompilere** det ved at klikke på `Compile F#` eller ved at trykke på `F6` i Unity_
 
 Unity projekterne som skal bruges til opgaverne kan findes på GitHub, hvor du kan downloade/klone dem:
 - [F# Unity projekt](https://github.com/sppt-2k19/unity-testing/tree/fsharp)
@@ -95,7 +95,7 @@ ___
 <br />
 <br />
 
-## Opgave 6
+## Opgave 7
 #### At vinde - `Enemy` - _Behaviour, state-management_
 - Tilføj kode så fjenderne bevæger sig fra side til side, synkront.
   - Du kan f.eks. bruge et statisk event eller et _enemies_-object
