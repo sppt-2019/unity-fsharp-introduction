@@ -329,34 +329,37 @@ ___
 Events fungere cirka på samme måde som i C#. Dog skal et event altid have et argument med. Så når man ikke er interesseret at give et argument med, benytter man enten `unit` eller wildcard `_` (så kan man ignorer typen).
 ```fsharp
     let event = new Event<_>()
+    let Event = event.Publish
+    
     let eventMedParameter = new Event<GameObject>()
+    let EventMedParameter = eventMedParameter.Publish
 ```
 
 Handlers skal tilføjes som en funktion. Hvis ikke din funktion bruger parametre (som `myEventHandler` herunder) skal den have unit `()` med uanset. 
 Hvis du derimod er interesseret i at give en parameter med kan man benytte et lambda udtryk, se hvor `myParameterEventHandler` bliver tilføjet, efter `Debug.Log` i `Start`.
 ```fsharp
-let myEventHandler () =
+let handleEvent () =
         Debug.Log("Raised empty event!")
-    
-    let myParameterEventHandler (g:GameObject) =
-        Debug.Log(g.name)
-        ()
 
-    member this.Start() =
-        event.Publish.Add(myEventHandler)
-        eventMedParameter.Publish.Add(myParameterEventHandler)
+let handleEventMedParameter gameObject =
+        Debug.Log(gameObject.name)   
+       
+member this.Start() =
+    Event.AddHandler(Handler<_>(handleEvent))
+    EventMedParameter.AddHandler(Handler<GameObject>(handleEventMedParameter))
 ```
 For at raise eller trigger et event kaldes `.Trigger(...)` på eventet.
 ```fsharp
-    member this.Update() =
-        if(Input.GetButtonDown("Jump")) then
-            event.Trigger()                         //Ingen parameter (altså et event<unit>
-            eventMedParameter.Trigger(somePrefab)   //Parameter med typen GameObject
+member this.Update() =
+    if(Input.GetButtonDown("Jump")) then
+        event.Trigger()                         //Ingen parameter (altså et event<unit>
+        eventMedParameter.Trigger(somePrefab)   //Parameter med typen GameObject
 ```
 Alternativt kan du bruge lambda-funktioner til at tilføje event-handlers:
 ```fsharp
-    member this.Start() =
-        event.Publish.Add(fun () -> Debug.Log("Lambda event handler"))
+member this.Start() =
+    Event.AddHandler(Handler<_>(fun _ e -> Debug.Log("event triggered")))
+    EventMedParameter.AddHandler(Handler<GameObject>(fun _ g -> Debug.Log(g.name)))
 ```
 
 ___
