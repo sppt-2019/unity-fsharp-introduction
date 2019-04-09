@@ -6,8 +6,6 @@ Længe har der været trang til funktionel programmering i spiludviklingsverdene
 
 F# har fået ry for at være nær den gyldne middelvej - mellem det objekt-orienterede og funktionelle paradigme [[3]](https://fsharpforfunandprofit.com/posts/fsharp-is-the-best-enterprise-language/). Alting er som udgangspunkt _immutable_, men hvis der er brug for det kan de gøres _mutable_. Funktioner er _pure_ så længe man holder sig fra at bruge _mutable_ variable.
 
-Den smukke syntax F# har arvet fra OCaml, gør at first-class functions og currying er ligeså simpelt som at inkrementere en integer-variabel i et C-sprog
-
 
 Der er i alt 8 opgaver i sættet, men det er ikke sikkert at du når at løse alle opgaverne. Halvdelen af tiden bliver brugt på at løse opgaver i F# og resten bliver brugt på C#. Det vigtigste er at du når at prøve kræfter med både F# og C#.
 
