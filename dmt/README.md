@@ -2,6 +2,13 @@
 ## Introduktion
 Først og fremmest tak for din deltagelse i dette eksperiment. Vi vil starte med at understrege at eksperimentet ikke tester dine evner som programmør, men derimod hvor egnet F# og C# er til spiludvikling.
 
+Længe har der været trang til funktionel programmering i spiludviklingsverdenen, bl.a. fra **Epic Games**' Tim Sweeney [[1]](https://groups.csail.mit.edu/cag/crg/papers/sweeney06games.pdf), og fra **id Software**'s John Carmark [[2]](http://www.gamasutra.com/view/news/169296/Indepth_Functional_programming_in_C.php)
+
+F# har fået ry for at være nær den gyldne middelvej - mellem det objekt-orienterede og funktionelle paradigme [[3]](https://fsharpforfunandprofit.com/posts/fsharp-is-the-best-enterprise-language/). Alting er som udgangspunkt _immutable_, men hvis der er brug for det kan de gøres _mutable_. Funktioner er _pure_ så længe man holder sig fra at bruge _mutable_ variable.
+
+Den smukke syntax F# har arvet fra OCaml, gør at first-class functions og currying er ligeså simpelt som at inkrementere en integer-variabel i et C-sprog
+
+
 Der er i alt 8 opgaver i sættet, men det er ikke sikkert at du når at løse alle opgaverne. Halvdelen af tiden bliver brugt på at løse opgaver i F# og resten bliver brugt på C#. Det vigtigste er at du når at prøve kræfter med både F# og C#.
 
 Du kan finde et [ark med eksempler fra F#](https://sppt-2019.github.io/unity-fsharp-introduction/), som du kan bruge som inspiration til opgaverne. Spørg endelig hvis du er i tvivl om hvad opgaverne går ud på eller hvis du føler at du er gået i stå.
