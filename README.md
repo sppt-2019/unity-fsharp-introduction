@@ -1,7 +1,7 @@
 ## Generel information om F#
 F# er et funktionelt programmeringssprog som kører i .NET Platformen sammen med C#. Eftersom F# er funktionelt betyder det at næsten alt betragtes som funktioner og funktionskald. F# er desuden _pure_ som standard, hvilket betyder at variable ikke må ændres efter de er blevet erklæret. Syntaksen i F# er inspireret af OCaml og Haskell og er indentations-baseret i stedet for med curly braces ( `{` og `}` ), som vi kender det fra C#.
 
-En ting der er vigtig at være opmærksom på i F# i forhold til C# er at der er eksplicit membership. I C# vil det være typisk i et `GameObject` at kalde `Destroy` hvis vi ønsker at fjerne et objekt. I dette kald er det implicit at `Destroy`-metoden er en statisk metode på klassen `GameObject`. I F# må vi være eksplicitte og derfor kalde `GameObject.Destroy`. Det samme gælder med metoder på klasser, som vi altid skal kalde med `this.Metode`.
+En ting der er vigtig at være opmærksom på i F# i forhold til C# er at der er eksplicit membership. I C# vil det være typisk i et `GameObject` at kalde `Destroy` hvis vi ønsker at fjerne et objekt. I dette kald er det implicit at `Destroy`-metoden er en statisk metode på klassen `GameObject`. I F# må vi være eksplicitte og derfor kalde `GameObject.Destroy`. Det samme gælder med metoder på objekter, som vi altid skal kalde med `this.Metode`.
 
 Dette dokument giver en hurtig introduktion til F# og hvordan det kan bruges i Unity. Vi har også skrevet et dokument, hvor vi beskriver [hvordan Functional Reactive Programming kan bruges i Unity](frp.md).
 
