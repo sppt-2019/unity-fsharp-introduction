@@ -2,7 +2,8 @@
 ## Introduktion
 Først og fremmest tak for din deltagelse i dette eksperiment. Vi vil starte med at understrege at eksperimentet ikke tester dine evner som programmør, men derimod hvor egnet F# og C# er til spiludvikling.
 
-Længe har der været trang til funktionel programmering i spiludviklingsverdenen, bl.a. fra **Epic Games**' Tim Sweeney [[1]](https://groups.csail.mit.edu/cag/crg/papers/sweeney06games.pdf), og fra **id Software**'s John Carmark [[2]](http://www.gamasutra.com/view/news/169296/Indepth_Functional_programming_in_C.php)
+Epic Games’ Tim Sweeney [[1]](https://groups.csail.mit.edu/cag/crg/papers/sweeney06games.pdf), og id Software’s John Carmark [[2]](http://www.gamasutra.com/view/news/169296/Indepth_Functional_programming_in_C.php) har længe opfordret til funktionel programmering i spiludviklingsverdenen
+
 
 F# har fået ry for at være nær den gyldne middelvej - mellem det objekt-orienterede og funktionelle paradigme [[3]](https://fsharpforfunandprofit.com/posts/fsharp-is-the-best-enterprise-language/). Alting er som udgangspunkt _immutable_, men hvis der er brug for det kan de gøres _mutable_. Funktioner er _pure_ så længe man holder sig fra at bruge _mutable_ variable.
 
