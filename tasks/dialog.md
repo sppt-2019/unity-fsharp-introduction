@@ -11,6 +11,7 @@ Når samtalen er færdig får spilleren en konsekvens alt efter hvor pænt eller
 
 ## Eksempel på samtale:
 
+```
   Velkommen til vores lille by, hvad kan jeg hjælpe med?
 
   1) Jeg leder efter arbejde...
@@ -35,7 +36,7 @@ Når samtalen er færdig får spilleren en konsekvens alt efter hvor pænt eller
       2) Undskyld. Det har været en dårlig dag.
 
           Det er i orden. Det kan ske for alle. --> *Ingen reaktion*
-
+```
 
 ## Opgaverne
 1) Lav en datastruktur som kan indeholde et tree som dækker over alle mulighederne i sådan en dialog.
