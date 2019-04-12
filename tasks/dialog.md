@@ -40,7 +40,9 @@ Når samtalen er færdig får spilleren en konsekvens alt efter hvor pænt eller
 
 ## Opgaverne
 1) Lav en datastruktur som kan indeholde et tree som dækker over alle mulighederne i sådan en dialog.
+
 2) Vi har lavet en klasse `Node`:
+
 ```csharp
 public enum DialogOutcome
 {
