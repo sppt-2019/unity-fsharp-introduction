@@ -326,7 +326,7 @@ let sum = [1..10] |> List.sum
 
 ___
 ## Events
-Events fungere cirka på samme måde som i C#. Dog skal et event altid have et argument med. Så når man ikke er interesseret at give et argument med, benytter man enten `unit` eller wildcard `_` (så kan man ignorer typen).
+Events fungere cirka på samme måde som i C#. Dog skal et event altid have et argument med. Så når man ikke er interesseret at give et argument med, benytter man enten `unit` eller wildcard `_` (så kan man ignorere typen).
 ```fsharp
     let event = new Event<_>()
     let Event = event.Publish
