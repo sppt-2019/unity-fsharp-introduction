@@ -22,6 +22,10 @@ Unity projekterne som skal bruges til opgaverne kan findes på GitHub, hvor du k
 - [F# Unity projekt](https://github.com/sppt-2k19/unity-testing/archive/fsharp.zip)
 - [C# Unity projekt](https://github.com/sppt-2k19/unity-testing/archive/csharp.zip)
 
+Vores plugin kræver `dotnet`
+- [Download til Windows](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.203-windows-x64-installer)
+- [Installer på Linux](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/sdk-current)
+
 
 <br />
 <br />
