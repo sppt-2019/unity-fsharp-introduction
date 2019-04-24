@@ -26,6 +26,9 @@ Vores plugin kræver `dotnet`
 - [Download til Windows](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.203-windows-x64-installer)
 - [Installer på Linux](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/sdk-current)
 
+**Når du har løst en opgave, skal du besvare en sektion i spørgeskemaet**
+- [Link til spørgeskema](https://forms.gle/K7mBzR8TGmD5SzMM7)
+  - Dit ID udleveres
 
 <br />
 <br />
