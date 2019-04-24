@@ -205,45 +205,6 @@ Bloggen <i>F# for Fun and Profit</i> anbefaler at undgå loops og i stedet bruge
 </div>
 
 ___
-## F# Operatorer
-De fleste operatorer som du kender fra C# findes også i F#. Der er dog nogle få undtagelser som vi gennemgår her:
-
-### Assignment vs. Boolean Expressions
-I C# er du nok vandt til at bruge `=` som assignment og `==` som boolsk sammenligning. I F# er tingene lidt anderledes, her bruges `=` til deklarationer med `let` operatoren og `<-` som assignment når vi ønsker at overskrive en variabel (virker kun på `mutable` variable). I boolske udtryk bruger vi `=` som boolsk lighed:
-```fsharp
-let mutable i = 10
-if i = 8 then
-    i <- 0
-else
-    i <- i + 1
-```
-
-<div class="note-box">
-Bloggen <i>F# for Fun and Profit</i> anbefaler at undgå mutable variable i F# så vidt som muligt.
-</div>
-
-<div class="note-box">
-Compound operatorer (+=, *= osv.) findes ikke i F#, da vi som udgangspunkt ikke overskriver variable.
-</div>
-
-### Pipe operatoren
-I et tidligere eksempel så vi pipe operatoren (`|>`) i brug.
-
-Denne operator er især smart når vi arbejder med samlinger af objekter eller værdier. Kort fortalt tager den værdien på venstre hånd og bruger som sidste argument i funktionen på højre hånd. I dette eksempel finder vi alle `GameObject`s med tagget `Movable` og beregner deres midtpunkt:
-```fsharp
-[1..5]
-|> List.map (fun i -> float32(i))
-|> List.map (fun f -> f ** 2.0f)
-|> List.reduce (fun acc elm -> acc + elm)
-```
-Følgende er en forklaring af hver skridt:
-
-1. `[1..5]` er en range som erklærer en liste af integers fra og med 1 til og med 5.
-2. `List.map (fun i -> float32(i))` transformerer listen af integers til en liste af floats.
-3. `List.map (fun f -> f ** 2.0f)` opløfter alle elementerne i listen i anden potens.
-4. `List.reduce (fun acc elm -> acc + elm)` summerer alle tallene i listen.
-
-Der findes også en operator til at pipe baglæns (`<|`), men den burde ikke blive nødvendig i denne opgave.
 
 ### Tuple Operatoren
 Man skal være opmærksom på at når `*` operatoren bruges i deklarationer, betyder den ikke gange. I stedet bruges den som pardannelsesoperator, hvilket vil sige at højre og venstre siden af operatoren bliver sammen sat som en ny tuple.
@@ -307,23 +268,6 @@ member this.Start() =
     Event.AddHandler(Handler<_>(fun _ e -> Debug.Log("event triggered")))
     EventMedParameter.AddHandler(Handler<GameObject>(fun _ g -> Debug.Log(g.name)))
 ```
-
-___
-## Brug af F# i Unity
-Unity understøtter ikke brug af F# på samme måde som det understøtter C#. Men fordi begge sprog kører i .NET/Mono, kan F# projekter bruges - dog med lidt ekstra arbejde.
-For at automatisere så meget af dette arbejde som muligt, har vi udviklet en Unity-pakke som tilføjer en menu med funktioner til dette.
-
-[Download Unity-pakken til F# integration](https://github.com/sppt-2k19/unity-fsharp-integration/raw/master/unity-fsharp-integration.unitypackage "Download pakken") ([læs mere om pakken](https://github.com/sppt-2k19/unity-fsharp-integration "Læs mere her"))
-
-<img src="assets/img/unity-fsharp.png" style="width:307px;margin:auto;display:block;" />
-
-___
-
-## FRP i Unity
-Functional Reactive Programming(FRP) er en måde at programmere funktionelt, som kan være lettere at bruge til spilprogrammering end almindelig funktionel programmering.
-
-[Læs om FRP](frp.md)
-
 ___
 
 ## Concurrency
