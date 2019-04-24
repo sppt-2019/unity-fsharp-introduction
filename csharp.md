@@ -179,23 +179,23 @@ _Du kan også læse mere om `Task`s på [Microsofts Officielle Documentation](ht
 
 
 ### Loops og ranges
-Der findes også loops i F#. Disse er tætknyttede på ranges, så vi præsenterer begge samtidig:
-```fsharp
-let mutable sum = 0
-for i in 1 .. 3 do
-    sum <- sum + i
+Der findes også loops i C#.
+```csharp
+var sum = 0;
+for(int i = 0; i < 3; i++)
+{
+    sum += i;
+}
 ```
-I dette eksempel er `1 .. 3` en range, som vil returnere listen bestående af tallene 1, 2 og 3. Selve syntaksen og den måde loopet fungerer på minder meget om `foreach`-loops fra C#, eller loops og ranges fra Python. Ranges kan også bruges til at deklarere lister:
-```fsharp
-let oneToHundred = [1..100]
+I C# har vi også foreach løkker, til at itterer over en collection.
+
+```csharp
+var sum = 0;
+foreach (int element in Enumerable.Range(0, 3))
+{
+    sum += element;
+}
 ```
-
-<div class="note-box">
-Bloggen <i>F# for Fun and Profit</i> anbefaler at undgå loops og i stedet bruge nogle af de andre List metoder, f.eks. List.iter.
-
-<i>Læs mere om hvordan du bruger, og undgår at bruge, loops i F# <a href="https://fsharpforfunandprofit.com/posts/control-flow-expressions/#loops">her</a></i>
-</div>
-
 ___
 
 ### Tuple Operatoren
