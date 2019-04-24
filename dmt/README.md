@@ -1,18 +1,18 @@
 
 ## Introduktion
-Først og fremmest tak for din deltagelse i dette eksperiment. Vi vil starte med at understrege at eksperimentet ikke tester dine evner som programmør, men derimod hvor egnet F# og C# er til spiludvikling.
+Først og fremmest tak for din deltagelse i dette eksperiment. Vi vil starte med at understrege at eksperimentet ikke tester dine evner som programmør, men derimod hvor egnet F# og C# er til spiludvikling
 
 Epic Games’ Tim Sweeney [[1]](https://groups.csail.mit.edu/cag/crg/papers/sweeney06games.pdf), og id Software’s John Carmark [[2]](http://www.gamasutra.com/view/news/169296/Indepth_Functional_programming_in_C.php) har længe opfordret til funktionel programmering i spiludviklingsverdenen
 
 
-F# har fået ry for at være nær den gyldne middelvej - mellem det objekt-orienterede og funktionelle paradigme [[3]](https://fsharpforfunandprofit.com/posts/fsharp-is-the-best-enterprise-language/). Alting er som udgangspunkt _immutable_, men hvis der er brug for det kan de gøres _mutable_. Funktioner er _pure_ så længe man holder sig fra at bruge _mutable_ variable.
+F# har fået ry for at være nær den gyldne middelvej - mellem det objekt-orienterede og funktionelle paradigme [[3]](https://fsharpforfunandprofit.com/posts/fsharp-is-the-best-enterprise-language/). Alting er som udgangspunkt _immutable_, men hvis der er brug for det kan de gøres _mutable_. Funktioner er _pure_ så længe man holder sig fra at bruge _mutable_ variable
 
 
-Der er i alt 7 opgaver i sættet, men det er ikke sikkert at du når at løse alle opgaverne. Halvdelen af tiden bliver brugt på at løse opgaver i F# og resten bliver brugt på C#. Det vigtigste er at du når at prøve kræfter med både F# og C#.
+Der er i alt 7 opgaver i sættet, men det er ikke sikkert at du når at løse alle opgaverne. Halvdelen af tiden bliver brugt på at løse opgaver i F# og resten bliver brugt på C#. Det vigtigste er at du når at prøve kræfter med både F# og C#
 
-Du kan finde et [ark med eksempler fra F#](https://sppt-2019.github.io/unity-fsharp-introduction/), som du kan bruge som inspiration til opgaverne. Spørg endelig hvis du er i tvivl om hvad opgaverne går ud på eller hvis du føler at du er gået i stå.
+Du kan finde et [ark med eksempler fra F#](https://sppt-2019.github.io/unity-fsharp-introduction/), som du kan bruge som inspiration til opgaverne. Spørg endelig hvis du er i tvivl om hvad opgaverne går ud på eller hvis du føler at du er gået i stå
 
-For at kunne bruge F# i unity skal man bruge en [Unity-pakke](https://sppt-2019.github.io/unity-fsharp-introduction/#brug-af-f-i-unity), som tilføjer menuen vist på billedet herunder. **Dog er pakken allerede installeret i de projekter du skal arbejde i idag**.
+For at kunne bruge F# i unity skal man bruge en [Unity-pakke](https://sppt-2019.github.io/unity-fsharp-introduction/#brug-af-f-i-unity), som tilføjer menuen vist på billedet herunder. **Dog er pakken allerede installeret i de projekter du skal arbejde i idag**
 
 <img src="../tasks/images/fsharp-menu.png" style="display:block;margin: 0 auto; width: 40%;">
 
