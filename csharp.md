@@ -7,41 +7,45 @@ Dette dokument giver en hurtig introduktion til F# og hvordan det kan bruges i U
 
 ___
 ## Datatyper og variable
-Alle datatyper som du kender fra C# kan også bruges i F#. Variabelerklæring i F# er næsten det samme som i C#, den eneste forskel er at vi bruger `let` i stedet:
+I C# kan typen ofte infereres så man ikke behøver være eksplicit omkring den, det gøres med `var`. Typen kan som udgangspunkt altid infereres hvis der assignes noget til den med `=`. Hvis ikke skal typen altid angives.
 
-```fsharp
-let a = 5             // Integer variabel
-let mutable b = 5.0f  // Overskrivbar float32 variabel
-let c = "John"        // String variabel
-let d:bool = true     // Eksplicit typet boolsk variabel
+```csharp
+var a = 5           // Implicit integer variabel
+var b = 5.0f        // Implicit float variabel
+var c = "John"      // Implicit string variabel
+
+int a = 5           // Eksplicit integer variabel
+float b = 5.0f      // Eksplicit float variabel
+string c = "John"   // Eksplicit string variabel
 ```
-_En `mutable` variabel kan overskrives, hvorimod en almindelig ikke kan overskrives_
 
 ### Editor variable
 Hvis du vil erklære en variabel, som kan ændres i Unity's Editor skal den være __mutable__ og __serializable__:
-```fsharp
-[<SerializeField>]
-let mutable Variable = 5.0f
+```csharp
+[SerializeField]
+public float Variable = 5.0f
 ```
 I nogle tilfælde vil du måske undgå at give en variabel en værdi med det samme. Så skal variablen erklæres på denne måde:
-```fsharp
-[<DefaultValue>]
-val mutable Variable:float32
+```csharp
+[SerializeField]
+public float Variable;
 ```
 Dette er fordi F# skal kunne udregne variablens type. Typen skal angives da den ikke kan gætte typen uden.
 ___
 ## Erklæring af typer (klasser)
-```fsharp
-open UnityEngine
+```csharp
+using UnityEngine;
 
-type MyType() =
-    inherit MonoBehaviour()
+class MyType : MonoBehaviour 
+{
+    [SerializeField]
+    public string Message = "Hello from C#";
 
-    [<SerializeField>]
-    let mutable Message = "Hello from F#"
-
-    member this.Start() =
-        Debug.Log("MonoBehaviour says: " + Message)
+    public void Start() 
+    {
+        Debug.Log("MonoBehaviour says: " + Message);
+    }
+}
 ```
 Denne stump kode erklærer en `MonoBehaviour`, som har én instansvariabel `Message`, der bliver printet når Unity's Editor startes. `SerializeField` betyder at instansvariablen `Message` bliver tilgængelig i Unity's Editor.
 
