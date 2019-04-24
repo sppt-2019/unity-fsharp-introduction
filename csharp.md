@@ -162,28 +162,29 @@ member this.OnMouseDown() =
 ```
 -->
 ___
-## Kontrolstrukturer
+## Concurrency i C#
+I C# eksisterer der flere forskellige parallelisme-mønstre. I dette dokument vil vi introducere _task-based asynchronous pattern_ som blev introduceret i .NET 4.0. Dette mønster gør brug af `Task` klassen som repræsenterer en lille opgave som skal eksekveres på en anden tråd end main tråden.
 
-### If-then-else
-If-else kontrolstrukturer findes i F#:
-```fsharp
-type Foods =
-    | Strawberry
-    | IceCream
-    | Sandwiches
-    | Pizza
+```csharp
+await Task.Run(() => Console.WriteLine("Hello World!"));
 
-let GetFoodMessage food =
-    if food = Strawberry then
-        "I see you like fruit"
-    elif food = IceCream then
-        "So you have a sweet tooth? Watch you weight!"
-    else
-        "There are so many options when it comes to food."
+Task<int> value = Task.Run(() => 1);
+int value = await Task.Run(() => 1);
 ```
-I mange af disse eksempler ville man også kunne bruge pattern matching, hvilket kan give en mere elegant løsning.
+Her bliver `await` brugt til at vente på `Task`'en i stedet for at bruge `Task.Wait()`. `await` er et keyword som afventer returværdien af en `Task`. Keywordet kan kun bruges i en metode, som er markeret som `async`, som betyder at returværdien fra metoden altid er af typen `Task`.
 
-_Læs mere om if-then-else i F# [her](https://fsharpforfunandprofit.com/posts/control-flow-expressions/#if-then-else)_
+## Concurrency på lister
+Hvis man har en samling af data kan man behandle hvert element med en `Task`. I det følgende kode har vi en liste med spiller navne. For hver af disse spillere ønsker vi at hente deres highscore fra en server. Lad os antage at vi har en metode, `GetHighscoreAsync`, som tager en streng og returnere den tilhørende highscore. Med dette setup kan vi starte en `Task` for hver opgave i listen af spillere.
+```csharp
+var players = new List<string>() { "xXxkiller26xXx", "MurderHobo28", "fighter98" }
+var highscores = Task.WhenAll(players.Select(p => GetHighscoreAsync(p)));
+```
+Listen `highscores` kommer til at indeholde alle spillernes highscores.
+
+Dette er blot en af måderne hvorpå lister kan behandles asynkront. Der findes andre meetoder (f.eks. `IEnumerable.AsParallel` og `Parallel.ForEach`), som tjener lignende formål.
+
+_Du kan også læse mere om `Task`s på [Microsofts Officielle Documentation](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task?view=netstandard-2.0)_.
+
 
 ### Loops og ranges
 Der findes også loops i F#. Disse er tætknyttede på ranges, så vi præsenterer begge samtidig:
