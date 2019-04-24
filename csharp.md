@@ -29,16 +29,6 @@ I nogle tilfælde vil du måske undgå at give en variabel en værdi med det sam
 val mutable Variable:float32
 ```
 Dette er fordi F# skal kunne udregne variablens type. Typen skal angives da den ikke kan gætte typen uden.
-
-___
-## Type konvertering
-F# er et stærkt typet sprog og det vil ofte være nødvendigt at konvertere variable til den ønskede type. En type konvertering fra `int` til `float32`:
-```fsharp
-let i = 14
-let f = float32 i
-```
-_I F# er alle konverteringer eksplicitte, hvorimod i C# er der implicitte konverteringer fra nogle typer. F.eks `int` til `float`
-
 ___
 ## Erklæring af typer (klasser)
 ```fsharp
