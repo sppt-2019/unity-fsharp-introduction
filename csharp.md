@@ -185,61 +185,6 @@ I mange af disse eksempler ville man også kunne bruge pattern matching, hvilket
 
 _Læs mere om if-then-else i F# [her](https://fsharpforfunandprofit.com/posts/control-flow-expressions/#if-then-else)_
 
-
-### Pattern Matching
-Pattern matching kan beskrives som if-else statements på steroider. Du kan bruge dem til både at matche på variable, tuples, klasser osv.
-
-#### Simpel pattern matching
-```fsharp
-let GetFoodMessagePM food =
-    match food with
-    | Strawberry -> "I see you like fruit"
-    | IceCream -> "So you have a sweet tooth? Watch you weight!"
-    | _ -> "There are so many options when it comes to food."
-```
-Dette er et simpelt eksempel, som er ækvivalent med ìf-else eksempelet ovenover.
-
-Forestil dig nu at vi har tuples af mad og antallet af den type mad en person har spist hver dag:
-
-#### Pattern matching på lister
-```fsharp
-let diet = [(IceCream,20);(Sandwiches,0)]
-match diet with
-| [(IceCream,0);(Sandwiches,x)] when x > 0 -> "Healthy diet with no ice cream and sandwiches"
-| [(IceCream,y);(Sandwiches,0)] when y > 0 -> "More sandwiches and less ice cream!"
-| [(Pizza,z)] when z > 0 -> "I hope that pizza was made from whole-grain flour!"
-| _ -> "Nothing special to notice about your diet"
-```
-
-Alternativt kan listen også behandles som `head` og `tail` gennem recursion:
-```fsharp
-let rec GetFoodMessageRec diet =
-    match list with
-    | [] -> ""
-    | (IceCream,x)::t when x > 0  -> "Less IceCream" + (GetFoodMessage t)
-    | (Sandwiches,0)::t -> "More Sandwiches" + (GetFoodMessage t)
-    | (f, q) -> (sprintf "You diet of %d %ss is fine" q f.ToStrings) + (GetFoodMessage t)
-```
-
-#### Pattern matching på typer
-Pattern matching kan også matche på typer, hvilket du sandsynligvis vil få brug for i opgaverne. Dette eksempel viser hvordan:
-
-```fsharp
-type Weather =
-| Snowing of cmOfSnow:int * temp:float32
-| Sunny of temp:float32
-| Storm of windSpeed:int * temp:float32
-
-let weatherAnnouncement w =
-    match w with
-    | Snowing (s,t) -> sprintf "%d cm of snow has fallen and it's %f degrees outside" s t
-    | Sunny (t) -> sprintf "Sun's high in the sky and it's %f degrees outside" t
-    | Storm (w,t) -> sprintf "Stay inside, as winds are reaching %d m/s with a temperature of %f" w f
-```
-
-Pattern matching er et meget kraftfuldt værktøj, men også lidt for omfattende til at gennemgå på dette ark. _Læs mere om det [her](https://fsharpforfunandprofit.com/posts/match-expression/)_
-
-
 ### Loops og ranges
 Der findes også loops i F#. Disse er tætknyttede på ranges, så vi præsenterer begge samtidig:
 ```fsharp
