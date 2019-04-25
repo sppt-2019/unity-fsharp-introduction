@@ -173,10 +173,10 @@ foreach (int element in Enumerable.Range(0, 3))
 ___
 
 ### Tuple Operatoren
-Man skal være opmærksom på at når `*` operatoren bruges i deklarationer, betyder den ikke gange. I stedet bruges den som pardannelsesoperator, hvilket vil sige at højre og venstre siden af operatoren bliver sammen sat som en ny tuple.
+I C# for at lave pardannelse tuple af flere typer skal man deklarere typerne med variablen først, efterfuglt af selve værdien på hver enkel variable i tuplen. Dette bliver så sat sammen til en ny tuple.
 
-```fsharp
-let t1:int*float = (2, 3.14)
+```csharp
+(int age, float height) = (23, 1.77);
 ```
 Ovenstående deklarerer en tuple med første element som integer og andet element som en float.
 ___
