@@ -133,30 +133,6 @@ member this.OnMouseDown() =
         SceneManager.LoadScene("Min scene")
 ```
 -->
-___
-## Concurrency i C#
-I C# eksisterer der flere forskellige parallelisme-mønstre. I dette dokument vil vi introducere _task-based asynchronous pattern_ som blev introduceret i .NET 4.0. Dette mønster gør brug af `Task` klassen som repræsenterer en lille opgave som skal eksekveres på en anden tråd end main tråden.
-
-```csharp
-await Task.Run(() => Console.WriteLine("Hello World!"));
-
-Task<int> value = Task.Run(() => 1);
-int value = await Task.Run(() => 1);
-```
-Her bliver `await` brugt til at vente på `Task`'en i stedet for at bruge `Task.Wait()`. `await` er et keyword som afventer returværdien af en `Task`. Keywordet kan kun bruges i en metode, som er markeret som `async`, som betyder at returværdien fra metoden altid er af typen `Task`.
-
-## Concurrency på lister
-Hvis man har en samling af data kan man behandle hvert element med en `Task`. I det følgende kode har vi en liste med spiller navne. For hver af disse spillere ønsker vi at hente deres highscore fra en server. Lad os antage at vi har en metode, `GetHighscoreAsync`, som tager en streng og returnere den tilhørende highscore. Med dette setup kan vi starte en `Task` for hver opgave i listen af spillere.
-```csharp
-var players = new List<string>() { "xXxkiller26xXx", "MurderHobo28", "fighter98" }
-var highscores = Task.WhenAll(players.Select(p => GetHighscoreAsync(p)));
-```
-Listen `highscores` kommer til at indeholde alle spillernes highscores.
-
-Dette er blot en af måderne hvorpå lister kan behandles asynkront. Der findes andre meetoder (f.eks. `IEnumerable.AsParallel` og `Parallel.ForEach`), som tjener lignende formål.
-
-_Du kan også læse mere om `Task`s på [Microsofts Officielle Documentation](https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task?view=netstandard-2.0)_.
-
 
 ### Loops og ranges
 Der findes også loops i C#.
