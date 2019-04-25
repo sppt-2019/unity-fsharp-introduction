@@ -86,7 +86,7 @@ Her giver vi nogle eksempler på Unity-specifikke metoder du måske kan få brug
 Instantiering i C# Unity gøres det på denne måde. 
 ```csharp
     //Type 'GameObject' via casting
-    gObj = GameObject.Instantiate(prefab, transform.position, Quaternion.identity) :?> GameObject
+    gObj = GameObject.Instantiate(prefab, transform.position, Quaternion.identity) as GameObject
 ```
 ```csharp
     //Type 'GameObject' via generics
