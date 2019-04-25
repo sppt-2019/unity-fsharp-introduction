@@ -66,31 +66,6 @@ Implicitte typer virker i nogle tilfælde også på funktioner, men compileren k
 let sumInPowerN nums n = [...]
 ```
 
-### Currying
-F# bruger currying ved funktionskald. Antag at vi har den følgende F# funktion, som tager en liste samt en funktion som bliver kørt på alle elementerne:
-```fsharp
-let rec executeOnElements list func =
-    match list with
-    | [] -> ()
-    | h::t ->
-        func h
-        executeOnElements t func
-```
-Vi kan curry denne funktion og dermed lave en ny funktion, som udfører en handling på alle tal fra 1 til og med 100:
-```fsharp
-let doFrom1To100 = executeOnElements [1..100]
-```
-Dette betyder altså at hvis du kalder en funktion med for få argumenter vil den ikke give en fejl, som du måske kender det fra C#, men i stedet returnere en ny funktion som tager imod de resterende argumenter, og så giver det endelige resultat
-
-Vores nye funktion kan nu anvendes således:
-```fsharp
-doFrom1To100 (fun i -> printfn "%d" i)
-
-doFrom1To100 (fun i -> printfn "%d" (i * 5))
-```
-Hvilket udprinter alle tal fra 1 til 100 og derefter de første 100 tal i 5-tabellen.
-_Læs mere om currying [her](https://fsharpforfunandprofit.com/posts/currying/)_
-
 ### Metoder
 Metoder skal erklæres på en type og så kan man tilgå dens felter og properties:
 
