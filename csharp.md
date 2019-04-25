@@ -8,20 +8,20 @@ ___
 I C# kan typen ofte infereres så man ikke behøver være eksplicit omkring den, det gøres med `var`. Typen kan som udgangspunkt altid infereres hvis der assignes noget til den med `=`. Hvis ikke skal typen altid angives.
 
 ```csharp
-var a = 5           // Implicit integer variabel
-var b = 5.0f        // Implicit float variabel
-var c = "John"      // Implicit string variabel
+var a = 5;           // Implicit integer variabel
+var b = 5.0f;        // Implicit float variabel
+var c = "John";      // Implicit string variabel
 
-int a = 5           // Eksplicit integer variabel
-float b = 5.0f      // Eksplicit float variabel
-string c = "John"   // Eksplicit string variabel
+int a = 5;           // Eksplicit integer variabel
+float b = 5.0f;      // Eksplicit float variabel
+string c = "John";   // Eksplicit string variabel
 ```
 
 ### Editor variable
 Hvis du vil erklære en variabel, som kan ændres i Unity's Editor skal den være __serializable__:
 ```csharp
 [SerializeField]
-public float Variable = 5.0f
+public float Variable = 5.0f;
 ```
 I nogle tilfælde vil du måske undgå at give en variabel en værdi med det samme. Så skal variablen erklæres på denne måde:
 ```csharp
@@ -69,14 +69,15 @@ let sumInPowerN nums n = [...]
 Metoder skal erklæres på en type og så kan man tilgå dens felter og properties:
 
 ```fsharp
-type MoveForward() =
-    inherit MonoBehaviour()
+class MoveForward : MonoBehaviour
+{
 
-    [<SerializeField>]
+    [SerializeField]
     let mutable Speed = 8.0f
 
     member this.Update() =
         this.transform.position <- this.transform.position + (this.transform.forward * Speed * Time.deltaTime)
+}
 ```
 
 ### Unity-specifikke metoder
@@ -86,11 +87,11 @@ Her giver vi nogle eksempler på Unity-specifikke metoder du måske kan få brug
 Instantiering i C# Unity gøres det på denne måde. 
 ```csharp
     //Type 'GameObject' via casting
-    gObj = GameObject.Instantiate(prefab, transform.position, Quaternion.identity) as GameObject
+    gObj = GameObject.Instantiate(prefab, transform.position, Quaternion.identity) as GameObject;
 ```
 ```csharp
     //Type 'GameObject' via generics
-    gameObject = GameObject.Instantiate<GameObject>(prefab, transform.position, Quaternion.identity)
+    gameObject = GameObject.Instantiate<GameObject>(prefab, transform.position, Quaternion.identity);
 ```
 
 #### Component referencer
@@ -106,7 +107,6 @@ Ligesom i C# er der to måder at få referencer til Components på: I editoren m
     //Sættes med kode
     public Rigidbody2D MyRigidbody;
 
-    
     public void Start() 
     {
         MyRigidbody = GetComponent<Rigidbody2D>()
@@ -183,16 +183,17 @@ I C# for at lave pardannelse tuple af flere typer skal man deklarere typerne med
 
 ```csharp
 // Ny syntaks for tuples
-var personTuple = (23, 1.77f); // Implicitte typer
-var (int, float) personTuple = (23, 1.77f); // Eksplicitte typer
+var personTuple = (23, 1.77f);          // Implicitte typer
+(int, float) personTuple = (23, 1.77f); // Eksplicitte typer
 
 // Gammel syntaks for tuples
-var = new Tuple<int, float>(23, 1.77f); // Implicitte typer
+var personTuple = new Tuple<int, float>(23, 1.77f); // Implicitte typer
 Tuple<int, float> personTuple = new Tuple<int, float>(23, 1.77f); // Eksplicitte typer
 
 
 // Tuples kan udpakkes så de er lettere at bruge
-(int age, float height) = (23, 1.77f);
+(int age, float height) = personTuple;
+(var age, var height) = personTuple;
 ```
 Ovenstående deklarerer en tuple med første element som integer og andet element som en float.
 ___
@@ -244,7 +245,7 @@ var namesOnly = persons
                     
 var percentageScadinavians = (persons
                                 .Where(person => person.Country == "Norway" || person.Country == "Valhal")
-                                .Count() / persons.Length) * 100
+                                .Count() / persons.Length) * 100;
 
 ___
 ## Events
