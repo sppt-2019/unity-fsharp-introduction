@@ -83,14 +83,14 @@ type MoveForward() =
 Her giver vi nogle eksempler på Unity-specifikke metoder du måske kan få brug for.
 
 #### Instantiate
-Når man instantierer i F# Unity gøres det på samme måde som i C#.
-```fsharp
+Instantiering i C# Unity gøres det på denne måde. 
+```csharp
     //Type 'GameObject' via casting
-    let gObj = GameObject.Instantiate(prefab, this.transform.position, Quaternion.identity) :?> GameObject
+    gObj = GameObject.Instantiate(prefab, transform.position, Quaternion.identity) :?> GameObject
 ```
-```fsharp
+```csharp
     //Type 'GameObject' via generics
-    let gameObject = GameObject.Instantiate<GameObject>(prefab, this.transform.position, Quaternion.identity)
+    gameObject = GameObject.Instantiate<GameObject>(prefab, transform.position, Quaternion.identity)
 ```
 
 #### Component referencer
