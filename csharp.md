@@ -18,7 +18,7 @@ string c = "John"   // Eksplicit string variabel
 ```
 
 ### Editor variable
-Hvis du vil erklære en variabel, som kan ændres i Unity's Editor skal den være __mutable__ og __serializable__:
+Hvis du vil erklære en variabel, som kan ændres i Unity's Editor skal den være __serializable__:
 ```csharp
 [SerializeField]
 public float Variable = 5.0f
@@ -28,7 +28,6 @@ I nogle tilfælde vil du måske undgå at give en variabel en værdi med det sam
 [SerializeField]
 public float Variable;
 ```
-Dette er fordi F# skal kunne udregne variablens type. Typen skal angives da den ikke kan gætte typen uden.
 ___
 ## Erklæring af typer (klasser)
 ```csharp
