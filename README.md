@@ -120,7 +120,7 @@ Her giver vi nogle eksempler på Unity-specifikke metoder du måske kan få brug
 Når man instantierer i F# Unity gøres det på samme måde som i C#.
 ```fsharp
     //Type 'GameObject' via casting
-    let gObj = GameObject.Instantiate(prefab, this.transform.position, Quaternion.identity) :?> GameObject
+    let gObj = GameObject.Instantiate(prefab, this.transform.position, Quaternion.identity) as GameObject
 ```
 ```fsharp
     //Type 'GameObject' via generics
