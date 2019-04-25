@@ -96,33 +96,39 @@ Instantiering i C# Unity gøres det på denne måde.
 #### Component referencer
 Ligesom i C# er der to måder at få referencer til Components på: I editoren med `[<SerializeField>]` eller i koden med `GetComponent<T>`.
 
-```fsharp
-    //Skal sættes i editoren
-    [<SerializeField>]
-    let mutable myRigidbody:Rigidbody2D = null
+```csharp
+    //Sættes i editoren
+    [SerializeField]
+    public Rigidbody2D MyRigidbody;
 ```
 
-```fsharp
-    //Skal sættes i koden
-    let mutable myRigidbody:Rigidbody2D = null
+```csharp
+    //Sættes med kode
+    public Rigidbody2D MyRigidbody;
 
-    member this.Start() =
-        myRigidbody <- this.GetComponent<Rigidbody2D>()
+    
+    public void Start() 
+    {
+        MyRigidbody = GetComponent<Rigidbody2D>()
+    }
 ```
 <!--
 #### MonoBehaviour Messages
 Metoder som `Awake`, `Start` og `Update` og Kollision-metoder er alle kaldt Messages i Unity. Det samme gælder for f.eks collision metoder, derfor skal de alle defineres på samme måde. Du kan finde en liste af disse metoder på [Unitys dokumentation for MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html). Her giver vi eksempler på `OnCollisionEnter2D` og `OnMouseDown`
 
-```fsharp
-member this.OnCollisionEnter2D(collision:Collision2D) =
-    if collision.gameObject.CompareTag("Player") then
-        Debug.Log "Ramte spiller, du tabte!"
+```csharp
+void OnCollisionEnter2D(Collision2D collision) =
+    if (collision.gameObject.CompareTag("Player"))
+    {
+        Debug.Log("Ramte spiller, du tabte!");
+    }
     else
-        let msg = sprintf "Ramte en %s" collision.gameObject.tag
-        Debug.Log msg
+    {
+        Debug.Log($"Ramte en {collision.gameObject.tag}");
+    }
 ```
 
-```fsharp
+```csharp
 member this.OnMouseDown() =
         SceneManager.LoadScene("Min scene")
 ```
@@ -176,63 +182,113 @@ ___
 I C# for at lave pardannelse tuple af flere typer skal man deklarere typerne med variablen først, efterfuglt af selve værdien på hver enkel variable i tuplen. Dette bliver så sat sammen til en ny tuple.
 
 ```csharp
-(int age, float height) = (23, 1.77);
+// Ny syntaks for tuples
+var personTuple = (23, 1.77f); // Implicitte typer
+var (int, float) personTuple = (23, 1.77f); // Eksplicitte typer
+
+// Gammel syntaks for tuples
+var = new Tuple<int, float>(23, 1.77f); // Implicitte typer
+Tuple<int, float> personTuple = new Tuple<int, float>(23, 1.77f); // Eksplicitte typer
+
+
+// Tuples kan udpakkes så de er lettere at bruge
+(int age, float height) = (23, 1.77f);
 ```
 Ovenstående deklarerer en tuple med første element som integer og andet element som en float.
 ___
-## Map-reduce
-To vigtige koncepter i funktionel programmering, som vi har berørt en smule her, er map og reduce. Begge koncepterne behandler samlinger. **Map** transformerer alle elementerne i en liste og returnerer en ny samling og **reduce** reducerer alle elementerne i en samling til ét element.
+## LINQ
+I C# er behandling af samlinger af data meget let og elegant med LINQ
 
-Vi kan foreksempel bruge map til at udregne kvadratet af alle elementer af en liste:
-```fsharp
-let sqList = [1..5] |> List.map (fun i -> float32(i) ** 2.0f)
-```
-Og reduce til at summere alle elementerne i listen:
-```fsharp
-let sum = [1..10] |> List.reduce (fun acc elm -> acc + elm)
-```
-Eller som vi så tidligere:
-```fsharp
-let sum = [1..10] |> List.sum
-```
+```csharp
+class Person
+{
+    public string Name;
+    public int Age;
+    public string Country;
+    
+    public Person(string name, int age, string country)
+    {
+        Name = name;
+        Age = age;
+        Country = country;
+    }
+}
 
+var persons = new Person[] 
+{
+    new Person("Daniel", 23, "The Netherlands"),
+    new Person("Malte", 25, "Norway"),
+    new Person("Charlie", 19, "Germany"),
+    new Person("Thomas", 25, "Norway"),
+    new Person("Balder", 35, "Valhal"),
+    new Person("Magnus", 18, "The Netherlands"),
+    new Person("Thor", 23, "Valhal"),
+    new Person("Odin", 90, "Valhal"),
+};
+
+var asgardians = persons
+                    .Where(person => person.Country == "Valhal")
+                    .OrderBy(person => person.Name)
+                    .ThenBy(person => person.Age);
+                    
+var mayDrinkInTheUS = persons
+                        .Where(person => person.Age >= 21)
+                        .OrderBy(person => person.Country);
+                    
+var averageDutchAge = persons
+                        .Where(person => person.Country == "The Netherlands")
+                        .Average(person => person.Age);
+                        
+var namesOnly = persons
+                    .Select(person => person.Name);
+                    
+var percentageScadinavians = (persons
+                                .Where(person => person.Country == "Norway" || person.Country == "Valhal")
+                                .Count() / persons.Length) * 100
 
 ___
 ## Events
-Events fungere cirka på samme måde som i C#. Dog skal et event altid have et argument med. Så når man ikke er interesseret at give et argument med, benytter man enten `unit` eller wildcard `_` (så kan man ignorere typen).
-```fsharp
-    let event = new Event<_>()
-    let Event = event.Publish
-    
-    let eventMedParameter = new Event<GameObject>()
-    let EventMedParameter = eventMedParameter.Publish
+For at erklære et event i en given klasse skal man have to ting. Først skal eventet navngives og derudover skal man huske at `Invoke` eventet in en metode
+```csharp
+public event EventHandler StuffHappened;
+
+private void ProcessStuff()
+{
+    // ...
+    var blah = DoStuff();
+    if (blah.HasStartedHappening)
+    {
+        StuffHappened?.Invoke(this, EventArgs.Empty);
+    }
+}
 ```
 
-Handlers skal tilføjes som en funktion. Hvis ikke din funktion bruger parametre (som `myEventHandler` herunder) skal den have unit `()` med uanset. 
+Handlers skal tilføjes som en funktion.
 Hvis du derimod er interesseret i at give en parameter med kan man benytte et lambda udtryk, se hvor `myParameterEventHandler` bliver tilføjet, efter `Debug.Log` i `Start`.
-```fsharp
-let handleEvent () =
-        Debug.Log("Raised empty event!")
+```csharp
+// Man kan subscribe til et event med et lambda-udtryk, en anonym metode eller en delegate:
+StuffHappened += (s, e) => Debug.Log("Stuff just happened!");
 
-let handleEventMedParameter gameObject =
-        Debug.Log(gameObject.name)   
-       
-member this.Start() =
-    Event.AddHandler(Handler<_>(handleEvent))
-    EventMedParameter.AddHandler(Handler<GameObject>(handleEventMedParameter))
+// Men hvis man også vil kunne unsubscribe, skal man bruge en navngiven handler funktion:
+public void OnStuffHappened(object sender, EventArgs args) => Debug.Log("Stuff just happened!");
+
+StuffHappened += OnStuffHappened; // subscribe til event
+StuffHappened -= OnStuffHappened; // unsubscribe fra event
 ```
-For at raise eller trigger et event kaldes `.Trigger(...)` på eventet.
-```fsharp
-member this.Update() =
-    if(Input.GetButtonDown("Jump")) then
-        event.Trigger()                         //Ingen parameter (altså et event<unit>
-        eventMedParameter.Trigger(somePrefab)   //Parameter med typen GameObject
-```
-Alternativt kan du bruge lambda-funktioner til at tilføje event-handlers:
-```fsharp
-member this.Start() =
-    Event.AddHandler(Handler<_>(fun _ e -> Debug.Log("event triggered")))
-    EventMedParameter.AddHandler(Handler<GameObject>(fun _ g -> Debug.Log(g.name)))
+
+I en Unity kontekst:
+```csharp
+public event EventHandler JumpPressed;
+public event EventHandler FirePressed;
+
+void Update()
+{
+    if (Input.GetButtonDown("Jump"))
+        JumpPressed?.Invoke(this, EventArgs.Empty);
+        
+    if (Input.GetButtonDown("Fire1"))
+        FirePressed?.Invoke(this, EventArgs.Empty);
+}
 ```
 ___
 
