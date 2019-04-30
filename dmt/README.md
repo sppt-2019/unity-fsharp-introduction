@@ -59,7 +59,7 @@ ___
 
 ## Opgave 2
 #### Skydning del 1 - `Player` - _Events, Input_
-- Tilføj et event på `Player`-klassen som bliver _triggered_ når der trykkes knappen `Fire1`
+- Tilføj et event på `Player`-klassen som bliver _triggered_ når der trykkes knappen: `Input.GetButtonDown("Fire1")`
 - Tilføj en _handler_ til eventet som printer "Fired weapon!" med `Debug.Log`
   - Vi tilføjer flere handlers i de senere opgaver
 
