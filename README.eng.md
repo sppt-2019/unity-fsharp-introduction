@@ -17,8 +17,8 @@ All datatypes we know from C# can also be used in F#. Declaration of variables i
 let a = 5             // Integer variable
 let mutable b = 5.0f  // Mutable float32 variable
 let c = "John"        // String variable
-let d:bool = true     // Eksplicitly typed boolean variable
-let e:float = true    // Eksplicitly typed float64 (double) variable
+let d:bool = true     // Explicitly typed boolean variable
+let e:float = true    // Explicitly typed float64 (double) variable
 ```
 _A `mutable` variable can be overwritten with a new value, which is not possible without it being `mutable`_
 
@@ -36,15 +36,16 @@ val mutable Variable:float32
 
 ___
 ## Type casting and converion
-Since F# is a strongly typed language det vil ofte være nødvendigt at konvertere variable til den ønskede type. En type konvertering fra `int` til `float32`:
+Since F# is a strongly typed language, you will often have to cast or convert a numeric value of a given type to another numeric type.
+A common example from Unity F# development, is the conversion of an `int` to a `float32`:
 ```fsharp
 let i = 14
 let f = float32 i
 ```
-_I F# er alle konverteringer eksplicitte, hvorimod i C# er der implicitte konverteringer fra nogle typer. F.eks `int` til `float`
+_In F#, all conversions and casts needs to be explicit. F.x. `int` to `float32`_
 
 ___
-## Erklæring af typer (klasser)
+## Declaration of types (classes)
 ```fsharp
 open UnityEngine
 
@@ -57,23 +58,25 @@ type MyType() =
     member this.Start() =
         Debug.Log("MonoBehaviour says: " + Message)
 ```
-Denne stump kode erklærer en `MonoBehaviour`, som har én instansvariabel `Message`, der bliver printet når Unity's Editor startes. `SerializeField` betyder at instansvariablen `Message` bliver tilgængelig i Unity's Editor.
+The above snippet declares a type called `MyType` which inherits from `MonoBehaviour`. The type has a member-field, `Message`, which is printed to the debug log when the game is started.
+The `SerializeField`-attribute makes it possible to change it field from the Unity Editor.
 
 <div class="note-box">
-    For at kunne nedarve fra <code>MonoBehaviour</code> skal man <i>åbne</i> UnityEngine ( <code>open UnityEngine</code> ), ligesom man i C# skal <i>bruge</i> UnityEngine ( <code>using UnityEngine;</code> )
+    To inherit from <code>MonoBehaviour</code>, you have to <i>open</i> UnityEngine ( <code>open UnityEngine</code> ), just like you would slap a `using` directive with <code>MonoBehaviour</code> at the top of your C# files. In C# we <b><i>use</i></b> libraries, and in F# we <b><i>open</i></b> libraries
 </div>
 
 ___
-## Funktioner & metoder
-I F# findes der både funktioner og metoder. Funktioner er ikke knyttet til nogen klasseinstans, hvilket betyder at du ikke kan tilgå `this` i funktioner (næsten ligesom `static` metoder i C#). Metoder er bundet på klasseinstanser og fungerer som vi kender det fra C#.
+## Functions and methods
+F# supports both functions and methods. F# functions are not associated with any type, and can exists on their own in a module. In C#, the closest thing to functions are the static member methods, which should be considered functions and not methods, since they do **not** operate on an instance. Calling and declaring methods in F# requires the explicit use of `this`. 
 
-### Funktioner
-Her erklærer vi en funktion, som tager en liste af tal og summerer dem efter de er blevet opløftet i `n`:
+### Funktions
+Here we declare a function that takes a list of floats as input, calculates the power of `n` of each and then sums them.
 ```fsharp
 let sumInPowerN (nums:float32 list) (n:float32) =
     List.reduce (fun acc i -> acc + Mathf.Pow(i, n)) nums
 ```
-Implicitte typer virker i nogle tilfælde også på funktioner, men compileren kan sommetider blive lidt forvirret og give nogle mystiske fejlbeskeder, så det kan ofte være en god idé at erklære deres typer eksplicit. Ovenstående funktion kunne også erklæres med:
+In F#, it is often not necessary to be explicit about the types as it has decent type inference. Sometimes it is necessary, because the current usage of a function or field isn't enought for the compiler to be able to 
+Implicitte types can  virker i nogle tilfælde også på funktioner, men compileren kan sommetider blive lidt forvirret og give nogle mystiske fejlbeskeder, så det kan ofte være en god idé at erklære deres typer eksplicit. Ovenstående funktion kunne også erklæres med:
 ```fsharp
 let sumInPowerN nums n = [...]
 ```
