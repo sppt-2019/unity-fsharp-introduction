@@ -21,7 +21,8 @@ Unity projects that you have to use for the excercises can be foud on GitHub, wh
 - [C# Unity project](https://github.com/sppt-2k19/unity-testing/archive/csharp.zip)
 
 The plugin requires `dotnet`
-- [Download to Windows](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.203-windows-x64-installer)
+- [Download for Windows](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.203-windows-x64-installer)
+- [Download for macOS](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.106-macos-x64-installer)
 - [Install on Linux](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/sdk-current)
 
 **When you have solved a excercise, you have to answer a section in the questionarie**
