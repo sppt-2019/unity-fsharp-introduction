@@ -1,38 +1,45 @@
 ## General information about F#
-F# er et funktionelt programmeringssprog som kører i .NET Platformen sammen med C#. Eftersom F# er funktionelt betyder det at næsten alt betragtes som funktioner og funktionskald. F# er desuden _pure_ som standard, hvilket betyder at variable ikke må ændres efter de er blevet erklæret. Syntaksen i F# er inspireret af OCaml og Haskell og er indentations-baseret i stedet for med curly braces ( `{` og `}` ), som vi kender det fra C#.
+F# is a programming language of the functional paradigm, and runs on the .NET platform together with C# and VB.NET.
+Since F# is in the functional paradigm, almost everything is considered functions and functioncalls. F# is by default _pure_ which means that the value of a variable cannot be changed after they are declared.
+F#'s syntax is heavily inspired by OCaml and Haskell, and is indentation-based instead of using curly braces ( `{` og `}` ).
+
+An important thing be aware of is that F# uses explicit membership instead of implicit, as we know it from C#.
+That means that it always is necessary to use `this` when working member fields and -functions.
 
 En ting der er vigtig at være opmærksom på i F# i forhold til C# er at der er eksplicit membership. I C# vil det være typisk i et `GameObject` at kalde `Destroy` hvis vi ønsker at fjerne et objekt. I dette kald er det implicit at `Destroy`-metoden er en statisk metode på klassen `GameObject`. I F# må vi være eksplicitte og derfor kalde `GameObject.Destroy`. Det samme gælder med metoder på objekter, som vi altid skal kalde med `this.Metode`.
 
-Dette dokument giver en hurtig introduktion til F# og hvordan det kan bruges i Unity. Vi har også skrevet et dokument, hvor vi beskriver [hvordan Functional Reactive Programming kan bruges i Unity](frp.md).
+
+
+
+This documenent gives a quick introduction to F# and basic of F# in Unity.
 
 ___
-## Datatyper og variable
-Alle datatyper som du kender fra C# kan også bruges i F#. Variabelerklæring i F# er næsten det samme som i C#, den eneste forskel er at vi bruger `let` i stedet:
-
+## Datatypes and variables
+All datatypes we know from C# can also be used in F#. Declaration of variables is close to being the same as C#, but `let` is used instead of `var`:
 ```fsharp
-let a = 5             // Integer variabel
-let mutable b = 5.0f  // Overskrivbar float32 variabel
-let c = "John"        // String variabel
-let d:bool = true     // Eksplicit typet boolsk variabel
+let a = 5             // Integer variable
+let mutable b = 5.0f  // Mutable float32 variable
+let c = "John"        // String variable
+let d:bool = true     // Eksplicitly typed boolean variable
+let e:float = true    // Eksplicitly typed float64 (double) variable
 ```
-_En `mutable` variabel kan overskrives, hvorimod en almindelig ikke kan overskrives_
+_A `mutable` variable can be overwritten with a new value, which is not possible without it being `mutable`_
 
-### Editor variable
-Hvis du vil erklære en variabel, som kan ændres i Unity's Editor skal den være __mutable__ og __serializable__:
+### Editor variables
+If you need to declare a variable that kan be set/changed from the Unity Editor, it has to be both __mutable__ and __serializable__:
 ```fsharp
 [<SerializeField>]
 let mutable Variable = 5.0f
 ```
-I nogle tilfælde vil du måske undgå at give en variabel en værdi med det samme. Så skal variablen erklæres på denne måde:
+Sometimes it might be practical to omit assigning a value at declaration time. For that, the `DefaultValue`-attribute will allow omitting the value and assigns the field the default value of the type specified.
 ```fsharp
 [<DefaultValue>]
 val mutable Variable:float32
 ```
-Dette er fordi F# skal kunne udregne variablens type. Typen skal angives da den ikke kan gætte typen uden.
 
 ___
-## Type konvertering
-F# er et stærkt typet sprog og det vil ofte være nødvendigt at konvertere variable til den ønskede type. En type konvertering fra `int` til `float32`:
+## Type casting and converion
+Since F# is a strongly typed language det vil ofte være nødvendigt at konvertere variable til den ønskede type. En type konvertering fra `int` til `float32`:
 ```fsharp
 let i = 14
 let f = float32 i
