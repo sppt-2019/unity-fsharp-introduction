@@ -18,7 +18,7 @@ let a = 5             // Integer variable
 let mutable b = 5.0f  // Mutable float32 variable
 let c = "John"        // String variable
 let d:bool = true     // Explicitly typed boolean variable
-let e:float = true    // Explicitly typed float64 (double) variable
+let e:float = 4.2    // Explicitly typed float64 (double) variable
 ```
 _A `mutable` variable can be overwritten with a new value, which is not possible without it being `mutable`_
 
