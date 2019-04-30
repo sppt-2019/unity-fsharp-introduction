@@ -4,8 +4,8 @@ C# is a object orientetet programming language that runs in the .NET Platform. S
 In C# there is implicit membership. In C# it would be typical for a `GameObject` to call `Destroy` if we wished to remove a object. In this call it is implicit that the `Destroy`-method is a static method on the class `GameObject`. It is the same case with methods on objects, we will always need to call them with a `Metode`.
 
 ___
-## Datatyper og variable
-I C# kan typen ofte infereres så man ikke behøver være eksplicit omkring den, det gøres med `var`. Typen kan som udgangspunkt altid infereres hvis der assignes noget til den med `=`. Hvis ikke skal typen altid angives.
+## Datatypes og variables
+In C# types can often be inferenced such that there is no need to be explicit about it, this is done with `var`. The type can as a starting point always be inferenced if it is assigned to something with `=`. If not the type always need to be stated.
 
 ```csharp
 var a = 5;           // Implicit integer variabel
@@ -17,19 +17,19 @@ float b = 5.0f;      // Eksplicit float variabel
 string c = "John";   // Eksplicit string variabel
 ```
 
-### Editor variable
-Hvis du vil erklære en variabel, som kan ændres i Unity's Editor skal den være __serializable__:
+### Editor variables
+If you want to declare a variable, that can be changed in Unity's Editor it needs to be __serializable__:
 ```csharp
 [SerializeField]
 public float Variable = 5.0f;
 ```
-I nogle tilfælde vil du måske undgå at give en variabel en værdi med det samme. Så skal variablen erklæres på denne måde:
+In some instances you might want to avoid giving a variable a value right away. Then the variable need to be declared this way:
 ```csharp
 [SerializeField]
 public float Variable;
 ```
 ___
-## Erklæring af typer (klasser)
+## Declaring of types (class)
 ```csharp
 using UnityEngine;
 
@@ -44,14 +44,14 @@ class MyType : MonoBehaviour
     }
 }
 ```
-Denne stump kode erklærer en `MonoBehaviour`, som har én instansvariabel `Message`, der bliver printet når Unity's Editor startes. `SerializeField` betyder at instansvariablen `Message` bliver tilgængelig i Unity's Editor.
+This peice of code decalres a `MonoBehaviour`, that has a instancevariabel `Message`, such that it is printed when Unity's Editor starts. `SerializeField` means that the instancevariable `Message` becomes availible in Unity's Editor.
 
 <div class="note-box">
     For at kunne nedarve fra <code>MonoBehaviour</code> skal man <i>bruge</i> ( <code>using UnityEngine;</code> )
 </div>
 
 ___
-## Funktioner & metoder
+## Functions & Methods
 I F# findes der både funktioner og metoder. Funktioner er ikke knyttet til nogen klasseinstans, hvilket betyder at du ikke kan tilgå `this` i funktioner (næsten ligesom `static` metoder i C#). Metoder er bundet på klasseinstanser og fungerer som vi kender det fra C#.
 
 ### Funktioner
