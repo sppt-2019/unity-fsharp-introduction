@@ -8,13 +8,13 @@ ___
 In C# types can often be inferenced such that there is no need to be explicit about it, this is done with `var`. The type can as a starting point always be inferenced if it is assigned to something with `=`. If not the type always need to be stated.
 
 ```csharp
-var a = 5;           // Implicit integer variabel
-var b = 5.0f;        // Implicit float variabel
-var c = "John";      // Implicit string variabel
+var a = 5;           // Implicit integer variable
+var b = 5.0f;        // Implicit float variable
+var c = "John";      // Implicit string variable
 
-int a = 5;           // Eksplicit integer variabel
-float b = 5.0f;      // Eksplicit float variabel
-string c = "John";   // Eksplicit string variabel
+int a = 5;           // Eksplicit integer variable
+float b = 5.0f;      // Eksplicit float variable
+string c = "John";   // Eksplicit string variable
 ```
 
 ### Editor variables
@@ -98,13 +98,13 @@ Instanciating in C# Unity is done this way.
 Like in C# there is two ways to reference to Components: In the editor with `[<SerializeField>]` or in the code with `GetComponent<T>`.
 
 ```csharp
-    //Sættes i editoren
+    //Done in editor
     [SerializeField]
     public Rigidbody2D MyRigidbody;
 ```
 
 ```csharp
-    //Sættes med kode
+    //Done in code
     public Rigidbody2D MyRigidbody;
 
     public void Start() 
@@ -158,16 +158,16 @@ ___
 In C# to be able to make pairing tuple of multiple types, you have to declare the types with variables first, followed by the value on each variable in the tuple. 
 
 ```csharp
-// Ny syntaks for tuples
+// New syntax for tuples
 var personTuple = (23, 1.77f);          // Implicitte typer
 (int, float) personTuple = (23, 1.77f); // Eksplicitte typer
 
-// Gammel syntaks for tuples
+// Old syntax for tuples
 var personTuple = new Tuple<int, float>(23, 1.77f); // Implicitte typer
 Tuple<int, float> personTuple = new Tuple<int, float>(23, 1.77f); // Eksplicitte typer
 
 
-// Tuples kan udpakkes så de er lettere at bruge
+// Tuples can be unpacked such as they are easier to use
 (int age, float height) = personTuple;
 (var age, var height) = personTuple;
 ```
@@ -243,14 +243,14 @@ Handlers need to be added as functions.
 If you are interested in provide a parameter with which to use in a lambda expression, see where `myParameterEventHandler` gets added, after `Debug.Log` in `Start`.
 
 ```csharp
-// Man kan subscribe til et event med et lambda-udtryk, en anonym metode eller en delegate:
+// You can subscribe to events with a lambda-expression, a anonymous method or a delegate:
 StuffHappened += (s, e) => Debug.Log("Stuff just happened!");
 
-// Men hvis man også vil kunne unsubscribe, skal man bruge en navngiven handler funktion:
+// But if you also want to unsubscribe, you need to use a namegiven handler function:
 public void OnStuffHappened(object sender, EventArgs args) => Debug.Log("Stuff just happened!");
 
-StuffHappened += OnStuffHappened; // subscribe til event
-StuffHappened -= OnStuffHappened; // unsubscribe fra event
+StuffHappened += OnStuffHappened; // subscribe to event
+StuffHappened -= OnStuffHappened; // unsubscribe from event
 ```
 
 In a Unity context:
