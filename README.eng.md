@@ -4,10 +4,7 @@ Since F# is in the functional paradigm, almost everything is considered function
 F#'s syntax is heavily inspired by OCaml and Haskell, and is indentation-based instead of using curly braces ( `{` og `}` ).
 
 An important thing be aware of is that F# uses explicit membership instead of implicit, as we know it from C#.
-That means that it always is necessary to use `this` when working member fields and -functions.
-
-En ting der er vigtig at være opmærksom på i F# i forhold til C# er at der er eksplicit membership. I C# vil det være typisk i et `GameObject` at kalde `Destroy` hvis vi ønsker at fjerne et objekt. I dette kald er det implicit at `Destroy`-metoden er en statisk metode på klassen `GameObject`. I F# må vi være eksplicitte og derfor kalde `GameObject.Destroy`. Det samme gælder med metoder på objekter, som vi altid skal kalde med `this.Metode`.
-
+That means that it always is necessary to use `this` when working member fields and -functions. This also means that when calling a inherited static function, it is necassary to use the name of the class containing it aswell. A Unity example of this is `Destroy` which is a static function of `GameObject`. To call it from any class inheriting from `MonoBehaviour`, we need to use `GameObject.Destroy(..)` instead of just `Destroy(..)`.
 
 
 
