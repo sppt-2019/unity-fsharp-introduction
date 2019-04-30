@@ -127,7 +127,7 @@ ___
 ## Exercise 6
 #### Winning - `Planet` - _Behaviour, state-management_
 - Add code such that the `Planet`-class can keep track of how many enemies there is left via the tag **Enemy**
-  -When all enemies is dead the scene should shift to `Done`
+  - When all enemies is dead the scene should shift to `Done`
 
 <br />
 <br />
@@ -138,12 +138,12 @@ ___
 <br />
 <br />
 
-## Opgave 7
-#### At vinde - `Enemy` - _Behaviour, state-management_
-- Tilføj kode så fjenderne bevæger sig fra side til side, synkront.
-  - Du kan f.eks. bruge et statisk event eller et _enemies_-object
-- Når de er nået ud til en af siderne skal de, udover at skifte retning, rykke én unit ned (Vector3.down)
-- Når de er nået helt ned til bunden af skærmen, skal man tabe spillet, og der skal skiftes til scenen `Dead`
+## Execise 7
+#### Losing - `Enemy` - _Behaviour, state-management_
+- Add code such that enemies move from side to side, synchronized 
+  - You can E.G. use a static event or a _enemies_-object
+- When they reach the side of the screen they should, no only shift direction, but also move one unit down (Vector3.down)
+- When they reach the bottom of the screen, you should lose the game, and you should shift to the scene `Dead`
 
 <div class="invader-crop">
   <video src="space-invader-4.webm" style="display:block;margin:auto;max-width:60%" muted autoplay loop></video>
