@@ -44,7 +44,7 @@ class MyType : MonoBehaviour
     }
 }
 ```
-This peice of code decalres a `MonoBehaviour`, that has a instancevariabel `Message`, such that it is printed when Unity's Editor starts. `SerializeField` means that the instancevariable `Message` becomes availible in Unity's Editor.
+This piece of code decalres a `MonoBehaviour`, that has a instancevariabel `Message`, such that it is printed when Unity's Editor starts. `SerializeField` means that the instancevariable `Message` becomes availible in Unity's Editor.
 
 <div class="note-box">
     For at kunne nedarve fra <code>MonoBehaviour</code> skal man <i>bruge</i> ( <code>using UnityEngine;</code> )
