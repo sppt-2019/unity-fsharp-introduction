@@ -106,10 +106,10 @@ ___
 <br />
 <br />
 
-## Opgave 5
-#### Ødelæggelse - `Bullet` & `Enemy` - _Collisions, Audio_
-- Tilføj kode på `Bullet`-klassen der gør at skuddet forsvinder efter at have ramt et fjendligt skib
-  - Det fjendtlige skib der bliver ramt skal også forsvinde (`Enemy`-klassen)
+## Exercise 5
+#### Descrution - `Bullet` & `Enemy` - _Collisions, Audio_
+- Add code on `Bullet`-class that makes it so the shot disappears after having hit the enemy ship
+  - The enemy ship that gets hit should also disappear (`Enemy`-class)
 
 <div class="invader-crop">
   <video src="space-invader-3.webm" style="display:block;margin:auto;max-width:60%" muted autoplay loop></video>
@@ -124,10 +124,10 @@ ___
 <br />
 <br />
 
-## Opgave 6
-#### At vinde - `Planet` - _Behaviour, state-management_
-- Tilføj kode så `Planet`-klassen kan holde styr på hvor mange fjender der er tilbage vha. tagget **Enemy**
-  - Når alle fjender er døde skal der skiftes til scenen `Done` 
+## Exercise 6
+#### Winning - `Planet` - _Behaviour, state-management_
+- Add code such that the `Planet`-class can keep track of how many enemies there is left via the tag **Enemy**
+  -When all enemies is dead the scene should shift to `Done`
 
 <br />
 <br />
