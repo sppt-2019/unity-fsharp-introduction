@@ -24,6 +24,7 @@ Unity projekterne som skal bruges til opgaverne kan findes på GitHub, hvor du k
 
 Vores plugin kræver `dotnet` SDK
 - [Download til Windows](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.203-windows-x64-installer)
+- [Download til macOS](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.106-macos-x64-installer)
 - [Installer på Linux](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/sdk-current)
 
 **Når du har løst en opgave, skal du besvare en sektion i spørgeskemaet**
