@@ -1,7 +1,7 @@
-## Generel information om C# & Unity
-C# er et objekt orienteret programmeringssprog som kører i .NET Platformen. Eftersom C# er Objekt orienteret betyder det at næsten alt betragtes som Objekter og funktionskald. Syntaksen i C# er inspireret af Smalltalk og C++ og er curly braces ( `{` og `}` ) baseret, istedet for indentations-baseret som vi kender det fra F#.
+## General information on C# & Unity 
+C# is a object orientetet programming language that runs in the .NET Platform. Since C# is a objekt orientet it means that almost everything is considered as objects and functioncalls. The syntax in C# is inspired by Smalltalk and C++ and is a curly braces ( `{` og `}` ) based, instead of indention-based like we know from F#.
 
-I C# er der er implicit membership. I C# vil det være typisk i et `GameObject` at kalde `Destroy` hvis vi ønsker at fjerne et objekt. I dette kald er det implicit at `Destroy`-metoden er en statisk metode på klassen `GameObject`. Det samme gælder med metoder på objekter, som vi altid skal kalde med en `Metode`.
+In C# there is implicit membership. In C# it would be typical for a `GameObject` to call `Destroy` if we wished to remove a object. In this call it is implicit that the `Destroy`-method is a static method on the class `GameObject`. It is the same case with methods on objects, we will always need to call them with a `Metode`.
 
 ___
 ## Datatyper og variable
