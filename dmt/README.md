@@ -142,7 +142,7 @@ ___
 <br />
 
 ## Opgave 7
-#### At vinde - `Enemy` - _Behaviour, state-management_
+#### At vinde 2 - `Enemy` - _Behaviour, state-management_
 - Tilføj kode så fjenderne bevæger sig fra side til side, synkront.
   - Du kan f.eks. bruge et statisk event eller et _enemies_-object
 - Når de er nået ud til en af siderne skal de, udover at skifte retning, rykke én unit ned (Vector3.down)
