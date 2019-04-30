@@ -69,7 +69,7 @@ ___
 ## Functions and methods
 F# supports both functions and methods. F# functions are not associated with any type, and can exists on their own in a module. In C#, the closest thing to functions are the static member methods, which should be considered functions and not methods, since they do **not** operate on an instance. Calling and declaring methods in F# requires the explicit use of `this`. 
 
-### Funktions
+### Functions
 Here we declare a function that takes a list of floats as input, calculates the power of `n` of each and then sums them.
 ```fsharp
 let sumInPowerN (nums:float32 list) (n:float32) =
