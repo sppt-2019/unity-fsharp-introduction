@@ -75,7 +75,7 @@ ___
 ## Opgave 3
 #### Skydning del 2 - `Player` - _Events, Prefab, Audio_
 - Tilføj et felt af type `GameObject` på `Player`-klassen som kan bruges fra Unity Editoren, og sæt den til at indeholde `Bullet`-prefabben
-- Tilføj en _handler_ der afspiller lyden `Shoot` når der skydes
+- Tilføj en _handler_ der afspiller lyden `Shoot` når der skydes. Der er allerede en `AudioSource` på Player prefabben
 
 <br />
 <br />
@@ -111,7 +111,7 @@ ___
 ## Opgave 5
 #### Ødelæggelse - `Bullet` & `Enemy` - _Collisions, Audio_
 - Tilføj kode på `Bullet`-klassen der gør at skuddet forsvinder efter at have ramt et fjendligt skib
-  - Det fjendtlige skib der bliver ramt skal også forsvinde (`Enemy`-klassen)
+  - Det fjendtlige skib der bliver ramt skal også forsvinde (`Enemy`-klassen). Der er allerede en BoxColidder2D på alle enemies. 
 
 <div class="invader-crop">
   <video src="space-invader-3.webm" style="display:block;margin:auto;max-width:60%" muted autoplay loop></video>
