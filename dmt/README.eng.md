@@ -36,10 +36,10 @@ The plugin requires `dotnet`
 <br />
 <br />
 
-## Opgave 1
-#### Basal bevægelse - `Player` - _Input_
-- Lav et script som bevæger dit **rumskib** venstre og højre, når der trykkes på <kbd>A</kbd>/<kbd>D</kbd> og <kbd>←</kbd>/<kbd>→</kbd>
-  - Spilleren skal ikke kunne gå udenfor skærm-området
+## Excercise 1
+#### Basic Movement - `Player` - _Input_
+- Make a script that moves your **spaceship** left and right, when the buttons are pressed <kbd>A</kbd>/<kbd>D</kbd> and <kbd>←</kbd>/<kbd>→</kbd>
+  - The player should not be able to move outside the screen-area
   
 <div class="invader-crop">
   <video src="space-invader-1.webm" style="display:block;margin:auto;max-width:60%" muted autoplay loop></video>
