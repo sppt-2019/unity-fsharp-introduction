@@ -52,33 +52,41 @@ Denne stump kode erklærer en `MonoBehaviour`, som har én instansvariabel `Mess
 
 ___
 ## Funktioner & metoder
-I F# findes der både funktioner og metoder. Funktioner er ikke knyttet til nogen klasseinstans, hvilket betyder at du ikke kan tilgå `this` i funktioner (næsten ligesom `static` metoder i C#). Metoder er bundet på klasseinstanser og fungerer som vi kender det fra C#.
-
-### Funktioner
-Her erklærer vi en funktion, som tager en liste af tal og summerer dem efter de er blevet opløftet i `n`:
-```fsharp
-let sumInPowerN (nums:float32 list) (n:float32) =
-    List.reduce (fun acc i -> acc + Mathf.Pow(i, n)) nums
-```
-Implicitte typer virker i nogle tilfælde også på funktioner, men compileren kan sommetider blive lidt forvirret og give nogle mystiske fejlbeskeder, så det kan ofte være en god idé at erklære deres typer eksplicit. Ovenstående funktion kunne også erklæres med:
-```fsharp
-let sumInPowerN nums n = [...]
-```
+I C# findes der både funktioner og metoder. Ofte bliver metoder også kaldt for funktioner i C#, men dette er ikke altid tilfældet. I denne test er det kun nødvendigt at benytte metoder.
+Funktioner er ikke knyttet til nogen klasseinstans, hvilket betyder at du ikke kan tilgå `this` i funktioner (næsten ligesom `static` metoder). Metoder er bundet på objekter, og fungerer som nok som du kender det fra C#.
 
 ### Metoder
-Metoder skal erklæres på en type og så kan man tilgå dens felter og properties:
+Metoder skal erklæres i en klasse. Metoder kan tilgå klassens felter properties. Her er både `Update` og `Move` metoder:
 
-```fsharp
+```csharp
 class MoveForward : MonoBehaviour
 {
-
     [SerializeField]
-    let mutable Speed = 8.0f
+    var Speed = 8.0f
 
-    member this.Update() =
-        this.transform.position <- this.transform.position + (this.transform.forward * Speed * Time.deltaTime)
+    void Update()
+    {
+        transform.position = Move(Speed);
+    }
+    
+    private Vector3 Move(float addSpeed)
+    {
+        return transform.position + (transform.forward * addSpeed * Time.deltaTime);
+    }
+        
 }
 ```
+
+### Funktioner
+Funktioner er sjældent brugt i C#, men der er forskel på dem og metoder.
+<!-- Her erklærer vi en funktion, som tager en liste af tal og summerer dem efter de er blevet opløftet i `n`: -->
+```csharp
+Func<int, int> multiplyByFive = num => num * 5;
+// Returns 35
+int result = multiplyByFive(7);
+```
+
+
 
 ### Unity-specifikke metoder
 Her giver vi nogle eksempler på Unity-specifikke metoder du måske kan få brug for.
@@ -87,29 +95,32 @@ Her giver vi nogle eksempler på Unity-specifikke metoder du måske kan få brug
 Instantiering i C# Unity gøres det på denne måde. 
 ```csharp
     //Type 'GameObject' via casting
-    gObj = GameObject.Instantiate(prefab, transform.position, Quaternion.identity) as GameObject;
+    gObj = Instantiate(prefab, transform.position, Quaternion.identity) as GameObject;
 ```
 ```csharp
     //Type 'GameObject' via generics
-    gameObject = GameObject.Instantiate<GameObject>(prefab, transform.position, Quaternion.identity);
+    gameObject = Instantiate<GameObject>(prefab, transform.position, Quaternion.identity);
 ```
 
 #### Component referencer
-Ligesom i C# er der to måder at få referencer til Components på: I editoren med `[<SerializeField>]` eller i koden med `GetComponent<T>`.
+Der er to måder at få referencer til Components på: I editoren med `public/[SerializeField]` eller i koden med `GetComponent<T>`.
 
 ```csharp
     //Sættes i editoren
-    [SerializeField]
     public Rigidbody2D MyRigidbody;
+    
+    //Sættes også i editoren
+     [SerializeField]
+    private BoxCollider2D colliderFromEditor;
 ```
 
 ```csharp
     //Sættes med kode
-    public Rigidbody2D MyRigidbody;
+    private Rigidbody2D MyRigidbody;
 
     public void Start() 
     {
-        MyRigidbody = GetComponent<Rigidbody2D>()
+        MyRigidbody = GetComponent<Rigidbody2D>();
     }
 ```
 <!--
@@ -143,7 +154,7 @@ for(int i = 0; i < 3; i++)
     sum += i;
 }
 ```
-I C# har vi også foreach løkker, til at itterer over en collection.
+I C# har vi også foreach løkker, til at iterere over en collection.
 
 ```csharp
 var sum = 0;
