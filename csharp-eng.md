@@ -80,11 +80,11 @@ class MoveForward : MonoBehaviour
 }
 ```
 
-### Unity-specifikke metoder
-Her giver vi nogle eksempler på Unity-specifikke metoder du måske kan få brug for.
+### Unity-specific methods
+Here we gives some examples of Unity-specific methods you might get a need to use.
 
 #### Instantiate
-Instantiering i C# Unity gøres det på denne måde. 
+Instanciating in C# Unity is done this way.
 ```csharp
     //Type 'GameObject' via casting
     gObj = GameObject.Instantiate(prefab, transform.position, Quaternion.identity) as GameObject;
@@ -94,8 +94,8 @@ Instantiering i C# Unity gøres det på denne måde.
     gameObject = GameObject.Instantiate<GameObject>(prefab, transform.position, Quaternion.identity);
 ```
 
-#### Component referencer
-Ligesom i C# er der to måder at få referencer til Components på: I editoren med `[<SerializeField>]` eller i koden med `GetComponent<T>`.
+#### Component reference
+Like in C# there is two ways to reference to Components: In the editor with `[<SerializeField>]` or in the code with `GetComponent<T>`.
 
 ```csharp
     //Sættes i editoren
@@ -135,7 +135,7 @@ member this.OnMouseDown() =
 -->
 
 ### Loops og ranges
-Der findes også loops i C#.
+There exist loops in C#.
 ```csharp
 var sum = 0;
 for(int i = 0; i < 3; i++)
@@ -143,7 +143,7 @@ for(int i = 0; i < 3; i++)
     sum += i;
 }
 ```
-I C# har vi også foreach løkker, til at itterer over en collection.
+We also have foreach loops in C#, to be able to iterate over a collection.
 
 ```csharp
 var sum = 0;
@@ -155,7 +155,7 @@ foreach (int element in Enumerable.Range(0, 3))
 ___
 
 ### Tuple Operatoren
-I C# for at lave pardannelse tuple af flere typer skal man deklarere typerne med variablen først, efterfuglt af selve værdien på hver enkel variable i tuplen. Dette bliver så sat sammen til en ny tuple.
+In C# to be able to make pairing tuple of multiple types, you have to declare the types with variables first, followed by the value on each variable in the tuple. 
 
 ```csharp
 // Ny syntaks for tuples
@@ -171,10 +171,10 @@ Tuple<int, float> personTuple = new Tuple<int, float>(23, 1.77f); // Eksplicitte
 (int age, float height) = personTuple;
 (var age, var height) = personTuple;
 ```
-Ovenstående deklarerer en tuple med første element som integer og andet element som en float.
+The code above declares a tuple where the first element is a integer and the second is a float.
 ___
 ## LINQ
-I C# er behandling af samlinger af data meget let og elegant med LINQ
+In C# treatment of a collection of data, is very easy and elegant with LINQ.
 
 ```csharp
 class Person
@@ -222,10 +222,10 @@ var namesOnly = persons
 var percentageScadinavians = (persons
                                 .Where(person => person.Country == "Norway" || person.Country == "Valhal")
                                 .Count() / persons.Length) * 100;
-
+```
 ___
 ## Events
-For at erklære et event i en given klasse skal man have to ting. Først skal eventet navngives og derudover skal man huske at `Invoke` eventet in en metode
+To be able to declare a event in a given class you have to make two things. First the event needs a name and then you need to remember to `Invoke` the event in a method.
 ```csharp
 public event EventHandler StuffHappened;
 
@@ -239,9 +239,9 @@ private void ProcessStuff()
     }
 }
 ```
+Handlers need to be added as functions.
+If you are interested in provide a parameter with which to use in a lambda expression, see where `myParameterEventHandler` gets added, after `Debug.Log` in `Start`.
 
-Handlers skal tilføjes som en funktion.
-Hvis du derimod er interesseret i at give en parameter med kan man benytte et lambda udtryk, se hvor `myParameterEventHandler` bliver tilføjet, efter `Debug.Log` i `Start`.
 ```csharp
 // Man kan subscribe til et event med et lambda-udtryk, en anonym metode eller en delegate:
 StuffHappened += (s, e) => Debug.Log("Stuff just happened!");
@@ -253,7 +253,7 @@ StuffHappened += OnStuffHappened; // subscribe til event
 StuffHappened -= OnStuffHappened; // unsubscribe fra event
 ```
 
-I en Unity kontekst:
+In a Unity context:
 ```csharp
 public event EventHandler JumpPressed;
 public event EventHandler FirePressed;
@@ -271,8 +271,7 @@ ___
 
 ## Concurrency
 
-Concurrency er et rimeligt omfattende emne og vi har derfor lavet separate filer.
+Concurrency is a reasonably comprehensive topic so we have covered it in a separate file.
+[Read about concurrency in C#](csharp-concurrency.md)
 
-[Læs om concurrency i C#](csharp-concurrency.md)
-
-[Læs om concurrency i F#](fsharp-concurrency.md)
+[Read about concurrency in F#](fsharp-concurrency.md)
