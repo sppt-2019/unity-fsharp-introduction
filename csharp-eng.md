@@ -272,6 +272,7 @@ ___
 ## Concurrency
 
 Concurrency is a reasonably comprehensive topic so we have covered it in a separate file.
+
 [Read about concurrency in C#](csharp-concurrency.md)
 
 [Read about concurrency in F#](fsharp-concurrency.md)
