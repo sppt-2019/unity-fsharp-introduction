@@ -1,34 +1,32 @@
 
-## Introduktion til Unity & C#
-Først og fremmest tak for din deltagelse i dette eksperiment. Vi vil starte med at understrege at eksperimentet ikke tester dine evner som programmør, men derimod hvor egnet F# og C# er til spiludvikling
+## Introduction
+First we want to thank you for participating in our experiment. We want to start with clearafying the experiment does not test, the person doing them or their skill as a programmer, but rather how suited F# and C# is to game development.
 
-Epic Games’ Tim Sweeney [[1]](https://groups.csail.mit.edu/cag/crg/papers/sweeney06games.pdf), og id Software’s John Carmark [[2]](http://www.gamasutra.com/view/news/169296/Indepth_Functional_programming_in_C.php) har længe opfordret til funktionel programmering i spiludviklingsverdenen
+Epic Games’ Tim Sweeney [[1]](https://groups.csail.mit.edu/cag/crg/papers/sweeney06games.pdf), and id Software’s John Carmark[[2]](http://www.gamasutra.com/view/news/169296/Indepth_Functional_programming_in_C.php) have long sugested to use functional programming in the game development world.
 
+F# has gotten af reputition for being a golden middleroad - between the object-orientetet and functional paradigme [[3]](https://fsharpforfunandprofit.com/posts/fsharp-is-the-best-enterprise-language/). Everything as a basis is _immutable_, but if it needed things can be made _mutable_. Functions is _pure_ as long as you don't use _mutable_ variables.
 
-F# har fået ry for at være nær den gyldne middelvej - mellem det objekt-orienterede og funktionelle paradigme [[3]](https://fsharpforfunandprofit.com/posts/fsharp-is-the-best-enterprise-language/). Alting er som udgangspunkt _immutable_, men hvis der er brug for det kan de gøres _mutable_. Funktioner er _pure_ så længe man holder sig fra at bruge _mutable_ variable
+In total there is 7 excercises in this survey, but it is not sure that you will solve all the excercises. Half of the time will be spent solving the excercises in F# and the rest of the time will be used on C#. The most important part is you get to try using both F# and C#.
 
+You can find a [sheet with examples from F#](https://sppt-2019.github.io/unity-fsharp-introduction/), that you can use to get inspiration to the excercises. You are free to ask if you have any questions about the excercises or if you feel you get stuck.
 
-Der er i alt 7 opgaver i sættet, men det er ikke sikkert at du når at løse alle opgaverne. Halvdelen af tiden bliver brugt på at løse opgaver i F# og resten bliver brugt på C#. Det vigtigste er at du når at prøve kræfter med både F# og C#
-
-Du kan finde et [ark med eksempler fra F#](https://sppt-2019.github.io/unity-fsharp-introduction/), som du kan bruge som inspiration til opgaverne. Spørg endelig hvis du er i tvivl om hvad opgaverne går ud på eller hvis du føler at du er gået i stå
-
-For at kunne bruge F# i unity skal man bruge en [Unity-pakke](https://sppt-2019.github.io/unity-fsharp-introduction/#brug-af-f-i-unity), som tilføjer menuen vist på billedet herunder. **Dog er pakken allerede installeret i de projekter du skal arbejde i idag**
+To be able to use F# in unity you have to use a [Unity-package](https://sppt-2019.github.io/unity-fsharp-introduction/#brug-af-f-i-unity), that adds a menu as shown in the picture below. **The package is already installed for this project you have to work with today**
 
 <img src="../tasks/images/fsharp-menu.png" style="display:block;margin: 0 auto; width: 40%;">
 
-_Når du har lavet ændringer i F# filerne skal du **huske at kompilere** det ved at klikke på `Compile F#` eller ved at trykke på <kbd>F6</kbd> i Unity_
+_When you have made changes in a F# file you have to **remember to complie** it, by clicking on the `Compile F#` or by pressing <kbd>F6</kbd> in Unity_
 
-Unity projekterne som skal bruges til opgaverne kan findes på GitHub, hvor du kan downloade/klone dem:
-- [F# Unity projekt](https://github.com/sppt-2k19/unity-testing/archive/fsharp.zip)
-- [C# Unity projekt](https://github.com/sppt-2k19/unity-testing/archive/csharp.zip)
+Unity projects that you have to use for the excercises can be foud on GitHub, where you can download/clone them:
+- [F# Unity project](https://github.com/sppt-2k19/unity-testing/archive/fsharp.zip)
+- [C# Unity project](https://github.com/sppt-2k19/unity-testing/archive/csharp.zip)
 
-Vores plugin kræver `dotnet`
-- [Download til Windows](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.203-windows-x64-installer)
-- [Installer på Linux](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/sdk-current)
+The plugin requires `dotnet`
+- [Download to Windows](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.203-windows-x64-installer)
+- [Install on Linux](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/sdk-current)
 
-**Når du har løst en opgave, skal du besvare en sektion i spørgeskemaet**
-- [Link til spørgeskema](https://forms.gle/K7mBzR8TGmD5SzMM7)
-  - Dit ID udleveres
+**When you have solved a excercise, you have to answer a section in the questionarie**
+- [Link to questionarie](https://forms.gle/K7mBzR8TGmD5SzMM7)
+  - Your ID will be handed out
 
 <br />
 <br />
@@ -37,7 +35,6 @@ Vores plugin kræver `dotnet`
 <br />
 <br />
 <br />
-
 
 ## Opgave 1
 #### Basal bevægelse - `Player` - _Input_
