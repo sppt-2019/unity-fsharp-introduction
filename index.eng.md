@@ -1,3 +1,5 @@
+<span style="float: right"><b><a href="/index.html">dan</a></b>/eng</span>
+
 ## General information about F#
 F# is a programming language of the functional paradigm, and runs on the .NET platform together with C# and VB.NET.
 Since F# is in the functional paradigm, almost everything is considered functions and functioncalls. F# is by default _pure_ which means that the value of a variable cannot be changed after they are declared.
