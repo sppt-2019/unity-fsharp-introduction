@@ -14,7 +14,7 @@ This documenent gives a quick introduction to F# and basic of F# in Unity.
 
 ___
 ## Datatypes and variables
-All datatypes we know from C# can also be used in F#. Declaration of variables is almost the same as in C#, but we use `let` is used instead of `var`:
+All datatypes we know from C# can also be used in F#. Declaration of variables is almost the same as in C#, but we use `let` instead of `var`:
 ```fsharp
 let a = 5             // Integer variable
 let mutable b = 5.0f  // Mutable float32 variable
