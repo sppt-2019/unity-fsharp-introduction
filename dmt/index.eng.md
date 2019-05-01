@@ -1,4 +1,4 @@
-<span style="float: right"><b><a href="/unity-fsharp-introduction/dmt/index.html">dan</a></b>/eng</span>
+<span style="float: right"><b><a href="/unity-fsharp-introduction/dmt/">dan</a></b>/eng</span>
 
 ## Introduction
 First we want to thank you for participating in our experiment. We want to start with clearafying the experiment does not test, the person doing them or their skill as a programmer, but rather how suited F# and C# is to game development.
