@@ -139,7 +139,7 @@ ___
 <br />
 <br />
 
-## Execise 7
+## Exercise 7
 #### Losing - `Enemy` - _Behaviour, state-management_
 - Add code such that enemies move from side to side, synchronized 
   - You can E.G. use a static event or a _enemies_-object
