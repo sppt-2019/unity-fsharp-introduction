@@ -62,7 +62,7 @@ Metoder skal erklæres i en klasse. Metoder kan tilgå klassens felter propertie
 class MoveForward : MonoBehaviour
 {
     [SerializeField]
-    var Speed = 8.0f
+    float Speed = 8.0f
 
     void Update()
     {
@@ -94,34 +94,34 @@ Her giver vi nogle eksempler på Unity-specifikke metoder du måske kan få brug
 #### Instantiate
 Instantiering i C# Unity gøres det på denne måde. 
 ```csharp
-    //Type 'GameObject' via casting
-    gObj = Instantiate(prefab, transform.position, Quaternion.identity) as GameObject;
+//Type 'GameObject' via casting
+var gObj = Instantiate(prefab, transform.position, Quaternion.identity) as GameObject;
 ```
 ```csharp
-    //Type 'GameObject' via generics
-    gameObject = Instantiate<GameObject>(prefab, transform.position, Quaternion.identity);
+//Type 'GameObject' via generics
+var gameObject = Instantiate<GameObject>(prefab, transform.position, Quaternion.identity);
 ```
 
 #### Component referencer
 Der er to måder at få referencer til Components på: I editoren med `public/[SerializeField]` eller i koden med `GetComponent<T>`.
 
 ```csharp
-    //Sættes i editoren
-    public Rigidbody2D MyRigidbody;
-    
-    //Sættes også i editoren
-     [SerializeField]
-    private BoxCollider2D colliderFromEditor;
+//Sættes i editoren
+public Rigidbody2D MyRigidbody;
+
+//Sættes også i editoren
+ [SerializeField]
+private BoxCollider2D colliderFromEditor;
 ```
 
 ```csharp
-    //Sættes med kode
-    private Rigidbody2D MyRigidbody;
+//Sættes med kode
+private Rigidbody2D MyRigidbody;
 
-    public void Start() 
-    {
-        MyRigidbody = GetComponent<Rigidbody2D>();
-    }
+public void Start() 
+{
+    MyRigidbody = GetComponent<Rigidbody2D>();
+}
 ```
 <!--
 #### MonoBehaviour Messages
