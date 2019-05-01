@@ -123,7 +123,7 @@ type MoveForward() =
 ```
 
 ### Unity-specific methods
-Below are some examples on Unity-specifik methods that might be useful for you.
+Below are some examples on Unity-specific methods that might be useful for you.
 
 #### Instantiation
 Instantiating Unity-object are the same in F# as in C#, although you have to explicitly call it on the `GameObject`:
