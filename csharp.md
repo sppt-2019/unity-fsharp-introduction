@@ -154,7 +154,7 @@ for(int i = 0; i < 3; i++)
     sum += i;
 }
 ```
-I C# har vi også foreach løkker, til at iterere over en collection.
+I C# har vi også foreach løkker, til at iterere over en collection. Denne snippet kræver: `using System.Linq;` i toppen af C# filen.
 
 ```csharp
 var sum = 0;
@@ -233,6 +233,7 @@ var namesOnly = persons
 var percentageScadinavians = (persons
                                 .Where(person => person.Country == "Norway" || person.Country == "Valhal")
                                 .Count() / persons.Length) * 100;
+```
 
 ___
 ## Events
