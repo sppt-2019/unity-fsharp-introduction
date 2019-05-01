@@ -4,7 +4,7 @@ F# er et funktionelt programmeringssprog som kører i .NET Platformen sammen med
 
 En ting der er vigtig at være opmærksom på i F# i forhold til C# er at der er eksplicit membership. I C# vil det være typisk i et `GameObject` at kalde `Destroy` hvis vi ønsker at fjerne et objekt. I dette kald er det implicit at `Destroy`-metoden er en statisk metode på klassen `GameObject`. I F# må vi være eksplicitte og derfor kalde `GameObject.Destroy`. Det samme gælder med metoder på objekter, som vi altid skal kalde med `this.Metode`.
 
-Dette dokument giver en hurtig introduktion til F# og hvordan det kan bruges i Unity. Vi har også skrevet et dokument, hvor vi beskriver [hvordan Functional Reactive Programming kan bruges i Unity](frp.md).
+Dette dokument giver en hurtig introduktion til F# og hvordan det kan bruges i Unity.
 
 ___
 ## Datatyper og variable
@@ -15,6 +15,7 @@ let a = 5             // Integer variabel
 let mutable b = 5.0f  // Overskrivbar float32 variabel
 let c = "John"        // String variabel
 let d:bool = true     // Eksplicit typet boolsk variabel
+let f = 4.0           // Eksplicit typet float (double)
 ```
 _En `mutable` variabel kan overskrives, hvorimod en almindelig ikke kan overskrives_
 
@@ -371,13 +372,6 @@ For at automatisere så meget af dette arbejde som muligt, har vi udviklet en Un
 [Download Unity-pakken til F# integration](https://github.com/sppt-2k19/unity-fsharp-integration/raw/master/unity-fsharp-integration.unitypackage "Download pakken") ([læs mere om pakken](https://github.com/sppt-2k19/unity-fsharp-integration "Læs mere her"))
 
 <img src="assets/img/unity-fsharp.png" style="width:307px;margin:auto;display:block;" />
-
-___
-
-## FRP i Unity
-Functional Reactive Programming(FRP) er en måde at programmere funktionelt, som kan være lettere at bruge til spilprogrammering end almindelig funktionel programmering.
-
-[Læs om FRP](frp.md)
 
 ___
 
