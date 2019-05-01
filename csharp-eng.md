@@ -55,7 +55,7 @@ ___
 In C# there exist both function and methods. It is often the methods that are called as functions in C#, but it is not always the case. In this test it is only necessary to use methods.
 Functions are bound to any classinstance, which means that you can't access `this` in functions (almost like `static` methods). Methods are bound to objects, and works as you most likely know in C#.
 
-### Metoder
+### Methods
 Metoder skal erklæres i en klasse. Metoder kan tilgå klassens felter properties. Her er både `Update` og `Move` metoder:
 Methods need to be declared in a class. Methods can access classes field properties. Here is both `Update` and `Move` methods:
 ```csharp
@@ -77,9 +77,9 @@ class MoveForward : MonoBehaviour
 }
 ```
 
-### Funktioner
-Funktioner er sjældent brugt i C#, men der er forskel på dem og metoder.
-<!-- Her erklærer vi en funktion, som tager en liste af tal og summerer dem efter de er blevet opløftet i `n`: -->
+### Functions
+Functions are a rare use in C#, but there is a difference between them and methods.
+<!-- Here we declare a function that takes a list of number and sums them after they have been lifted in `n`: -->
 ```csharp
 Func<int, int> multiplyByFive = num => num * 5;
 // Returns 35
