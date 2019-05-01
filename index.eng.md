@@ -1,4 +1,4 @@
-<span style="float: right"><b><a href="/unity-fsharp-introduction/index.html">dan</a></b>/eng</span>
+<span style="float: right"><b><a href="/unity-fsharp-introduction/">dan</a></b>/eng</span>
 
 ## General information about F#
 F# is a programming language of the functional paradigm, and runs on the .NET platform together with C# and VB.NET.
