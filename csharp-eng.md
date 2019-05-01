@@ -52,32 +52,38 @@ This piece of code decalres a `MonoBehaviour`, that has a instancevariabel `Mess
 
 ___
 ## Functions & Methods
-I F# findes der både funktioner og metoder. Funktioner er ikke knyttet til nogen klasseinstans, hvilket betyder at du ikke kan tilgå `this` i funktioner (næsten ligesom `static` metoder i C#). Metoder er bundet på klasseinstanser og fungerer som vi kender det fra C#.
-
-### Funktioner
-Her erklærer vi en funktion, som tager en liste af tal og summerer dem efter de er blevet opløftet i `n`:
-```fsharp
-let sumInPowerN (nums:float32 list) (n:float32) =
-    List.reduce (fun acc i -> acc + Mathf.Pow(i, n)) nums
-```
-Implicitte typer virker i nogle tilfælde også på funktioner, men compileren kan sommetider blive lidt forvirret og give nogle mystiske fejlbeskeder, så det kan ofte være en god idé at erklære deres typer eksplicit. Ovenstående funktion kunne også erklæres med:
-```fsharp
-let sumInPowerN nums n = [...]
-```
+In C# there exist both function and methods. It is often the methods that are called as functions in C#, but it is not always the case. In this test it is only necessary to use methods.
+Functions are bound to any classinstance, which means that you can't access `this` in functions (almost like `static` methods). Methods are bound to objects, and works as you most likely know in C#.
 
 ### Metoder
-Metoder skal erklæres på en type og så kan man tilgå dens felter og properties:
-
-```fsharp
+Metoder skal erklæres i en klasse. Metoder kan tilgå klassens felter properties. Her er både `Update` og `Move` metoder:
+Methods need to be declared in a class. Methods can access classes field properties. Here is both `Update` and `Move` methods:
+```csharp
 class MoveForward : MonoBehaviour
 {
-
     [SerializeField]
-    let mutable Speed = 8.0f
+    float Speed = 8.0f
 
-    member this.Update() =
-        this.transform.position <- this.transform.position + (this.transform.forward * Speed * Time.deltaTime)
+    void Update()
+    {
+        transform.position = Move(Speed);
+    }
+    
+    private Vector3 Move(float addSpeed)
+    {
+        return transform.position + (transform.forward * addSpeed * Time.deltaTime);
+    }
+        
 }
+```
+
+### Funktioner
+Funktioner er sjældent brugt i C#, men der er forskel på dem og metoder.
+<!-- Her erklærer vi en funktion, som tager en liste af tal og summerer dem efter de er blevet opløftet i `n`: -->
+```csharp
+Func<int, int> multiplyByFive = num => num * 5;
+// Returns 35
+int result = multiplyByFive(7);
 ```
 
 ### Unity-specific methods
