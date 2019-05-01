@@ -137,7 +137,7 @@ Instantiating Unity-object are the same in F# as in C#, although you have to exp
 ```
 
 #### Component references
-As in C#, there are two ways to get references to Components: In the editor with `[<SerializeField>]` eller i koden med `GetComponent<T>`.
+As in C#, there are two ways to get references to Components: In the editor with `[<SerializeField>]` or in the code with `GetComponent<T>`.
 
 ```fsharp
     // Must be set in the Unity Editor
