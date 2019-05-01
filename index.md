@@ -1,4 +1,4 @@
-<span style="float: right">dan/<b><a href="/unity-fsharp-introduction/index.eng.html">eng</a></b></span>
+<span style="float: right">🇩🇰/<b><a href="/unity-fsharp-introduction/index.eng.html">🇬🇧</a></b></span>
 ## Generel information om F#
 F# er et funktionelt programmeringssprog som kører i .NET Platformen sammen med C#. Eftersom F# er funktionelt betyder det at næsten alt betragtes som funktioner og funktionskald. F# er desuden _pure_ som standard, hvilket betyder at variable ikke må ændres efter de er blevet erklæret. Syntaksen i F# er inspireret af OCaml og Haskell og er indentations-baseret i stedet for med curly braces ( `{` og `}` ), som vi kender det fra C#.
 
