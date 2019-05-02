@@ -1,7 +1,7 @@
 ## General information on C# & Unity 
-C# is a object orientetet programming language that runs in the .NET Platform. Since C# is a objekt orientet it means that almost everything is considered as objects and functioncalls. The syntax in C# is inspired by Smalltalk and C++ and is a curly braces ( `{` og `}` ) based, instead of indention-based like we know from F#.
+C# is a object oriented programming language that runs in the .NET Platform. Since C# is a object oriented it means that almost everything is considered as objects and function calls. The syntax in C# is inspired by Smalltalk and C++ and is a curly braces ( `{` and `}` ) based, instead of indention-based like we know from F#.
 
-In C# there is implicit membership. In C# it would be typical for a `GameObject` to call `Destroy` if we wished to remove a object. In this call it is implicit that the `Destroy`-method is a static method on the class `GameObject`. It is the same case with methods on objects, we will always need to call them with a `Metode`.
+In C# there is implicit membership. In C# it would be typical for a `GameObject` to call `Destroy` if we wished to remove a object. In this call it is implicit that the `Destroy`-method is a static method on the class `GameObject`. It is the same case with methods on objects, we will always need to call them with a `Method`.
 
 ___
 ## Datatypes og variables
@@ -44,19 +44,18 @@ class MyType : MonoBehaviour
     }
 }
 ```
-This piece of code decalres a `MonoBehaviour`, that has a instancevariabel `Message`, such that it is printed when Unity's Editor starts. `SerializeField` means that the instancevariable `Message` becomes availible in Unity's Editor.
+This piece of code decalres a `MonoBehaviour`, that has a instance variable `Message`, such that it is printed when Unity's Editor starts. `SerializeField` means that the instance variable `Message` becomes availible in Unity's Editor.
 
 <div class="note-box">
-    For at kunne nedarve fra <code>MonoBehaviour</code> skal man <i>bruge</i> ( <code>using UnityEngine;</code> )
+    To be able to inherit <code>MonoBehaviour</code> you have to <i>use</i> ( <code>using UnityEngine;</code> )
 </div>
 
 ___
 ## Functions & Methods
 In C# there exist both function and methods. It is often the methods that are called as functions in C#, but it is not always the case. In this test it is only necessary to use methods.
-Functions are bound to any classinstance, which means that you can't access `this` in functions (almost like `static` methods). Methods are bound to objects, and works as you most likely know in C#.
+Functions are bound to any class instance, which means that you can't access `this` in functions (almost like `static` methods). Methods are bound to objects, and works as you most likely know in C#.
 
 ### Methods
-Metoder skal erklæres i en klasse. Metoder kan tilgå klassens felter properties. Her er både `Update` og `Move` metoder:
 Methods need to be declared in a class. Methods can access classes field properties. Here is both `Update` and `Move` methods:
 ```csharp
 class MoveForward : MonoBehaviour
@@ -165,12 +164,12 @@ In C# to be able to make pairing tuple of multiple types, you have to declare th
 
 ```csharp
 // New syntax for tuples
-var personTuple = (23, 1.77f);          // Implicitte typer
-(int, float) personTuple = (23, 1.77f); // Eksplicitte typer
+var personTuple = (23, 1.77f);          // Implicit type
+(int, float) personTuple = (23, 1.77f); // Explicit type
 
 // Old syntax for tuples
-var personTuple = new Tuple<int, float>(23, 1.77f); // Implicitte typer
-Tuple<int, float> personTuple = new Tuple<int, float>(23, 1.77f); // Eksplicitte typer
+var personTuple = new Tuple<int, float>(23, 1.77f); // Implicit type
+Tuple<int, float> personTuple = new Tuple<int, float>(23, 1.77f); // Explicit type
 
 
 // Tuples can be unpacked such as they are easier to use
