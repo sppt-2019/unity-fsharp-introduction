@@ -31,7 +31,7 @@ Vores plugin kræver `dotnet` SDK
 - [Installer på Linux](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/sdk-current)
 
 **Når du har løst en opgave, skal du besvare en sektion i spørgeskemaet**
-- [Link til spørgeskema](https://forms.gle/K7mBzR8TGmD5SzMM7)
+- [Link til spørgeskema](https://forms.gle/ejBNj3tRth6QNncm9)
   - Dit ID udleveres
 
 <br />
