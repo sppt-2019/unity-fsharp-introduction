@@ -17,6 +17,8 @@ To be able to use F# in unity you have to use a [Unity-package](https://sppt-201
 
 _When you have made changes in a F# file you have to **remember to complie** it, by clicking on the `Compile F#` or by pressing <kbd>F6</kbd> in Unity_
 
+For editing the F# files we recommend [Visual Studio Code](https://code.visualstudio.com/)
+
 Unity projects that you have to use for the excercises can be foud on GitHub, where you can download/clone them:
 - [F# Unity project](https://github.com/sppt-2k19/unity-testing/archive/fsharp.zip)
 - [C# Unity project](https://github.com/sppt-2k19/unity-testing/archive/csharp.zip)
